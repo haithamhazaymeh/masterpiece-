@@ -1,10 +1,8 @@
-﻿[
+[
   {
     "outputFile": "css/style.css",
-    "inputFile": "css/style.scss"
-  },
-  {
-    "outputFile": "css/style3.css",
-    "inputFile": "css/style3.scss"
+    "inputFile": "css/style.scss",
+    "sourceMap": false,
+    "useNodeSass": false
   }
 ]

@@ -199,12 +199,6 @@
     <Content Include="css\roundslider.css" />
     <Content Include="css\style.css" />
     <Content Include="css\style2.css" />
-    <Content Include="css\style3.css">
-      <DependentUpon>style3.scss</DependentUpon>
-    </Content>
-    <Content Include="css\style3.min.css">
-      <DependentUpon>style3.css</DependentUpon>
-    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\cp-brands-400.svg" />
     <Content Include="fonts\cp-regular-400.svg" />
@@ -282,17 +276,20 @@
     <Content Include="Images\Content\blog1.jpg" />
     <Content Include="Images\Content\blog2.jpg" />
     <Content Include="Images\Content\blog3.jpg" />
+    <Content Include="Images\Content\cart.jpg" />
     <Content Include="Images\Content\contactus.jpg" />
     <Content Include="Images\Content\DSC_0952-01-01.jpeg" />
     <Content Include="Images\Content\Error.jpg" />
     <Content Include="Images\Content\haitham alhazaymeh.jpg" />
     <Content Include="Images\Content\haitham logo.png" />
     <Content Include="Images\Content\haitnam.png" />
+    <Content Include="Images\Content\Hassan.jpg" />
     <Content Include="Images\Content\IMG_6440-01.jpeg" />
     <Content Include="Images\Content\IMG_6996-01.jpeg" />
     <Content Include="Images\Content\IMG_7142-01.jpeg" />
     <Content Include="Images\Content\Kufrnjah.png" />
     <Content Include="Images\Content\logo nabd.png" />
+    <Content Include="Images\Content\louy.jpg" />
     <Content Include="Images\Content\main slaid.jpg" />
     <Content Include="Images\Content\Orange_logo.svg.png" />
     <Content Include="Images\Content\p1.jpg" />
@@ -303,6 +300,7 @@
     <Content Include="Images\Content\photo_2022-12-23_10-56-37.jpg" />
     <Content Include="Images\Content\PLACES.jpg" />
     <Content Include="Images\Content\pngegg %281%29.png" />
+    <Content Include="Images\Content\pro.jpg" />
     <Content Include="Images\Content\s1.jpg" />
     <Content Include="Images\Content\s2.jpg" />
     <Content Include="Images\Content\s3.jpg" />
@@ -311,6 +309,7 @@
     <Content Include="Images\Content\Service.jpeg" />
     <Content Include="Images\Content\slide2.jpg" />
     <Content Include="Images\Content\sohaib.jpg" />
+    <Content Include="Images\Content\sohaib22.jpg" />
     <Content Include="Images\Content\Stuffed-Mammoth.png" />
     <Content Include="Images\Content\v1.jpg" />
     <Content Include="Images\Content\v10.jpg" />
@@ -333,6 +332,7 @@
     <Content Include="Images\Content\v7.jpg" />
     <Content Include="Images\Content\v8.jpg" />
     <Content Include="Images\Content\v9.jpg" />
+    <Content Include="Images\Content\yazzed.jpg" />
     <Content Include="Images\create\1.jpg" />
     <Content Include="Images\create\2.jpg" />
     <Content Include="Images\faq\1.jpg" />
@@ -514,7 +514,6 @@
     <Content Include="rev\fonts\revicons\revicons.eot" />
     <Content Include="rev\fonts\revicons\revicons.ttf" />
     <Content Include="rev\fonts\revicons\revicons.woff" />
-    <Content Include="css\style3.scss" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
