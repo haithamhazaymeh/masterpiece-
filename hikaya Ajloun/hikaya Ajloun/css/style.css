@@ -1544,7 +1544,7 @@ header#pq-header {
 
                     header#pq-header .pq-bottom-header .navbar .navbar-nav li a {
                         color: var(--dark-color);
-                        font-size: 25px;
+                        font-size: 20px;
                     }
 
                     header#pq-header .pq-bottom-header .navbar .navbar-nav li.current-menu-item a {
@@ -1601,7 +1601,7 @@ header#pq-header {
                         padding: 10px 15px;
                         width: 100%;
                         color: var(--dark-color);
-                        font-size: 16px;
+                        font-size: 10px;
                         position: relative;
                         overflow: hidden;
                         float: left;

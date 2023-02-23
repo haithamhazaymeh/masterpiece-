@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hekayt Ajloun</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
     <!--favicon icon-->
     <link rel="shortcut icon" href="~/Images/logos/favicon.png">
     <!--bootstrap css-->
@@ -83,7 +85,12 @@
                                         <li class="menu-item">
                                             @Html.ActionLink("Blog", "Blog", "Home", null, new { @class = "pq-submenu-icon" })
                                         </li>
+                                        <li class="menu-item">
+                                            @Html.Partial("_LoginPartial")
+                                        </li>
                                     </ul>
+                                    
+
                                 </div>
                             </div>
 

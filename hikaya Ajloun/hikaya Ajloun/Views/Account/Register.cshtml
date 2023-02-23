@@ -1,9 +1,30 @@
 ﻿@model hikaya_Ajloun.Models.RegisterViewModel
 @{
     ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/Navbar and footer 1.cshtml";
+
 }
 
-<h2>@ViewBag.Title.</h2>
+<!--Breadcrumb Start-->
+<div class="pq-breadcrumb pq-breadcrumb-Cart pq-bg-dark pq-bg-img-4">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <nav aria-label="breadcrumb">
+                    <div class="pq-breadcrumb-title mt-5">
+                        <h1>Your Cart</h1>
+                    </div>
+                    <div class="pq-breadcrumb-container">
+                        <ol class="breadcrumb align-items-center">
+                            <li class="breadcrumb-item"><a href="main-home.html"><i class="fa fa-home me-2"></i>Home</a></li>
+                            <li class="breadcrumb-item active">Our Services</li>
+                        </ol>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
 
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
@@ -36,6 +57,7 @@
     </div>
 }
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+
+@*@section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }*@
