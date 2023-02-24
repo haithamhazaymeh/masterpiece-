@@ -91,8 +91,20 @@ namespace hikaya_Ajloun.Controllers
             return View();
         }
 
+        public ActionResult FormProduct()
+        {
+            ViewBag.Message = "Your application description page.";
 
-       
+            return View();
+        }
+
+
+        public ActionResult FormPlace()
+        {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
 
 
     }

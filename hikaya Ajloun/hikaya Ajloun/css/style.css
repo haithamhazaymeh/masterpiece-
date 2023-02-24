@@ -3329,7 +3329,7 @@ Breadcrumb
 }
 
 .pq-breadcrumb-about {
-    padding: 300px 0;
+    padding: 150px 0;
     position: relative;
     text-align: center;
     background-image: url(../images/Content/about\ us\ bk.jpeg);
@@ -3345,7 +3345,7 @@ Breadcrumb
 }
 
 .pq-breadcrumb-Blog {
-    padding: 250px 0;
+    padding: 150px 0;
     position: relative;
     text-align: center;
     background-image: url(../images/Content/Blog.jpg);
@@ -3353,7 +3353,7 @@ Breadcrumb
 }
 
 .pq-breadcrumb-services {
-    padding: 250px 0;
+    padding: 150px 0;
     position: relative;
     text-align: center;
     background-image: url(../images/Content/Service.jpeg);
@@ -3361,7 +3361,7 @@ Breadcrumb
 }
 
 .pq-breadcrumb-places {
-    padding: 250px 0;
+    padding: 150px 0;
     position: relative;
     text-align: center;
     background-image: url(../images/Content/PLACES.jpg);
@@ -3369,7 +3369,7 @@ Breadcrumb
 }
 
 .pq-breadcrumb-Cart {
-    padding: 250px 0;
+    padding: 150px 0;
     position: relative;
     text-align: center;
     background-image: url(../images/Content/cart.jpg);
@@ -3382,6 +3382,22 @@ Breadcrumb
     position: relative;
     text-align: center;
     background-image: url(../images/Content/pro.jpg);
+    background-size: cover;
+}
+
+.pq-breadcrumb-FormProduct {
+    padding: 100px 0;
+    position: relative;
+    text-align: center;
+    background-image: url(../images/Content/formproduct.jpg);
+    background-size: cover;
+}
+
+.pq-breadcrumb-FormPlace {
+    padding: 100px 0;
+    position: relative;
+    text-align: center;
+    background-image: url(../images/Content/formplaces.jpg);
     background-size: cover;
 }
 

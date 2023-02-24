@@ -235,6 +235,8 @@
     <Content Include="Images\Content\contactus.jpg" />
     <Content Include="Images\Content\DSC_0952-01-01.jpeg" />
     <Content Include="Images\Content\Error.jpg" />
+    <Content Include="Images\Content\formplaces.jpg" />
+    <Content Include="Images\Content\formproduct.jpg" />
     <Content Include="Images\Content\haitham alhazaymeh.jpg" />
     <Content Include="Images\Content\haitham logo.png" />
     <Content Include="Images\Content\haitnam.png" />
@@ -2870,6 +2872,8 @@
     <Content Include="Views\Home\SingleBlog.cshtml" />
     <Content Include="Views\Shared\_saidbar-navbar.cshtml" />
     <Content Include="Views\Shared\footer.cshtml" />
+    <Content Include="Views\Home\FormProduct.cshtml" />
+    <Content Include="Views\Home\FormPlace.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
