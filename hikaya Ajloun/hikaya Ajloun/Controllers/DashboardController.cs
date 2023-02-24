@@ -18,5 +18,10 @@ namespace hikaya_Ajloun.Controllers
         {
             return View();
         }
+
+        public ActionResult Calendar()
+        {
+            return View();
+        }
     }
 }

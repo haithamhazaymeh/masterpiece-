@@ -248,6 +248,7 @@
     <Content Include="Images\Content\logo nabd.png" />
     <Content Include="Images\Content\louy.jpg" />
     <Content Include="Images\Content\main slaid.jpg" />
+    <Content Include="Images\Content\Mehbash.png" />
     <Content Include="Images\Content\Orange_logo.svg.png" />
     <Content Include="Images\Content\p1.jpg" />
     <Content Include="Images\Content\p2.jpg" />
@@ -742,6 +743,7 @@
     <Content Include="Dashboard\plugins\toastr\toastr.js.map" />
     <Content Include="Views\Dashboard\Dashboard.cshtml" />
     <Content Include="Views\Dashboard\NewArtical.cshtml" />
+    <Content Include="Views\Dashboard\Calendar.cshtml" />
     <None Include="Views\Home\aboutus.cshtml" />
     <None Include="Views\Home\Blog.cshtml" />
     <Content Include="Dashboard\build\config\postcss.config.js" />
