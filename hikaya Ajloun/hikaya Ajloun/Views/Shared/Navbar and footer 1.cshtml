@@ -85,11 +85,25 @@
                                         <li class="menu-item">
                                             @Html.ActionLink("Blog", "Blog", "Home", null, new { @class = "pq-submenu-icon" })
                                         </li>
-                                        <li class="menu-item">
-                                            @Html.Partial("_LoginPartial")
+
+                                        <li class="menu-item current-menu-item manu-item-has-children text-center">
+                                            <i style="font-size:18px" class="fa-solid fa-user"></i>  <i class="fa fa-chevron-down pq-submenu-icon"></i>
+                                            <ul  class="sub-menu">
+                                                <li class="menu-item">
+                                                    <p>Profail</p>
+                                                </li>
+                                                <li class="menu-item">
+                                                    @Html.Partial("_LoginPartial")
+                                                </li>
+                                            </ul>
                                         </li>
+
                                     </ul>
+
                                     
+
+                                  
+
 
                                 </div>
                             </div>

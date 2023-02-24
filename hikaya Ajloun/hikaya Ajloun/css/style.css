@@ -1765,7 +1765,7 @@ header#pq-header {
     }
 
     header#pq-header.pq-header-style-1 .pq-bottom-header .navbar .navbar-nav li {
-        line-height: 95px;
+        line-height: 30px;
     }
 
         header#pq-header.pq-header-style-1 .pq-bottom-header .navbar .navbar-nav li > a {
@@ -5639,10 +5639,10 @@ Widget
         border-radius: 3px;
     }
 
-    .pq-widget.pq-widget-port .menu li.current-menu-item a {
+  /*  .pq-widget.pq-widget-port .menu li.current-menu-item a {
         background: var(--primary-color);
         color: var(--white-color);
-    }
+    }*/
 
     .pq-widget.pq-widget-port .menu li > a:before {
         position: absolute;

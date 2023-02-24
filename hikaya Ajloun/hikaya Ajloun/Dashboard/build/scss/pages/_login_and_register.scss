@@ -17,7 +17,8 @@
 .login-page,
 .register-page {
   align-items: center;
-  background-color: $gray-200;
+  background-image: url('~/Images/Content/Ajloun stadum.jpg');
+  background-size:cover;
   display: flex;
   flex-direction: column;
   height: 100vh;
