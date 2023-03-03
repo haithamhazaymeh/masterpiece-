@@ -182,10 +182,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="css\all.min.css" />
     <Content Include="css\animations.min.css" />
     <Content Include="css\bootstrap.min.css" />
@@ -217,7 +213,6 @@
     <Content Include="fonts\themify-icons\themify-icons.js" />
     <Content Include="fonts\themify-icons\themify.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
     <Content Include="Images\Content\1.jpg" />
     <Content Include="Images\Content\2.jpg" />
     <Content Include="Images\Content\287-2871996_olive-oil-and-olives.png" />
@@ -365,8 +360,6 @@
     <Content Include="rev\fonts\revicons\revicons.svg" />
     <Content Include="rev\js\rbtools.min.js" />
     <Content Include="rev\js\rs6.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\cp-brands-400.eot" />
     <Content Include="fonts\cp-brands-400.ttf" />
     <Content Include="fonts\cp-brands-400.woff" />
@@ -412,17 +405,6 @@
     <Content Include="rev\fonts\revicons\revicons.eot" />
     <Content Include="rev\fonts\revicons\revicons.ttf" />
     <Content Include="rev\fonts\revicons\revicons.woff" />
-    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.4.1.js" />
-    <Content Include="Scripts\jquery-3.4.1.min.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Dashboard\.github\codeql\codeql-config.yml" />
     <Content Include="Dashboard\.github\CONTRIBUTING.md" />
     <Content Include="Dashboard\.github\dependabot.yml" />
@@ -2881,13 +2863,7 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

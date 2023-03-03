@@ -1534,7 +1534,7 @@ header#pq-header {
                     float: left;
                     margin-right: 30px;
                     color: var(--dark-color);
-                    line-height: 90px;
+                    line-height: 20px;
                     font-weight: 400;
                 }
 
@@ -1558,13 +1558,13 @@ header#pq-header {
 
                     header#pq-header .pq-bottom-header .navbar .navbar-nav li:hover .sub-menu {
                         display: block;
-                        background: var(--white-color);
+                        background: var(--primary-color);
                         position: absolute;
                         top: 90px;
                         left: 0;
                         padding-left: 0;
                         display: inline-block;
-                        width: 240px;
+                        width: 150px;
                         z-index: 999;
                         padding: 0;
                         -webkit-box-shadow: 0px 5px 15px 0px rgba(0, 33, 85, 0.1);
@@ -1598,10 +1598,10 @@ header#pq-header {
                     header#pq-header .pq-bottom-header .navbar .navbar-nav li .sub-menu li a {
                         line-height: 2;
                         text-transform: capitalize;
-                        padding: 10px 15px;
+                       
                         width: 100%;
-                        color: var(--dark-color);
-                        font-size: 10px;
+                        color: var(--white-color);
+                        font-size: 20px;
                         position: relative;
                         overflow: hidden;
                         float: left;
@@ -1612,7 +1612,7 @@ header#pq-header {
                         header#pq-header .pq-bottom-header .navbar .navbar-nav li .sub-menu li.current-menu-item > a,
                         header#pq-header .pq-bottom-header .navbar .navbar-nav li .sub-menu li.current-menu-parent > a,
                         header#pq-header .pq-bottom-header .navbar .navbar-nav li.current-menu-ancestor a {
-                            color: var(--primary-color);
+                            color: var(--dark-color);
                         }
 
                         header#pq-header .pq-bottom-header .navbar .navbar-nav li .sub-menu li a:before {
@@ -1621,7 +1621,7 @@ header#pq-header {
                             top: calc(50% - 3px);
                             height: 5px;
                             width: 5px;
-                            background: var(--primary-color);
+                            background: var(--dark-color);
                             border-radius: 0;
                             left: 0;
                             opacity: 0;
@@ -6678,7 +6678,7 @@ Custom CSS
 
         .offer_section .box .detail-box h5 {
             font-family: 'Dancing Script', cursive;
-            font-size: 45px;
+            font-size: 30px;
             margin: 0 0 40px;
             color: #ffbe33;
         }
@@ -6857,7 +6857,7 @@ Custom CSS
             background-color: #e69c00;
         }
 
-.about_section {
+/*.about_section {
     background: #2E7D32;
     color: #ffffff;
 }
@@ -6977,7 +6977,7 @@ Custom CSS
             height: 100%;
             min-height: 100%;
             width: 100%;
-        }
+        }*/
 
 
 /*---------------------
@@ -9305,4 +9305,87 @@ body {
     .notfound h2 {
         font-size: 22px;
     }
+}
+
+@media (max-width: 1300px) {
+}
+
+@media (max-width: 1120px) {
+}
+
+@media (max-width: 992px) {
+    .hero_area {
+        min-height: auto;
+    }
+
+    .custom_nav-container .navbar-nav {
+        padding-top: 15px;
+        padding-left: 0;
+        align-items: center;
+    }
+
+    .user_option {
+        justify-content: center;
+        margin-top: 15px;
+    }
+
+    .custom_nav-container .navbar-nav .nav-item .nav-link {
+        padding: 5px 25px;
+        margin: 5px 0;
+    }
+
+    .slider_section .carousel-indicators {
+        margin-top: 45px;
+    }
+
+    .offer_section .box {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+        .offer_section .box .img-box {
+            margin-right: 0;
+            margin-bottom: 15px;
+        }
+}
+
+@media (max-width: 767px) {
+
+    .about_section .detail-box,
+    .book_section .form_container {
+        margin-bottom: 45px;
+    }
+
+    .about_section .row {
+        flex-direction: column-reverse;
+    }
+
+    .offer_section .box {
+        flex-direction: row;
+        text-align: left;
+    }
+
+        .offer_section .box .img-box {
+            margin-right: 15px;
+            margin-bottom: 0;
+        }
+}
+
+@media (max-width: 576px) {
+}
+
+@media (max-width: 480px) {
+}
+
+@media (max-width: 430px) {
+    .offer_section .box {
+        flex-direction: column;
+        text-align: center;
+    }
+
+        .offer_section .box .img-box {
+            margin-right: 0;
+            margin-bottom: 15px;
+        }
 }

@@ -34,7 +34,7 @@
                             <div class="product-zoom">
                                 <div class="zoompro-wrap product-zoom-right pl-20">
                                     <div class="zoompro-span">
-                                        <img id="zoompro" class="zoompro prlightbox" src="~/Images/Content/s1.jpg" data-zoom-image="~/Images/Content/s1.jpg" alt="" />
+                                        <img id="zoompro" class="zoompro prlightbox" src="@Url.Content("~/Images/Content/s1.jpg")" data-zoom-image="@Url.Content("~/Images/Content/s1.jpg")" alt="" />
                                     </div>
                                     <div class="product-labels"><span class="lbl new rounded">New</span></div>
                                     <div class="product-buttons">
@@ -47,18 +47,21 @@
                             </div>
                             <div class="product-thumb product-horizontal-thumb">
                                 <div id="gallery" class="product-thumb-style1">
-                                    <a class="active" data-image="~/Images/Content/s1.jpg" data-zoom-image="~/Images/Content/s1.jpg" data-slick-index="-4" aria-hidden="true" tabindex="-1">
-                                        <img class="blur-up lazyload" data-src="~/Images/Content/s1.jpg" src="~/Images/Content/s1.jpg" alt="" />
+                                    <a class="active" data-image="@Url.Content("~/Images/Content/s1.jpg")" data-zoom-image="@Url.Content("~/Images/Content/s1.jpg")" data-slick-index="-4" aria-hidden="true" tabindex="-1">
+                                        <img class="blur-up lazyload" data-src="@Url.Content("~/Images/Content/s1.jpg")" src="@Url.Content("~/Images/Content/s1.jpg")" alt="" />
+
                                     </a>
-                                    <a data-image="~/Images/content/s2.jpg" data-zoom-image="~/Images/content/s2.jpg" data-slick-index="-3" aria-hidden="true" tabindex="-1">
-                                        <img class="blur-up lazyload" data-src="~/Images/content/s2.jpg" src="~/Images/content/s2.jpg" alt="" />
+                                    <a data-image="@Url.Content("~/Images/Content/s2.jpg")" data-zoom-image="@Url.Content("~/Images/Content/s2.jpg")" data-slick-index="-3" aria-hidden="true" tabindex="-1">
+                                        <img class="blur-up lazyload" data-src="@Url.Content("~/Images/Content/s2.jpg")" src="@Url.Content("~/Images/Content/s2.jpg")" alt="" />
+
                                     </a>
-                                    <a data-image="~/Images/content/s3.jpg" data-zoom-image="~/Images/content3/s3.jpg" data-slick-index="-2" aria-hidden="true" tabindex="-1">
-                                        <img class="blur-up lazyload" data-src="~/Images/content/s3.jpg" src="~/Images/content/s3.jpg" alt="" />
-                                    </a>
-                                    <a data-image="~/Images/content/s4.jpg" data-zoom-image="~/Images/content/s4.jpg" data-slick-index="-1" aria-hidden="true" tabindex="-1">
-                                        <img class="blur-up lazyload" data-src="~/Images/content/s4.jpg" src="~/Images/content/s4.jpg" alt="" />
-                                    </a>
+                                    <a data-image="@Url.Content("~/Images/Content/s3.jpg")" data-zoom-image="@Url.Content("~/Images/Content/s3.jpg")" data-slick-index="-3" aria-hidden="true" tabindex="-1">
+                                        <img class="blur-up lazyload" data-src="@Url.Content("~/Images/Content/s3.jpg")" src="@Url.Content("~/Images/Content/s3.jpg")" alt="" />
+
+                                        <a data-image="@Url.Content("~/Images/Content/s4.jpg")" data-zoom-image="@Url.Content("~/Images/Content/s4.jpg")" data-slick-index="-3" aria-hidden="true" tabindex="-1">
+                                            <img class="blur-up lazyload" data-src="@Url.Content("~/Images/Content/s4.jpg")" src="@Url.Content("~/Images/Content/s4.jpg")" alt="" />
+
+                                        </a>
 
                                 </div>
                             </div>
@@ -129,7 +132,7 @@
                             <!--Guranteed Checkout-->
                             <div class="guaranteed-safe-checkout">
                                 <h4>Guaranteed Safe Checkout</h4>
-                                <img class="fade-in lazyload" src="~/Images/Content/paymethod.png" data-src="~/Images/Content/paymethod.png" alt="Guaranteed Safe Checkout">
+                                <img width="60%" class="fade-in lazyload" src="~/Images/Content/paymethod.png"  data-image="@Url.Content("~/Images/Content/paymethod.png")" alt="Guaranteed Safe Checkout">
                             </div>
                             <!--End Guranteed Checkout-->
                         </div>
