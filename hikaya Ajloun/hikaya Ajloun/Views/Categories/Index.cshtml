@@ -1,0 +1,151 @@
+﻿@model IEnumerable<hikaya_Ajloun.Models.Category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hikayat Ajloun Dashboard</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="~/Dashboard/https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/jqvmap/jqvmap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Dashboard/dist/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/daterangepicker/daterangepicker.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/summernote/summernote-bs4.min.css">
+    <link rel="shortcut icon" href="~/Images/logos/favicon.png">
+
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+
+    @RenderPage("~/Views/Shared/_saidbar-navbar.cshtml")
+
+    <div style="padding:50px" class="content-wrapper">
+
+
+
+
+
+
+        <div class="preloader flex-column justify-content-center align-items-center">
+            <img class="animation__shake" src="~/Images/logos/Hekayt Ajloun logo Green.png" alt="Hekaya Ajloun" height="60" width="150">
+        </div>
+
+
+
+        <table class="table table-striped table-hover">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.categoryName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.categoryDescription)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.categoryImage)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.type)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.categoryName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.categoryDescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.categoryImage)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.type)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.categoryId } , new { @class = "btn btn-info" } ) 
+                        @Html.ActionLink("Details", "Details", new { id = item.categoryId }, new { @class = "btn btn-warning" } ) 
+                        @Html.ActionLink("Delete", "Delete", new { id = item.categoryId }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+
+
+
+        </table>
+
+        <p>
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary ms-5" })
+
+        </p>
+
+    </div>
+
+    <p>
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary ms-5" })
+
+    </p>
+
+    @RenderPage("~/Views/Shared/footer.cshtml");
+
+
+
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+    <script src="~/Dashboard/plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="~/Dashboard/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>$.widget.bridge('uibutton', $.ui.button)</script>
+    <!-- Bootstrap 4 -->
+    <script src="~/Dashboard/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- ChartJS -->
+    <script src="~/Dashboard/plugins/chart.js/Chart.min.js"></script>
+    <!-- Sparkline -->
+    <script src="~/Dashboard/plugins/sparklines/sparkline.js"></script>
+    <!-- JQVMap -->
+    <script src="~/Dashboard/plugins/jqvmap/jquery.vmap.min.js"></script>
+    <script src="~/Dashboard/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="~/Dashboard/plugins/jquery-knob/jquery.knob.min.js"></script>
+    <!-- daterangepicker -->
+    <script src="~/Dashboard/plugins/moment/moment.min.js"></script>
+    <script src="~/Dashboard/plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="~/Dashboard/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- Summernote -->
+    <script src="~/Dashboard/plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="~/Dashboard/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/Dashboard/dist/js/adminlte.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/Dashboard/dist/js/demo.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="~/Dashboard/dist/js/pages/dashboard.js"></script>
+    <script src="~/Views/Dashboard/plugins/summernote/summernote-bs4.js"></script>
+
+</body>
+</html>
