@@ -15,12 +15,12 @@ namespace hikaya_Ajloun.Models
     public partial class place
     {
         public int placeId { get; set; }
-        public int placeName { get; set; }
-        public int placeImage1 { get; set; }
-        public int placeImage2 { get; set; }
-        public int placeImage3 { get; set; }
-        public int placeImage4 { get; set; }
-        public int placeImage5 { get; set; }
+        public string placeName { get; set; }
+        public string placeImage1 { get; set; }
+        public string placeImage2 { get; set; }
+        public string placeImage3 { get; set; }
+        public string placeImage4 { get; set; }
+        public string placeImage5 { get; set; }
         public int categoryId { get; set; }
     
         public virtual Category Category { get; set; }

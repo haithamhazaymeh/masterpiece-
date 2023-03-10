@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -23,8 +23,8 @@
           <Property Name="articleName" Type="nvarchar" MaxLength="250" />
           <Property Name="articleImage" Type="nvarchar(max)" />
           <Property Name="categoryId" Type="int" />
-          <Property Name="articleFile" Type="nvarchar" MaxLength="250" />
-          <Property Name="articleDate" Type="date" />
+          <Property Name="articleFile" Type="text" />
+          <Property Name="articleDate" Type="datetime" />
           <Property Name="authorid" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="AspNetRoles">
@@ -82,7 +82,7 @@
           <Key>
             <PropertyRef Name="authorid" />
           </Key>
-          <Property Name="authorid" Type="int" Nullable="false" />
+          <Property Name="authorid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="authorname" Type="nvarchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="Cart">
@@ -125,13 +125,13 @@
           <Key>
             <PropertyRef Name="placeId" />
           </Key>
-          <Property Name="placeId" Type="int" Nullable="false" />
-          <Property Name="placeName" Type="int" Nullable="false" />
-          <Property Name="placeImage1" Type="int" Nullable="false" />
-          <Property Name="placeImage2" Type="int" Nullable="false" />
-          <Property Name="placeImage3" Type="int" Nullable="false" />
-          <Property Name="placeImage4" Type="int" Nullable="false" />
-          <Property Name="placeImage5" Type="int" Nullable="false" />
+          <Property Name="placeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="placeName" Type="nvarchar" MaxLength="550" Nullable="false" />
+          <Property Name="placeImage1" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="placeImage2" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="placeImage3" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="placeImage4" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="placeImage5" Type="nvarchar(max)" Nullable="false" />
           <Property Name="categoryId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Products">
@@ -139,14 +139,14 @@
             <PropertyRef Name="productId" />
           </Key>
           <Property Name="productId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="productName" Type="int" Nullable="false" />
-          <Property Name="productImage 1" Type="nchar" MaxLength="10" />
-          <Property Name="productImage 2" Type="nchar" MaxLength="10" />
-          <Property Name="productImage 3" Type="int" Nullable="false" />
-          <Property Name="productImage 4" Type="nchar" MaxLength="10" />
-          <Property Name="productImage 5" Type="int" Nullable="false" />
+          <Property Name="productName" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="productImage 1" Type="nvarchar(max)" />
+          <Property Name="productImage 2" Type="nvarchar(max)" />
+          <Property Name="productImage 3" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="productImage 4" Type="nvarchar(max)" />
+          <Property Name="productImage 5" Type="nvarchar(max)" Nullable="false" />
           <Property Name="price" Type="int" Nullable="false" />
-          <Property Name="productDescription" Type="int" Nullable="false" />
+          <Property Name="productDescription" Type="nvarchar(max)" Nullable="false" />
           <Property Name="categoryId" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
@@ -368,20 +368,71 @@ warning 6002: The table/view 'hikaya Ajloun.dbo.Reviews' does not have a primary
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="hikaya_AjlounEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Model.C__MigrationHistory" />
+          <EntitySet Name="Articles" EntityType="Model.Article" />
+          <EntitySet Name="AspNetRoles" EntityType="Model.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Model.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Model.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Model.AspNetUser" />
+          <EntitySet Name="authors" EntityType="Model.author" />
+          <EntitySet Name="Carts" EntityType="Model.Cart" />
+          <EntitySet Name="Categories" EntityType="Model.Category" />
+          <EntitySet Name="checkouts" EntityType="Model.checkout" />
+          <EntitySet Name="places" EntityType="Model.place" />
+          <EntitySet Name="Products" EntityType="Model.Product" />
+          <EntitySet Name="sysdiagrams" EntityType="Model.sysdiagram" />
+          <EntitySet Name="Reviews" EntityType="Model.Review" />
+          <AssociationSet Name="FK_Articles_authors1" Association="Model.FK_Articles_authors1">
+            <End Role="author" EntitySet="authors" />
+            <End Role="Article" EntitySet="Articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Articles_Categories" Association="Model.FK_Articles_Categories">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Article" EntitySet="Articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cart_AspNetUsers" Association="Model.FK_Cart_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="Cart" EntitySet="Carts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cart_Products" Association="Model.FK_Cart_Products">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Cart" EntitySet="Carts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_places_Categories" Association="Model.FK_places_Categories">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="place" EntitySet="places" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Categories" Association="Model.FK_Products_Categories">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Model.AspNetUserRoles">
+            <End Role="AspNetRole" EntitySet="AspNetRoles" />
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="C__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
             <PropertyRef Name="ContextKey" />
           </Key>
-          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Article">
           <Key>
@@ -391,29 +442,29 @@ warning 6002: The table/view 'hikaya Ajloun.dbo.Reviews' does not have a primary
           <Property Name="articleName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="articleImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="categoryId" Type="Int32" />
-          <Property Name="articleFile" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="articleDate" Type="DateTime" Precision="0" />
+          <Property Name="articleFile" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="articleDate" Type="DateTime" Precision="3" />
           <Property Name="authorid" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="author" Relationship="Self.FK_Articles_authors1" FromRole="Articles" ToRole="authors" />
-          <NavigationProperty Name="Category" Relationship="Self.FK_Articles_Categories" FromRole="Articles" ToRole="Categories" />
+          <NavigationProperty Name="author" Relationship="Model.FK_Articles_authors1" FromRole="Article" ToRole="author" />
+          <NavigationProperty Name="Category" Relationship="Model.FK_Articles_Categories" FromRole="Article" ToRole="Category" />
         </EntityType>
         <EntityType Name="AspNetRole">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Model.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
         </EntityType>
         <EntityType Name="AspNetUserClaim">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUser" Relationship="Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
         </EntityType>
         <EntityType Name="AspNetUserLogin">
           <Key>
@@ -421,16 +472,16 @@ warning 6002: The table/view 'hikaya Ajloun.dbo.Reviews' does not have a primary
             <PropertyRef Name="ProviderKey" />
             <PropertyRef Name="UserId" />
           </Key>
-          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
         </EntityType>
         <EntityType Name="AspNetUser">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
           <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -441,19 +492,19 @@ warning 6002: The table/view 'hikaya Ajloun.dbo.Reviews' does not have a primary
           <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
           <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
           <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
-          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
-          <NavigationProperty Name="Carts" Relationship="Self.FK_Cart_AspNetUsers" FromRole="AspNetUsers" ToRole="Cart" />
-          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+          <NavigationProperty Name="Carts" Relationship="Model.FK_Cart_AspNetUsers" FromRole="AspNetUser" ToRole="Cart" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Model.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
         </EntityType>
         <EntityType Name="author">
           <Key>
             <PropertyRef Name="authorid" />
           </Key>
-          <Property Name="authorid" Type="Int32" Nullable="false" />
+          <Property Name="authorid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="authorname" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Articles" Relationship="Self.FK_Articles_authors1" FromRole="authors" ToRole="Articles" />
+          <NavigationProperty Name="Articles" Relationship="Model.FK_Articles_authors1" FromRole="author" ToRole="Article" />
         </EntityType>
         <EntityType Name="Cart">
           <Key>
@@ -461,24 +512,24 @@ warning 6002: The table/view 'hikaya Ajloun.dbo.Reviews' does not have a primary
           </Key>
           <Property Name="cartId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="productId" Type="Int32" />
-          <Property Name="userId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="userId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="amount" Type="Int32" />
           <Property Name="quantity" Type="Int32" />
-          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_Cart_AspNetUsers" FromRole="Cart" ToRole="AspNetUsers" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_Cart_Products" FromRole="Cart" ToRole="Products" />
+          <NavigationProperty Name="AspNetUser" Relationship="Model.FK_Cart_AspNetUsers" FromRole="Cart" ToRole="AspNetUser" />
+          <NavigationProperty Name="Product" Relationship="Model.FK_Cart_Products" FromRole="Cart" ToRole="Product" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="categoryId" />
           </Key>
           <Property Name="categoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="categoryName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="categoryDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="categoryImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="type" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Articles" Relationship="Self.FK_Articles_Categories" FromRole="Categories" ToRole="Articles" />
-          <NavigationProperty Name="places" Relationship="Self.FK_places_Categories" FromRole="Categories" ToRole="places" />
-          <NavigationProperty Name="Products" Relationship="Self.FK_Products_Categories" FromRole="Categories" ToRole="Products" />
+          <Property Name="categoryName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="categoryDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="categoryImage" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="type" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Articles" Relationship="Model.FK_Articles_Categories" FromRole="Category" ToRole="Article" />
+          <NavigationProperty Name="places" Relationship="Model.FK_places_Categories" FromRole="Category" ToRole="place" />
+          <NavigationProperty Name="Products" Relationship="Model.FK_Products_Categories" FromRole="Category" ToRole="Product" />
         </EntityType>
         <EntityType Name="checkout">
           <Key>
@@ -500,38 +551,38 @@ warning 6002: The table/view 'hikaya Ajloun.dbo.Reviews' does not have a primary
           <Key>
             <PropertyRef Name="placeId" />
           </Key>
-          <Property Name="placeId" Type="Int32" Nullable="false" />
-          <Property Name="placeName" Type="Int32" Nullable="false" />
-          <Property Name="placeImage1" Type="Int32" Nullable="false" />
-          <Property Name="placeImage2" Type="Int32" Nullable="false" />
-          <Property Name="placeImage3" Type="Int32" Nullable="false" />
-          <Property Name="placeImage4" Type="Int32" Nullable="false" />
-          <Property Name="placeImage5" Type="Int32" Nullable="false" />
+          <Property Name="placeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="placeName" Type="String" Nullable="false" MaxLength="550" FixedLength="false" Unicode="true" />
+          <Property Name="placeImage1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="placeImage2" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="placeImage3" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="placeImage4" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="placeImage5" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="categoryId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Category" Relationship="Self.FK_places_Categories" FromRole="places" ToRole="Categories" />
+          <NavigationProperty Name="Category" Relationship="Model.FK_places_Categories" FromRole="place" ToRole="Category" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="productId" />
           </Key>
           <Property Name="productId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="productName" Type="Int32" Nullable="false" />
-          <Property Name="productImage_1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="productImage_2" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="productImage_3" Type="Int32" Nullable="false" />
-          <Property Name="productImage_4" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="productImage_5" Type="Int32" Nullable="false" />
+          <Property Name="productName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="productImage_1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="productImage_2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="productImage_3" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="productImage_4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="productImage_5" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="price" Type="Int32" Nullable="false" />
-          <Property Name="productDescription" Type="Int32" Nullable="false" />
+          <Property Name="productDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="categoryId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Carts" Relationship="Self.FK_Cart_Products" FromRole="Products" ToRole="Cart" />
-          <NavigationProperty Name="Category" Relationship="Self.FK_Products_Categories" FromRole="Products" ToRole="Categories" />
+          <NavigationProperty Name="Carts" Relationship="Model.FK_Cart_Products" FromRole="Product" ToRole="Cart" />
+          <NavigationProperty Name="Category" Relationship="Model.FK_Products_Categories" FromRole="Product" ToRole="Category" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="principal_id" Type="Int32" Nullable="false" />
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
@@ -552,62 +603,62 @@ warning 6002: The table/view 'hikaya Ajloun.dbo.Reviews' does not have a primary
           <Property Name="userImage" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK_Articles_authors1">
-          <End Role="authors" Type="Self.author" Multiplicity="1" />
-          <End Role="Articles" Type="Self.Article" Multiplicity="*" />
+          <End Type="Model.author" Role="author" Multiplicity="1" />
+          <End Type="Model.Article" Role="Article" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="authors">
+            <Principal Role="author">
               <PropertyRef Name="authorid" />
             </Principal>
-            <Dependent Role="Articles">
+            <Dependent Role="Article">
               <PropertyRef Name="authorid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Articles_Categories">
-          <End Role="Categories" Type="Self.Category" Multiplicity="0..1" />
-          <End Role="Articles" Type="Self.Article" Multiplicity="*" />
+          <End Type="Model.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="Model.Article" Role="Article" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Categories">
+            <Principal Role="Category">
               <PropertyRef Name="categoryId" />
             </Principal>
-            <Dependent Role="Articles">
+            <Dependent Role="Article">
               <PropertyRef Name="categoryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+          <End Type="Model.AspNetUser" Role="AspNetUser" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <End Type="Model.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
+            <Principal Role="AspNetUser">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="AspNetUserClaims">
+            <Dependent Role="AspNetUserClaim">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+          <End Type="Model.AspNetUser" Role="AspNetUser" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <End Type="Model.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
+            <Principal Role="AspNetUser">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="AspNetUserLogins">
+            <Dependent Role="AspNetUserLogin">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Cart_AspNetUsers">
-          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
-          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <End Type="Model.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="Model.Cart" Role="Cart" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
+            <Principal Role="AspNetUser">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Cart">
@@ -616,10 +667,10 @@ warning 6002: The table/view 'hikaya Ajloun.dbo.Reviews' does not have a primary
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Cart_Products">
-          <End Role="Products" Type="Self.Product" Multiplicity="0..1" />
-          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <End Type="Model.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="Model.Cart" Role="Cart" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Products">
+            <Principal Role="Product">
               <PropertyRef Name="productId" />
             </Principal>
             <Dependent Role="Cart">
@@ -628,85 +679,33 @@ warning 6002: The table/view 'hikaya Ajloun.dbo.Reviews' does not have a primary
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_places_Categories">
-          <End Role="Categories" Type="Self.Category" Multiplicity="1" />
-          <End Role="places" Type="Self.place" Multiplicity="*" />
+          <End Type="Model.Category" Role="Category" Multiplicity="1" />
+          <End Type="Model.place" Role="place" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Categories">
+            <Principal Role="Category">
               <PropertyRef Name="categoryId" />
             </Principal>
-            <Dependent Role="places">
+            <Dependent Role="place">
               <PropertyRef Name="categoryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Products_Categories">
-          <End Role="Categories" Type="Self.Category" Multiplicity="1" />
-          <End Role="Products" Type="Self.Product" Multiplicity="*" />
+          <End Type="Model.Category" Role="Category" Multiplicity="1" />
+          <End Type="Model.Product" Role="Product" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Categories">
+            <Principal Role="Category">
               <PropertyRef Name="categoryId" />
             </Principal>
-            <Dependent Role="Products">
+            <Dependent Role="Product">
               <PropertyRef Name="categoryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="AspNetUserRoles">
-          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
-          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+          <End Type="Model.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+          <End Type="Model.AspNetUser" Role="AspNetUser" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="hikaya_AjlounEntities2" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
-          <EntitySet Name="Articles" EntityType="Self.Article" />
-          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
-          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
-          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
-          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
-          <EntitySet Name="authors" EntityType="Self.author" />
-          <EntitySet Name="Carts" EntityType="Self.Cart" />
-          <EntitySet Name="Categories" EntityType="Self.Category" />
-          <EntitySet Name="checkouts" EntityType="Self.checkout" />
-          <EntitySet Name="places" EntityType="Self.place" />
-          <EntitySet Name="Products" EntityType="Self.Product" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-          <EntitySet Name="Reviews" EntityType="Self.Review" />
-          <AssociationSet Name="FK_Articles_authors1" Association="Self.FK_Articles_authors1">
-            <End Role="authors" EntitySet="authors" />
-            <End Role="Articles" EntitySet="Articles" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Articles_Categories" Association="Self.FK_Articles_Categories">
-            <End Role="Categories" EntitySet="Categories" />
-            <End Role="Articles" EntitySet="Articles" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cart_AspNetUsers" Association="Self.FK_Cart_AspNetUsers">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="Cart" EntitySet="Carts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cart_Products" Association="Self.FK_Cart_Products">
-            <End Role="Products" EntitySet="Products" />
-            <End Role="Cart" EntitySet="Carts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_places_Categories" Association="Self.FK_places_Categories">
-            <End Role="Categories" EntitySet="Categories" />
-            <End Role="places" EntitySet="places" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Products_Categories" Association="Self.FK_Products_Categories">
-            <End Role="Categories" EntitySet="Categories" />
-            <End Role="Products" EntitySet="Products" />
-          </AssociationSet>
-          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
-            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -716,176 +715,176 @@ warning 6002: The table/view 'hikaya Ajloun.dbo.Reviews' does not have a primary
           <EntitySetMapping Name="C__MigrationHistory">
             <EntityTypeMapping TypeName="Model.C__MigrationHistory">
               <MappingFragment StoreEntitySet="__MigrationHistory">
-                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
-                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
-                <ScalarProperty Name="Model" ColumnName="Model" />
                 <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Articles">
             <EntityTypeMapping TypeName="Model.Article">
               <MappingFragment StoreEntitySet="Articles">
-                <ScalarProperty Name="articleId" ColumnName="articleId" />
-                <ScalarProperty Name="articleName" ColumnName="articleName" />
-                <ScalarProperty Name="articleImage" ColumnName="articleImage" />
-                <ScalarProperty Name="categoryId" ColumnName="categoryId" />
-                <ScalarProperty Name="articleFile" ColumnName="articleFile" />
-                <ScalarProperty Name="articleDate" ColumnName="articleDate" />
                 <ScalarProperty Name="authorid" ColumnName="authorid" />
+                <ScalarProperty Name="articleDate" ColumnName="articleDate" />
+                <ScalarProperty Name="articleFile" ColumnName="articleFile" />
+                <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+                <ScalarProperty Name="articleImage" ColumnName="articleImage" />
+                <ScalarProperty Name="articleName" ColumnName="articleName" />
+                <ScalarProperty Name="articleId" ColumnName="articleId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetRoles">
             <EntityTypeMapping TypeName="Model.AspNetRole">
               <MappingFragment StoreEntitySet="AspNetRoles">
-                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserClaims">
             <EntityTypeMapping TypeName="Model.AspNetUserClaim">
               <MappingFragment StoreEntitySet="AspNetUserClaims">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
                 <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserLogins">
             <EntityTypeMapping TypeName="Model.AspNetUserLogin">
               <MappingFragment StoreEntitySet="AspNetUserLogins">
-                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
-                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUsers">
             <EntityTypeMapping TypeName="Model.AspNetUser">
               <MappingFragment StoreEntitySet="AspNetUsers">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
-                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
-                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
-                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
-                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
-                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="authors">
             <EntityTypeMapping TypeName="Model.author">
               <MappingFragment StoreEntitySet="authors">
-                <ScalarProperty Name="authorid" ColumnName="authorid" />
                 <ScalarProperty Name="authorname" ColumnName="authorname" />
+                <ScalarProperty Name="authorid" ColumnName="authorid" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Carts">
             <EntityTypeMapping TypeName="Model.Cart">
               <MappingFragment StoreEntitySet="Cart">
-                <ScalarProperty Name="cartId" ColumnName="cartId" />
-                <ScalarProperty Name="productId" ColumnName="productId" />
-                <ScalarProperty Name="userId" ColumnName="userId" />
-                <ScalarProperty Name="amount" ColumnName="amount" />
                 <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="productId" ColumnName="productId" />
+                <ScalarProperty Name="cartId" ColumnName="cartId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="Model.Category">
               <MappingFragment StoreEntitySet="Categories">
-                <ScalarProperty Name="categoryId" ColumnName="categoryId" />
-                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
-                <ScalarProperty Name="categoryDescription" ColumnName="categoryDescription" />
-                <ScalarProperty Name="categoryImage" ColumnName="categoryImage" />
                 <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="categoryImage" ColumnName="categoryImage" />
+                <ScalarProperty Name="categoryDescription" ColumnName="categoryDescription" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="categoryId" ColumnName="categoryId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="checkouts">
             <EntityTypeMapping TypeName="Model.checkout">
               <MappingFragment StoreEntitySet="checkout">
-                <ScalarProperty Name="orderId" ColumnName="orderId" />
-                <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
-                <ScalarProperty Name="orderDate" ColumnName="orderDate" />
-                <ScalarProperty Name="address_2" ColumnName="address 2" />
-                <ScalarProperty Name="address_1" ColumnName="address 1" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="Payment_Mthod" ColumnName="Payment Mthod" />
                 <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="Payment_Mthod" ColumnName="Payment Mthod" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="address_1" ColumnName="address 1" />
+                <ScalarProperty Name="address_2" ColumnName="address 2" />
+                <ScalarProperty Name="orderDate" ColumnName="orderDate" />
+                <ScalarProperty Name="totalAmount" ColumnName="totalAmount" />
+                <ScalarProperty Name="orderId" ColumnName="orderId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="places">
             <EntityTypeMapping TypeName="Model.place">
               <MappingFragment StoreEntitySet="places">
-                <ScalarProperty Name="placeId" ColumnName="placeId" />
-                <ScalarProperty Name="placeName" ColumnName="placeName" />
-                <ScalarProperty Name="placeImage1" ColumnName="placeImage1" />
-                <ScalarProperty Name="placeImage2" ColumnName="placeImage2" />
-                <ScalarProperty Name="placeImage3" ColumnName="placeImage3" />
-                <ScalarProperty Name="placeImage4" ColumnName="placeImage4" />
-                <ScalarProperty Name="placeImage5" ColumnName="placeImage5" />
                 <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+                <ScalarProperty Name="placeImage5" ColumnName="placeImage5" />
+                <ScalarProperty Name="placeImage4" ColumnName="placeImage4" />
+                <ScalarProperty Name="placeImage3" ColumnName="placeImage3" />
+                <ScalarProperty Name="placeImage2" ColumnName="placeImage2" />
+                <ScalarProperty Name="placeImage1" ColumnName="placeImage1" />
+                <ScalarProperty Name="placeName" ColumnName="placeName" />
+                <ScalarProperty Name="placeId" ColumnName="placeId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="Model.Product">
               <MappingFragment StoreEntitySet="Products">
-                <ScalarProperty Name="productId" ColumnName="productId" />
-                <ScalarProperty Name="productName" ColumnName="productName" />
-                <ScalarProperty Name="productImage_1" ColumnName="productImage 1" />
-                <ScalarProperty Name="productImage_2" ColumnName="productImage 2" />
-                <ScalarProperty Name="productImage_3" ColumnName="productImage 3" />
-                <ScalarProperty Name="productImage_4" ColumnName="productImage 4" />
-                <ScalarProperty Name="productImage_5" ColumnName="productImage 5" />
-                <ScalarProperty Name="price" ColumnName="price" />
-                <ScalarProperty Name="productDescription" ColumnName="productDescription" />
                 <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+                <ScalarProperty Name="productDescription" ColumnName="productDescription" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="productImage_5" ColumnName="productImage 5" />
+                <ScalarProperty Name="productImage_4" ColumnName="productImage 4" />
+                <ScalarProperty Name="productImage_3" ColumnName="productImage 3" />
+                <ScalarProperty Name="productImage_2" ColumnName="productImage 2" />
+                <ScalarProperty Name="productImage_1" ColumnName="productImage 1" />
+                <ScalarProperty Name="productName" ColumnName="productName" />
+                <ScalarProperty Name="productId" ColumnName="productId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="Model.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Reviews">
             <EntityTypeMapping TypeName="Model.Review">
               <MappingFragment StoreEntitySet="Reviews">
-                <ScalarProperty Name="reviewId" ColumnName="reviewId" />
-                <ScalarProperty Name="productId" ColumnName="productId" />
-                <ScalarProperty Name="comment" ColumnName="comment" />
-                <ScalarProperty Name="userName" ColumnName="userName" />
                 <ScalarProperty Name="userImage" ColumnName="userImage" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+                <ScalarProperty Name="productId" ColumnName="productId" />
+                <ScalarProperty Name="reviewId" ColumnName="reviewId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <AssociationSetMapping Name="AspNetUserRoles" TypeName="Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
-            <EndProperty Name="AspNetRoles">
-              <ScalarProperty Name="Id" ColumnName="RoleId" />
-            </EndProperty>
-            <EndProperty Name="AspNetUsers">
+            <EndProperty Name="AspNetUser">
               <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRole">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>

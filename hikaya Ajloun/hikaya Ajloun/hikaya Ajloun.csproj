@@ -171,6 +171,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ArticlesController.cs" />
+    <Compile Include="Controllers\authorsController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -273,6 +275,8 @@
     <Content Include="fonts\themify-icons\themify-icons.js" />
     <Content Include="fonts\themify-icons\themify.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\category\Screenshot 2023-03-04 102934.png" />
+    <Content Include="Images\category\Screenshot 2023-03-04 145053.png" />
     <Content Include="Images\Content\1.jpg" />
     <Content Include="Images\Content\2.jpg" />
     <Content Include="Images\Content\287-2871996_olive-oil-and-olives.png" />
@@ -808,6 +812,16 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="Views\Articles\Create.cshtml" />
+    <Content Include="Views\Articles\Delete.cshtml" />
+    <Content Include="Views\Articles\Details.cshtml" />
+    <Content Include="Views\Articles\Edit.cshtml" />
+    <Content Include="Views\Articles\Index.cshtml" />
+    <Content Include="Views\authors\Create.cshtml" />
+    <Content Include="Views\authors\Delete.cshtml" />
+    <Content Include="Views\authors\Details.cshtml" />
+    <Content Include="Views\authors\Edit.cshtml" />
+    <Content Include="Views\authors\Index.cshtml" />
     <None Include="Views\Home\aboutus.cshtml" />
     <None Include="Views\Home\Blog.cshtml" />
     <Content Include="Dashboard\build\config\postcss.config.js" />
@@ -2944,6 +2958,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="File\ArticleFile\" />
+    <Folder Include="Images\article\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

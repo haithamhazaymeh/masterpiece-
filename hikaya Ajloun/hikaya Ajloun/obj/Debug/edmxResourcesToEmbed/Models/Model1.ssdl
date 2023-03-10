@@ -18,8 +18,8 @@
     <Property Name="articleName" Type="nvarchar" MaxLength="250" />
     <Property Name="articleImage" Type="nvarchar(max)" />
     <Property Name="categoryId" Type="int" />
-    <Property Name="articleFile" Type="nvarchar" MaxLength="250" />
-    <Property Name="articleDate" Type="date" />
+    <Property Name="articleFile" Type="text" />
+    <Property Name="articleDate" Type="datetime" />
     <Property Name="authorid" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="AspNetRoles">
@@ -77,7 +77,7 @@
     <Key>
       <PropertyRef Name="authorid" />
     </Key>
-    <Property Name="authorid" Type="int" Nullable="false" />
+    <Property Name="authorid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="authorname" Type="nvarchar" MaxLength="250" />
   </EntityType>
   <EntityType Name="Cart">
@@ -120,13 +120,13 @@
     <Key>
       <PropertyRef Name="placeId" />
     </Key>
-    <Property Name="placeId" Type="int" Nullable="false" />
-    <Property Name="placeName" Type="int" Nullable="false" />
-    <Property Name="placeImage1" Type="int" Nullable="false" />
-    <Property Name="placeImage2" Type="int" Nullable="false" />
-    <Property Name="placeImage3" Type="int" Nullable="false" />
-    <Property Name="placeImage4" Type="int" Nullable="false" />
-    <Property Name="placeImage5" Type="int" Nullable="false" />
+    <Property Name="placeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="placeName" Type="nvarchar" MaxLength="550" Nullable="false" />
+    <Property Name="placeImage1" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="placeImage2" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="placeImage3" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="placeImage4" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="placeImage5" Type="nvarchar(max)" Nullable="false" />
     <Property Name="categoryId" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Products">
@@ -134,14 +134,14 @@
       <PropertyRef Name="productId" />
     </Key>
     <Property Name="productId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="productName" Type="int" Nullable="false" />
-    <Property Name="productImage 1" Type="nchar" MaxLength="10" />
-    <Property Name="productImage 2" Type="nchar" MaxLength="10" />
-    <Property Name="productImage 3" Type="int" Nullable="false" />
-    <Property Name="productImage 4" Type="nchar" MaxLength="10" />
-    <Property Name="productImage 5" Type="int" Nullable="false" />
+    <Property Name="productName" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="productImage 1" Type="nvarchar(max)" />
+    <Property Name="productImage 2" Type="nvarchar(max)" />
+    <Property Name="productImage 3" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="productImage 4" Type="nvarchar(max)" />
+    <Property Name="productImage 5" Type="nvarchar(max)" Nullable="false" />
     <Property Name="price" Type="int" Nullable="false" />
-    <Property Name="productDescription" Type="int" Nullable="false" />
+    <Property Name="productDescription" Type="nvarchar(max)" Nullable="false" />
     <Property Name="categoryId" Type="int" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:

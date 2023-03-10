@@ -21,14 +21,14 @@ namespace hikaya_Ajloun.Models
         }
     
         public int productId { get; set; }
-        public int productName { get; set; }
+        public string productName { get; set; }
         public string productImage_1 { get; set; }
         public string productImage_2 { get; set; }
-        public int productImage_3 { get; set; }
+        public string productImage_3 { get; set; }
         public string productImage_4 { get; set; }
-        public int productImage_5 { get; set; }
+        public string productImage_5 { get; set; }
         public int price { get; set; }
-        public int productDescription { get; set; }
+        public string productDescription { get; set; }
         public int categoryId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
