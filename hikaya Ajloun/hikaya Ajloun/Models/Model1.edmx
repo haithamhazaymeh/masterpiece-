@@ -39,7 +39,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ClaimType" Type="nvarchar(max)" />
           <Property Name="ClaimValue" Type="nvarchar(max)" />
         </EntityType>
@@ -51,21 +51,21 @@
           </Key>
           <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="AspNetUserRoles">
           <Key>
             <PropertyRef Name="UserId" />
             <PropertyRef Name="RoleId" />
           </Key>
-          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
         <EntityType Name="AspNetUsers">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="256" />
           <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
           <Property Name="PasswordHash" Type="nvarchar(max)" />
@@ -91,7 +91,7 @@
           </Key>
           <Property Name="cartId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="productId" Type="int" />
-          <Property Name="userId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="userId" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="amount" Type="int" />
           <Property Name="quantity" Type="int" />
         </EntityType>
@@ -120,6 +120,7 @@
           <Property Name="FirstName" Type="nchar" MaxLength="10" />
           <Property Name="Payment Mthod" Type="nchar" MaxLength="10" />
           <Property Name="city" Type="int" />
+          <Property Name="user_id" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="places">
           <Key>
@@ -148,22 +149,18 @@
           <Property Name="price" Type="int" Nullable="false" />
           <Property Name="productDescription" Type="nvarchar(max)" Nullable="false" />
           <Property Name="categoryId" Type="int" Nullable="false" />
+          <Property Name="availability" Type="nchar" MaxLength="25" />
+          <Property Name="shipping_return" Type="text" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'hikaya Ajloun.dbo.Reviews' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Reviews">
           <Key>
             <PropertyRef Name="reviewId" />
-            <PropertyRef Name="productId" />
-            <PropertyRef Name="comment" />
-            <PropertyRef Name="userName" />
-            <PropertyRef Name="userImage" />
           </Key>
-          <Property Name="reviewId" Type="int" Nullable="false" />
+          <Property Name="reviewId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="productId" Type="int" Nullable="false" />
-          <Property Name="comment" Type="int" Nullable="false" />
-          <Property Name="userName" Type="int" Nullable="false" />
-          <Property Name="userImage" Type="int" Nullable="false" />
+          <Property Name="comment" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="userName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="userImage" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -220,6 +217,18 @@ warning 6002: The table/view 'hikaya Ajloun.dbo.Reviews' does not have a primary
             </Principal>
             <Dependent Role="Cart">
               <PropertyRef Name="productId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_checkout_checkout">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="checkout" Type="Self.checkout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="checkout">
+              <PropertyRef Name="user_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -303,6 +312,18 @@ warning 6002: The table/view 'hikaya Ajloun.dbo.Reviews' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Reviews_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="productId" />
+            </Principal>
+            <Dependent Role="Reviews">
+              <PropertyRef Name="productId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Articles" EntityType="Self.Articles" Schema="dbo" store:Type="Tables" />
@@ -317,16 +338,8 @@ warning 6002: The table/view 'hikaya Ajloun.dbo.Reviews' does not have a primary
           <EntitySet Name="checkout" EntityType="Self.checkout" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="places" EntityType="Self.places" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reviews" EntityType="Self.Reviews" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Reviews" EntityType="Self.Reviews" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Reviews].[reviewId] AS [reviewId], 
-    [Reviews].[productId] AS [productId], 
-    [Reviews].[comment] AS [comment], 
-    [Reviews].[userName] AS [userName], 
-    [Reviews].[userImage] AS [userImage]
-    FROM [dbo].[Reviews] AS [Reviews]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_Articles_authors1" Association="Self.FK_Articles_authors1">
             <End Role="authors" EntitySet="authors" />
             <End Role="Articles" EntitySet="Articles" />
@@ -342,6 +355,10 @@ warning 6002: The table/view 'hikaya Ajloun.dbo.Reviews' does not have a primary
           <AssociationSet Name="FK_Cart_Products" Association="Self.FK_Cart_Products">
             <End Role="Products" EntitySet="Products" />
             <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_checkout_checkout" Association="Self.FK_checkout_checkout">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="checkout" EntitySet="checkout" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -367,12 +384,16 @@ warning 6002: The table/view 'hikaya Ajloun.dbo.Reviews' does not have a primary
             <End Role="Categories" EntitySet="Categories" />
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
+          <AssociationSet Name="FK_Reviews_Products" Association="Self.FK_Reviews_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Reviews" EntitySet="Reviews" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="hikaya_AjlounEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="hikaya_AjlounEntities3" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="C__MigrationHistory" EntityType="Model.C__MigrationHistory" />
           <EntitySet Name="Articles" EntityType="Model.Article" />
           <EntitySet Name="AspNetRoles" EntityType="Model.AspNetRole" />
@@ -385,8 +406,8 @@ warning 6002: The table/view 'hikaya Ajloun.dbo.Reviews' does not have a primary
           <EntitySet Name="checkouts" EntityType="Model.checkout" />
           <EntitySet Name="places" EntityType="Model.place" />
           <EntitySet Name="Products" EntityType="Model.Product" />
-          <EntitySet Name="sysdiagrams" EntityType="Model.sysdiagram" />
           <EntitySet Name="Reviews" EntityType="Model.Review" />
+          <EntitySet Name="sysdiagrams" EntityType="Model.sysdiagram" />
           <AssociationSet Name="FK_Articles_authors1" Association="Model.FK_Articles_authors1">
             <End Role="author" EntitySet="authors" />
             <End Role="Article" EntitySet="Articles" />
@@ -407,6 +428,10 @@ warning 6002: The table/view 'hikaya Ajloun.dbo.Reviews' does not have a primary
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="Cart" EntitySet="Carts" />
           </AssociationSet>
+          <AssociationSet Name="FK_checkout_checkout" Association="Model.FK_checkout_checkout">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="checkout" EntitySet="checkouts" />
+          </AssociationSet>
           <AssociationSet Name="FK_Cart_Products" Association="Model.FK_Cart_Products">
             <End Role="Product" EntitySet="Products" />
             <End Role="Cart" EntitySet="Carts" />
@@ -418,6 +443,10 @@ warning 6002: The table/view 'hikaya Ajloun.dbo.Reviews' does not have a primary
           <AssociationSet Name="FK_Products_Categories" Association="Model.FK_Products_Categories">
             <End Role="Category" EntitySet="Categories" />
             <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reviews_Products" Association="Model.FK_Reviews_Products">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Review" EntitySet="Reviews" />
           </AssociationSet>
           <AssociationSet Name="AspNetUserRoles" Association="Model.AspNetUserRoles">
             <End Role="AspNetRole" EntitySet="AspNetRoles" />
@@ -461,7 +490,7 @@ warning 6002: The table/view 'hikaya Ajloun.dbo.Reviews' does not have a primary
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AspNetUser" Relationship="Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
@@ -474,14 +503,14 @@ warning 6002: The table/view 'hikaya Ajloun.dbo.Reviews' does not have a primary
           </Key>
           <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="AspNetUser" Relationship="Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
         </EntityType>
         <EntityType Name="AspNetUser">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
           <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -496,6 +525,7 @@ warning 6002: The table/view 'hikaya Ajloun.dbo.Reviews' does not have a primary
           <NavigationProperty Name="AspNetUserClaims" Relationship="Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
           <NavigationProperty Name="AspNetUserLogins" Relationship="Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
           <NavigationProperty Name="Carts" Relationship="Model.FK_Cart_AspNetUsers" FromRole="AspNetUser" ToRole="Cart" />
+          <NavigationProperty Name="checkouts" Relationship="Model.FK_checkout_checkout" FromRole="AspNetUser" ToRole="checkout" />
           <NavigationProperty Name="AspNetRoles" Relationship="Model.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
         </EntityType>
         <EntityType Name="author">
@@ -512,7 +542,7 @@ warning 6002: The table/view 'hikaya Ajloun.dbo.Reviews' does not have a primary
           </Key>
           <Property Name="cartId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="productId" Type="Int32" />
-          <Property Name="userId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="userId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="amount" Type="Int32" />
           <Property Name="quantity" Type="Int32" />
           <NavigationProperty Name="AspNetUser" Relationship="Model.FK_Cart_AspNetUsers" FromRole="Cart" ToRole="AspNetUser" />
@@ -546,6 +576,8 @@ warning 6002: The table/view 'hikaya Ajloun.dbo.Reviews' does not have a primary
           <Property Name="FirstName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="Payment_Mthod" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="city" Type="Int32" />
+          <Property Name="user_id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Model.FK_checkout_checkout" FromRole="checkout" ToRole="AspNetUser" />
         </EntityType>
         <EntityType Name="place">
           <Key>
@@ -575,8 +607,22 @@ warning 6002: The table/view 'hikaya Ajloun.dbo.Reviews' does not have a primary
           <Property Name="price" Type="Int32" Nullable="false" />
           <Property Name="productDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="categoryId" Type="Int32" Nullable="false" />
+          <Property Name="availability" Type="String" MaxLength="25" FixedLength="true" Unicode="true" />
+          <Property Name="shipping_return" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Carts" Relationship="Model.FK_Cart_Products" FromRole="Product" ToRole="Cart" />
           <NavigationProperty Name="Category" Relationship="Model.FK_Products_Categories" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="Reviews" Relationship="Model.FK_Reviews_Products" FromRole="Product" ToRole="Review" />
+        </EntityType>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="reviewId" />
+          </Key>
+          <Property Name="reviewId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="productId" Type="Int32" Nullable="false" />
+          <Property Name="comment" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="userName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="userImage" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Product" Relationship="Model.FK_Reviews_Products" FromRole="Review" ToRole="Product" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -587,20 +633,6 @@ warning 6002: The table/view 'hikaya Ajloun.dbo.Reviews' does not have a primary
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="Review">
-          <Key>
-            <PropertyRef Name="reviewId" />
-            <PropertyRef Name="productId" />
-            <PropertyRef Name="comment" />
-            <PropertyRef Name="userName" />
-            <PropertyRef Name="userImage" />
-          </Key>
-          <Property Name="reviewId" Type="Int32" Nullable="false" />
-          <Property Name="productId" Type="Int32" Nullable="false" />
-          <Property Name="comment" Type="Int32" Nullable="false" />
-          <Property Name="userName" Type="Int32" Nullable="false" />
-          <Property Name="userImage" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK_Articles_authors1">
           <End Type="Model.author" Role="author" Multiplicity="1" />
@@ -666,6 +698,18 @@ warning 6002: The table/view 'hikaya Ajloun.dbo.Reviews' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_checkout_checkout">
+          <End Type="Model.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+          <End Type="Model.checkout" Role="checkout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="checkout">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Cart_Products">
           <End Type="Model.Product" Role="Product" Multiplicity="0..1" />
           <End Type="Model.Cart" Role="Cart" Multiplicity="*" />
@@ -702,6 +746,18 @@ warning 6002: The table/view 'hikaya Ajloun.dbo.Reviews' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Reviews_Products">
+          <End Type="Model.Product" Role="Product" Multiplicity="1" />
+          <End Type="Model.Review" Role="Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="productId" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="productId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="AspNetUserRoles">
           <End Type="Model.AspNetRole" Role="AspNetRole" Multiplicity="*" />
           <End Type="Model.AspNetUser" Role="AspNetUser" Multiplicity="*" />
@@ -711,7 +767,7 @@ warning 6002: The table/view 'hikaya Ajloun.dbo.Reviews' does not have a primary
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="hikaya_AjlounEntities2">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="hikaya_AjlounEntities3">
           <EntitySetMapping Name="C__MigrationHistory">
             <EntityTypeMapping TypeName="Model.C__MigrationHistory">
               <MappingFragment StoreEntitySet="__MigrationHistory">
@@ -813,6 +869,7 @@ warning 6002: The table/view 'hikaya Ajloun.dbo.Reviews' does not have a primary
           <EntitySetMapping Name="checkouts">
             <EntityTypeMapping TypeName="Model.checkout">
               <MappingFragment StoreEntitySet="checkout">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="city" ColumnName="city" />
                 <ScalarProperty Name="Payment_Mthod" ColumnName="Payment Mthod" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
@@ -844,6 +901,8 @@ warning 6002: The table/view 'hikaya Ajloun.dbo.Reviews' does not have a primary
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="Model.Product">
               <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="shipping_return" ColumnName="shipping_return" />
+                <ScalarProperty Name="availability" ColumnName="availability" />
                 <ScalarProperty Name="categoryId" ColumnName="categoryId" />
                 <ScalarProperty Name="productDescription" ColumnName="productDescription" />
                 <ScalarProperty Name="price" ColumnName="price" />
@@ -857,17 +916,6 @@ warning 6002: The table/view 'hikaya Ajloun.dbo.Reviews' does not have a primary
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="Model.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Reviews">
             <EntityTypeMapping TypeName="Model.Review">
               <MappingFragment StoreEntitySet="Reviews">
@@ -876,6 +924,17 @@ warning 6002: The table/view 'hikaya Ajloun.dbo.Reviews' does not have a primary
                 <ScalarProperty Name="comment" ColumnName="comment" />
                 <ScalarProperty Name="productId" ColumnName="productId" />
                 <ScalarProperty Name="reviewId" ColumnName="reviewId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Model.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

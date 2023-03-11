@@ -1,0 +1,120 @@
+﻿@model hikaya_Ajloun.Models.Product
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Product</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.productName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.productName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.productImage_1)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.productImage_1)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.productImage_2)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.productImage_2)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.productImage_3)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.productImage_3)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.productImage_4)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.productImage_4)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.productImage_5)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.productImage_5)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.price)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.price)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.productDescription)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.productDescription)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.availability)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.availability)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.shipping_return)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.shipping_return)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Category.categoryName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Category.categoryName)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

@@ -12,7 +12,7 @@ namespace hikaya_Ajloun.Controllers
 {
     public class authorsController : Controller
     {
-        private hikaya_AjlounEntities2 db = new hikaya_AjlounEntities2();
+        private hikaya_AjlounEntities3 db = new hikaya_AjlounEntities3();
 
         // GET: authors
         public ActionResult Index()

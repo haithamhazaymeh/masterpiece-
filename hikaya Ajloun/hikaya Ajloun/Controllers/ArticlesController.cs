@@ -14,7 +14,7 @@ namespace hikaya_Ajloun.Controllers
 {
     public class ArticlesController : Controller
     {
-        private hikaya_AjlounEntities2 db = new hikaya_AjlounEntities2();
+        private hikaya_AjlounEntities3 db = new hikaya_AjlounEntities3();
 
         // GET: Articles
         public ActionResult Index()
@@ -115,10 +115,10 @@ namespace hikaya_Ajloun.Controllers
             return View(article);
         }
 
-    
 
-    // GET: Articles/Edit/5
-    public ActionResult Edit(int? id)
+
+        // GET: Articles/Edit/5
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -131,10 +131,21 @@ namespace hikaya_Ajloun.Controllers
             {
                 return HttpNotFound();
             }
+
+            string filePath = Server.MapPath(article.articleFile); // تحديد المسار الصحيح للملف
+
+            if (System.IO.File.Exists(filePath)) // التحقق من وجود الملف
+            {
+                string fileContent = System.IO.File.ReadAllText(filePath); // قراءة محتوى الملف
+                article.articleFile = fileContent; // تعيين محتوى الملف لخاصية articleFile في النموذج
+            }
+
             ViewBag.authorid = new SelectList(db.authors, "authorid", "authorname", article.authorid);
             ViewBag.categoryId = new SelectList(db.Categories, "categoryId", "categoryName", article.categoryId);
             return View(article);
         }
+
+
 
         // POST: Articles/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 

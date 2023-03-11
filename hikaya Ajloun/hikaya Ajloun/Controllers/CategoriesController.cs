@@ -13,7 +13,7 @@ namespace hikaya_Ajloun.Models
 {
     public class CategoriesController : Controller
     {
-        private hikaya_AjlounEntities2 db = new hikaya_AjlounEntities2();
+        private hikaya_AjlounEntities3 db = new hikaya_AjlounEntities3();
 
         // GET: Categories
         public ActionResult Index()

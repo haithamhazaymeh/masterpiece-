@@ -1,0 +1,101 @@
+﻿@model IEnumerable<hikaya_Ajloun.Models.Product>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.productName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.productImage_1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.productImage_2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.productImage_3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.productImage_4)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.productImage_5)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.productDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.availability)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.shipping_return)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category.categoryName)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.productName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.productImage_1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.productImage_2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.productImage_3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.productImage_4)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.productImage_5)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.productDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.availability)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.shipping_return)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.categoryName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.productId }) |
+                @Html.ActionLink("Details", "Details", new { id=item.productId }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.productId })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

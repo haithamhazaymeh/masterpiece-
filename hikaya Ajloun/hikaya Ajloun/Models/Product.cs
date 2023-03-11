@@ -11,13 +11,15 @@ namespace hikaya_Ajloun.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Web.Mvc;
+
     public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
             this.Carts = new HashSet<Cart>();
+            this.Reviews = new HashSet<Review>();
         }
     
         public int productId { get; set; }
@@ -30,9 +32,14 @@ namespace hikaya_Ajloun.Models
         public int price { get; set; }
         public string productDescription { get; set; }
         public int categoryId { get; set; }
+        public string availability { get; set; }
+        [AllowHtml]
+        public string shipping_return { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cart> Carts { get; set; }
         public virtual Category Category { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Review> Reviews { get; set; }
     }
 }

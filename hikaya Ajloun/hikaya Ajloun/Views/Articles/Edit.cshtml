@@ -92,9 +92,9 @@
                 </div>
 
 
-                </div>
+            </div>
 
-            
+
 
             <div class="form-group">
                 <div class="input-group col-md-12">
@@ -102,15 +102,31 @@
                 </div>
             </div>
 
-          
 
-        <div class="form-group">
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.articleFile, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @if (!string.IsNullOrEmpty(Model.articleFile))
+                    {
+                        <textarea id="summernote" class="form-control" name="articleFile">@Html.Raw(Model.articleFile)</textarea>
+                    }
+                    else
+                    {
+                        <textarea id="summernote" class="form-control" name="articleFile"></textarea>
+                    }
+                    @Html.ValidationMessageFor(model => model.articleFile, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            @*<div class="form-group">
             @Html.LabelFor(model => model.articleFile, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <textarea id="summernote" class="form-control" name="articleFile">@Model.articleFile</textarea>
                 @Html.ValidationMessageFor(model => model.articleFile, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
 
             <div class="form-group">

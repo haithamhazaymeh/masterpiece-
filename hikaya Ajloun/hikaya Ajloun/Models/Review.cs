@@ -16,8 +16,10 @@ namespace hikaya_Ajloun.Models
     {
         public int reviewId { get; set; }
         public int productId { get; set; }
-        public int comment { get; set; }
-        public int userName { get; set; }
-        public int userImage { get; set; }
+        public string comment { get; set; }
+        public string userName { get; set; }
+        public string userImage { get; set; }
+    
+        public virtual Product Product { get; set; }
     }
 }

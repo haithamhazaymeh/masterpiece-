@@ -25,5 +25,8 @@ namespace hikaya_Ajloun.Models
         public string FirstName { get; set; }
         public string Payment_Mthod { get; set; }
         public Nullable<int> city { get; set; }
+        public string user_id { get; set; }
+    
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }

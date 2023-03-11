@@ -11,15 +11,13 @@ namespace hikaya_Ajloun.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.Web.Mvc;
-
+    
     public partial class Article
     {
         public int articleId { get; set; }
         public string articleName { get; set; }
         public string articleImage { get; set; }
         public Nullable<int> categoryId { get; set; }
-        [AllowHtml]
         public string articleFile { get; set; }
         public Nullable<System.DateTime> articleDate { get; set; }
         public int authorid { get; set; }

@@ -13,10 +13,10 @@ namespace hikaya_Ajloun.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class hikaya_AjlounEntities2 : DbContext
+    public partial class hikaya_AjlounEntities3 : DbContext
     {
-        public hikaya_AjlounEntities2()
-            : base("name=hikaya_AjlounEntities2")
+        public hikaya_AjlounEntities3()
+            : base("name=hikaya_AjlounEntities3")
         {
         }
     
@@ -37,7 +37,7 @@ namespace hikaya_Ajloun.Models
         public virtual DbSet<checkout> checkouts { get; set; }
         public virtual DbSet<place> places { get; set; }
         public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Review> Reviews { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }
