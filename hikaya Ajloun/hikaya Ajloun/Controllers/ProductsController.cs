@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 using hikaya_Ajloun.Models;
@@ -48,10 +50,34 @@ namespace hikaya_Ajloun.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "productId,productName,productImage_1,productImage_2,productImage_3,productImage_4,productImage_5,price,productDescription,categoryId,availability,shipping_return")] Product product)
+        public ActionResult Create([Bind(Include = "productId,productName,productImage_1,productImage_2,productImage_3,productImage_4,productImage_5,price,productDescription,categoryId,availability,shipping_return")] Product product, HttpPostedFileBase[] files)
         {
             if (ModelState.IsValid)
             {
+                // Upload images
+                string folderPath = Server.MapPath("~/images/products/");
+                List<string> uploadedFiles = new List<string>();
+
+                for (int i = 0; i < files.Length; i++)
+                {
+                    HttpPostedFileBase file = files[i];
+
+                    if (file != null && file.ContentLength > 0)
+                    {
+                        string fileName = Path.GetFileName(file.FileName);
+                        string filePath = Path.Combine(folderPath, fileName);
+                        file.SaveAs(filePath);
+                        uploadedFiles.Add(fileName);
+
+                        // Update the corresponding productImage column in the database
+                        PropertyInfo imageProp = product.GetType().GetProperty($"productImage_{i + 1}");
+                        if (imageProp != null)
+                        {
+                            imageProp.SetValue(product, fileName);
+                        }
+                    }
+                }
+
                 db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -60,6 +86,7 @@ namespace hikaya_Ajloun.Controllers
             ViewBag.categoryId = new SelectList(db.Categories, "categoryId", "categoryName", product.categoryId);
             return View(product);
         }
+
 
         // GET: Products/Edit/5
         public ActionResult Edit(int? id)

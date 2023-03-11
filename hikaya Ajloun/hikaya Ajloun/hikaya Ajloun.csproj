@@ -2966,6 +2966,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="File\ArticleFile\" />
     <Folder Include="Images\article\" />
+    <Folder Include="Images\Products\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

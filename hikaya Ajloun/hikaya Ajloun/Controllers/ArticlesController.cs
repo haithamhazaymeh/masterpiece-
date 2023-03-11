@@ -152,7 +152,7 @@ namespace hikaya_Ajloun.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "articleId,articleName,articleImage,categoryId,articleFile,articleDate,authorid")] Article article , HttpPostedFileBase articleImage)
+        public ActionResult Edit([Bind(Include = "articleId,articleName,articleImage,categoryId,articleFile,articleDate,authorid")] Article article , HttpPostedFileBase articleImage , HttpPostedFileBase articleFile)
         {
             if (ModelState.IsValid)
             {
@@ -181,6 +181,20 @@ namespace hikaya_Ajloun.Controllers
                 try
                 {
                     db.Entry(article).State = EntityState.Modified;
+                    string fileName2 = "ArticleFile/" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".txt";
+
+                    string fullpath = "~/File/" + fileName2;
+                    // حفظ النص داخل ملف باستخدام StreamWriter
+                    using (StreamWriter writer = new StreamWriter(Server.MapPath(fullpath)))
+                    {
+                        writer.Write(article.articleFile);
+                    }
+
+
+                    //////////
+
+                    article.articleFile = fullpath;
+                    article.articleDate = DateTime.Now;
                     db.SaveChanges(); // حفظ التغييرات في قاعدة البيانات
                     return RedirectToAction("Index");
                 }

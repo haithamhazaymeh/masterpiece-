@@ -5,97 +5,202 @@
 }
 
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hikayat Ajloun Dashboard</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="~/Dashboard/https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/jqvmap/jqvmap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Dashboard/dist/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/daterangepicker/daterangepicker.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/summernote/summernote-bs4.min.css">
+    <link rel="shortcut icon" href="~/Images/logos/favicon.png">
+
 </head>
-<body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.productName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.productImage_1)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.productImage_2)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.productImage_3)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.productImage_4)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.productImage_5)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.price)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.productDescription)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.availability)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.shipping_return)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category.categoryName)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.productName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.productImage_1)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.productImage_2)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.productImage_3)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.productImage_4)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.productImage_5)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.productDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.availability)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.shipping_return)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.categoryName)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.productId }) |
-                @Html.ActionLink("Details", "Details", new { id=item.productId }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.productId })
-            </td>
-        </tr>
-    }
-    
-    </table>
+<body class="hold-transition sidebar-mini layout-fixed">
+
+    <style>
+        .thumbnail {
+            top: -50px;
+            left: -35px;
+            display: block;
+            z-index: 999;
+            cursor: pointer;
+            -webkit-transition-property: all;
+            -webkit-transition-duration: 0.3s;
+            -webkit-transition-timing-function: ease;
+        }
+
+            .thumbnail:hover {
+                transform: scale(3);
+            }
+    </style>
+
+    @RenderPage("~/Views/Shared/_saidbar-navbar.cshtml")
+
+    <div style="padding:30px" class="content-wrapper">
+
+
+        <div class="preloader flex-column justify-content-center align-items-center">
+            <img class="animation__shake" src="~/Images/logos/Hekayt Ajloun logo Green.png" alt="Hekaya Ajloun" height="60" width="150">
+        </div>
+
+        @using (Html.BeginForm("index", "Articles", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <p>
+                @Html.ActionLink("Create New", "Create")
+            </p>
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.productName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.productImage_1)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.productImage_2)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.productImage_3)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.productImage_4)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.productImage_5)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.price)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.productDescription)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.availability)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.shipping_return)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Category.categoryName)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.productName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.productImage_1)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.productImage_2)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.productImage_3)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.productImage_4)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.productImage_5)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.price)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.productDescription)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.availability)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.shipping_return)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Category.categoryName)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.productId }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.productId }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.productId })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+        }
+
+
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+    @RenderPage("~/Views/Shared/footer.cshtml")
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+    <script src="~/Dashboard//plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/Dashboard//plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/Dashboard//dist/js/adminlte.min.js"></script>
+    <!-- Summernote -->
+    <script src="~/Dashboard//plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- CodeMirror -->
+    <script src="~/Dashboard//plugins/codemirror/codemirror.js"></script>
+    <script src="~/Dashboard//plugins/codemirror/mode/css/css.js"></script>
+    <script src="~/Dashboard//plugins/codemirror/mode/xml/xml.js"></script>
+    <script src="~/Dashboard//plugins/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/Dashboard//dist/js/demo.js"></script>
+    <!-- Page specific script -->
+    <script>
+        $(function () {
+            // Summernote
+            $('#summernote').summernote()
+
+            // CodeMirror
+            CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
+                mode: "htmlmixed",
+                theme: "monokai"
+            });
+        })
+    </script>
 </body>
 </html>
