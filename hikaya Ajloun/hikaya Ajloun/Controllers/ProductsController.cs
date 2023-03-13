@@ -41,7 +41,8 @@ namespace hikaya_Ajloun.Controllers
         // GET: Products/Create
         public ActionResult Create()
         {
-            ViewBag.categoryId = new SelectList(db.Categories, "categoryId", "categoryName");
+            ViewBag.categoryId = new SelectList(db.Categories.Where(x => x.type == "Products"), "categoryId", "categoryName");
+
             return View();
         }
 
@@ -50,13 +51,14 @@ namespace hikaya_Ajloun.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "productId,productName,productImage_1,productImage_2,productImage_3,productImage_4,productImage_5,price,productDescription,categoryId,availability,shipping_return")] Product product, HttpPostedFileBase[] files)
+        public ActionResult Create([Bind(Include = "productId,productName,productImage_1,productImage_2,productImage_3,productImage_4,productImage_5,price,productDescription,categoryId,availability,shipping_return")] Product product, HttpPostedFileBase productImage_1, HttpPostedFileBase productImage_2, HttpPostedFileBase productImage_3, HttpPostedFileBase productImage_4, HttpPostedFileBase productImage_5)
         {
             if (ModelState.IsValid)
             {
                 // Upload images
-                string folderPath = Server.MapPath("~/images/products/");
+                string folderPath = Server.MapPath("~/images/products");
                 List<string> uploadedFiles = new List<string>();
+                HttpPostedFileBase[] files = { productImage_1, productImage_2, productImage_3, productImage_4, productImage_5 };
 
                 for (int i = 0; i < files.Length; i++)
                 {
@@ -100,7 +102,7 @@ namespace hikaya_Ajloun.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.categoryId = new SelectList(db.Categories, "categoryId", "categoryName", product.categoryId);
+            ViewBag.categoryId = new SelectList(db.Categories.Where(x => x.type == "Products"), "categoryId", "categoryName");
             return View(product);
         }
 

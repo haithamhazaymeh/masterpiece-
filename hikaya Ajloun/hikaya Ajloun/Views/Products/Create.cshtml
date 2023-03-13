@@ -62,7 +62,7 @@
             <img class="animation__shake" src="~/Images/logos/Hekayt Ajloun logo Green.png" alt="Hekaya Ajloun" height="60" width="150">
         </div>
 
-        @using (Html.BeginForm("Index", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        @using (Html.BeginForm("Create", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
 
@@ -124,12 +124,18 @@
 
             </div>
 
-               
+            @*<div class="form-group col-sm-6 mt-3">
+                <label>Main image</label>
+                <div class="input-group custom-file">
+                    <input type="file" class="form-control custom-file-input" id="articleImage" name="articleImage">
+                    <label class="custom-file-label" for="articleImage">Choose file</label>
+                </div>
+            </div>*@
 
                     <div class="form-group col-md-3 mr-3">
                         <label class="custom-file-label" for="productImage_1">Choose file</label>
                         <div class="">
-                            <input type="file" name="productImage_1" />
+                            <input type="file" class="form-control custom-file-input" id="productImage_1" name="productImage_1" />
                             @Html.ValidationMessageFor(model => model.productImage_1, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -137,7 +143,7 @@
                     <div class="form-group col-md-3 mr-3 ">
                         <label class="custom-file-label" for="productImage_2">Choose file</label>
                         <div class="">
-                            <input type="file" name="productImage_2" />
+                            <input type="file" class="form-control custom-file-input" id="productImage_2" name="productImage_2" />
                             @Html.ValidationMessageFor(model => model.productImage_2, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -145,7 +151,7 @@
                     <div class="form-group col-md-3 mr-3">
                         <label class="custom-file-label" for="productImage_3">Choose file</label>
                         <div class="">
-                            <input type="file" name="productImage_3" />
+                            <input type="file"  class="form-control custom-file-input" id="productImage_3" name="productImage_3"  />
                             @Html.ValidationMessageFor(model => model.productImage_3, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -153,7 +159,7 @@
                     <div class="form-group col-md-3 mr-3">
                         <label class="custom-file-label" for="productImage_4">Choose file</label>
                         <div class="">
-                            <input type="file" name="productImage_4" />
+                            <input type="file" class="form-control custom-file-input" id="productImage_4" name="productImage_4" />
                             @Html.ValidationMessageFor(model => model.productImage_4, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -161,7 +167,7 @@
                     <div class="form-group col-md-3 mr-3">
                         <label class="custom-file-label" for="productImage_5">Choose file</label>
                         <div class="">
-                            <input type="file" name="productImage_5" />
+                            <input type="file" class="form-control custom-file-input" id="productImage_5" name="productImage_5" />
                             @Html.ValidationMessageFor(model => model.productImage_5, "", new { @class = "text-danger" })
                         </div>
                     </div>

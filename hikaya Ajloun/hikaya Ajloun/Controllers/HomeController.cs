@@ -1,4 +1,5 @@
-﻿using System;
+﻿using hikaya_Ajloun.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,7 @@ namespace hikaya_Ajloun.Controllers
 {
     public class HomeController : Controller
     {
+        private hikaya_AjlounEntities3 db = new hikaya_AjlounEntities3();
         public ActionResult Home()
         {
             return View();
@@ -29,9 +31,12 @@ namespace hikaya_Ajloun.Controllers
 
         public ActionResult Blog()
         {
-            ViewBag.Message = "Your application description page.";
 
-            return View();
+            ViewBag.Message = "Your application description page.";
+           
+            var data = db.Articles.ToList();
+
+            return View(data);
         }
 
         public ActionResult services()
@@ -84,11 +89,12 @@ namespace hikaya_Ajloun.Controllers
             return View();
         }
 
-        public ActionResult SingleBlog()
+        public ActionResult SingleBlog(int id)
         {
+            var singlebloge = db.Articles.Find(id);
             ViewBag.Message = "Your application description page.";
 
-            return View();
+            return View(singlebloge);
         }
 
         public ActionResult FormProduct()
