@@ -1,4 +1,6 @@
-﻿
+﻿@model List<hikaya_Ajloun.Models.Article>
+@using System.IO;
+
 @{
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/Navbar and footer 1.cshtml";
@@ -29,7 +31,7 @@
                     </h5>
                     <!--
 
-                -->
+                    -->
                     <a id="slider-15-slide-43-layer-2"
                        class="rs-layer rev-btn"
                        href="/Home/Places" target="_self"
@@ -49,7 +51,7 @@
                     </a>
                     <!--
 
-                -->
+                    -->
                     <a id="slider-15-slide-43-layer-3"
                        class="rs-layer rev-btn"
                        href="/Home/contact" target="_self"
@@ -70,7 +72,7 @@
                     </a>
                     <!--
 
-                -->
+                    -->
                     <rs-layer id="slider-15-slide-43-layer-7"
                               data-type="text"
                               data-color="#fd4a18"
@@ -84,7 +86,7 @@
                         The first natural destination in jordan
                     </rs-layer>
                     <!--
-                -->
+                    -->
                 </rs-slide>
                 <rs-slide data-key="rs-44" data-title="Slide" data-thumb="rev/assets/banner-2-1-50x100.jpg" data-anim="ei:d;eo:d;s:d;r:default;t:crossfade;sl:d;">
                     <img src="~/Images/Content/slide2.jpg" title="banner-2-1.jpg" width="1920" height="1080" data-panzoom="d:10000ms;e:power0.in;ss:120%;se:100%;bs:0px;os:0px/0;" class="rev-slidebg" data-no-retina>
@@ -105,7 +107,7 @@
                     </h5>
                     <!--
 
-                -->
+                    -->
                     <a id="slider-15-slide-44-layer-2"
                        class="rs-layer rev-btn"
                        href="/Home/Products" target="_self"
@@ -125,7 +127,7 @@
                     </a>
                     <!--
 
-                -->
+                    -->
                     <a id="slider-15-slide-44-layer-3"
                        class="rs-layer rev-btn"
                        href="/Home/contact" target="_self"
@@ -146,7 +148,7 @@
                     </a>
                     <!--
 
-                -->
+                    -->
                     <rs-layer id="slider-15-slide-44-layer-7"
                               data-type="text"
                               data-color="#fd4a18"
@@ -160,12 +162,12 @@
                         # GREAT EXPERIENCE IN IT
                     </rs-layer>
                     <!--
-                -->
+                    -->
                 </rs-slide>
             </rs-slides>
             <rs-static-layers>
                 <!--
-            -->
+                -->
             </rs-static-layers>
         </rs-module>
     </rs-module-wrap>
@@ -819,191 +821,53 @@
             </div>
             <div class="col-lg-12">
                 <div class="owl-carousel owl-loaded owl-drag" data-dots="true" data-nav="false" data-desk_num="3" data-lap_num="2" data-tab_num="2" data-mob_num="1" data-mob_sm="1" data-autoplay="true" data-loop="true" data-margin="30">
-                    <div class="item">
-                        <div class="pq-blog-post">
-                            <div class="pq-post-media">
-                                <img src="~/Images/Content/blog1.jpg" alt="blog-img">
-                                <div class="pq-post-date">
-                                    <a href="app-promotes-sales-profits-in-it-solutions.html"><span>26</span>Jan</a>
+
+                    @foreach (var item in Model)
+                    {
+
+                        <div class="item">
+                            <div class="pq-blog-post">
+                                <div class="pq-post-media">
+                                    <img src="~/Images/article/@item.articleImage" alt="blog-img">
+                                    <div class="pq-post-date">
+                                        <a href="app-promotes-sales-profits-in-it-solutions.html"><span>26</span>Jan</a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="pq-blog-contain">
-                                <div class="pq-post-meta">
-                                    <ul>
-                                        <li class="pq-post-author"><i class="fa fa-user"></i>Haitham Hazaymeh</li>
-                                        <li class="pq-post-meta">
-                                            <a href="app-promotes-sales-profits-in-it-solutions.html"><i class="fa fa-calendar"></i>January 2021</a>
-                                        </li>
-                                        <li class="pq-post-tag">
-                                            <a href="app-promotes-sales-profits-in-it-solutions.html"><i class="fa fa-tag"></i>Historical</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <h5 class="pq-blog-title">
-                                    <a href="/Home/SingleBlog">
-                                        5 Information You May Not Know About The Citadel Of Saladin.
+                                <div class="pq-blog-contain">
+                                    <div class="pq-post-meta">
+                                        <ul>
+                                            <li class="pq-post-author"><i class="fa fa-user"></i>@item.author.authorname</li>
+                                            <li class="pq-post-meta">
+                                                <a href="app-promotes-sales-profits-in-it-solutions.html"><i class="fa fa-calendar"></i>January 2021</a>
+                                            </li>
+                                            <li class="pq-post-tag">
+                                                <a href="app-promotes-sales-profits-in-it-solutions.html"><i class="fa fa-tag"></i>@item.Category.categoryName</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <h5 class="pq-blog-title">
+
+                                        <a href="/Home/SingleBlog?id=@item.articleId">
+                                            @if (item.articleName.Length > 80)
+                                            {
+                                                @item.articleName.Substring(0, 80)
+                                            }
+                                            else
+                                            {
+                                                @item.articleName
+                                            }
+                                        </a>
+                                    </h5>
+                                    <a href="/Home/SingleBlog?id=@item.articleId" class="pq-button pq-btn-flat pq-mt-30">
+                                        <div class="pq-button-block">
+                                            <span class="pq-button-text">Read More</span>
+                                        </div>
                                     </a>
-                                </h5>
-                                <a href="/Home/SingleBlog" class="pq-button pq-btn-flat pq-mt-30">
-                                    <div class="pq-button-block">
-                                        <span class="pq-button-text">Read More</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="pq-blog-post">
-                            <div class="pq-post-media">
-                                <img src="~/Images/Content/blog2.jpg" alt="blog-img">
-                                <div class="pq-post-date">
-                                    <a href="app-promotes-sales-profits-in-it-solutions.html"><span>26</span>Jan</a>
                                 </div>
                             </div>
-                            <div class="pq-blog-contain">
-                                <div class="pq-post-meta">
-                                    <ul>
-                                        <li class="pq-post-author"><i class="fa fa-user"></i>admin</li>
-                                        <li class="pq-post-meta">
-                                            <a href="app-promotes-sales-profits-in-it-solutions.html"><i class="fa fa-calendar"></i>January 2021</a>
-                                        </li>
-                                        <li class="pq-post-tag">
-                                            <a href="app-promotes-sales-profits-in-it-solutions.html"><i class="fa fa-tag"></i>Cloud Computing</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <h5 class="pq-blog-title"><a href="app-promotes-sales-profits-in-it-solutions.html">Mountaineering Is A Sport That Little Is Known About</a></h5>
-                                <a href="app-promotes-sales-profits-in-it-solutions.html" class="pq-button pq-btn-flat pq-mt-30">
-                                    <div class="pq-button-block">
-                                        <span class="pq-button-text">Read More</span>
-                                    </div>
-                                </a>
-                            </div>
                         </div>
-                    </div>
 
-                    <div class="item">
-                        <div class="pq-blog-post">
-                            <div class="pq-post-media">
-                                <img src="~/Images/Content/blog3.jpg" alt="blog-img">
-                                <div class="pq-post-date">
-                                    <a href="app-promotes-sales-profits-in-it-solutions.html"><span>26</span>Jan</a>
-                                </div>
-                            </div>
-                            <div class="pq-blog-contain">
-                                <div class="pq-post-meta">
-                                    <ul>
-                                        <li class="pq-post-author"><i class="fa fa-user"></i>admin</li>
-                                        <li class="pq-post-meta">
-                                            <a href="app-promotes-sales-profits-in-it-solutions.html"><i class="fa fa-calendar"></i>January 2021</a>
-                                        </li>
-                                        <li class="pq-post-tag">
-                                            <a href="app-promotes-sales-profits-in-it-solutions.html"><i class="fa fa-tag"></i>Cloud Computing</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <h5 class="pq-blog-title"><a href="app-promotes-sales-profits-in-it-solutions.html">Ajloun Governorate, Where The Beauty Of Nature And The ..</a></h5>
-                                <a href="app-promotes-sales-profits-in-it-solutions.html" class="pq-button pq-btn-flat pq-mt-30">
-                                    <div class="pq-button-block">
-                                        <span class="pq-button-text">Read More</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="pq-blog-post">
-                            <div class="pq-post-media">
-                                <img src="~/Images/Content/blog1.jpg" alt="blog-img">
-                                <div class="pq-post-date">
-                                    <a href="app-promotes-sales-profits-in-it-solutions.html"><span>26</span>Jan</a>
-                                </div>
-                            </div>
-                            <div class="pq-blog-contain">
-                                <div class="pq-post-meta">
-                                    <ul>
-                                        <li class="pq-post-author"><i class="fa fa-user"></i>Haitham Hazaymeh</li>
-                                        <li class="pq-post-meta">
-                                            <a href="app-promotes-sales-profits-in-it-solutions.html"><i class="fa fa-calendar"></i>January 2021</a>
-                                        </li>
-                                        <li class="pq-post-tag">
-                                            <a href="app-promotes-sales-profits-in-it-solutions.html"><i class="fa fa-tag"></i>Historical</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <h5 class="pq-blog-title">
-                                    <a href="app-promotes-sales-profits-in-it-solutions.html">
-                                        5 Information You May Not Know About The Citadel Of Saladin.
-                                    </a>
-                                </h5>
-                                <a href="/Home/SingleBlog" class="pq-button pq-btn-flat pq-mt-30">
-                                    <div class="pq-button-block">
-                                        <span class="pq-button-text">Read More</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="pq-blog-post">
-                            <div class="pq-post-media">
-                                <img src="~/Images/Content/blog2.jpg" alt="blog-img">
-                                <div class="pq-post-date">
-                                    <a href="app-promotes-sales-profits-in-it-solutions.html"><span>26</span>Jan</a>
-                                </div>
-                            </div>
-                            <div class="pq-blog-contain">
-                                <div class="pq-post-meta">
-                                    <ul>
-                                        <li class="pq-post-author"><i class="fa fa-user"></i>admin</li>
-                                        <li class="pq-post-meta">
-                                            <a href="app-promotes-sales-profits-in-it-solutions.html"><i class="fa fa-calendar"></i>January 2021</a>
-                                        </li>
-                                        <li class="pq-post-tag">
-                                            <a href="app-promotes-sales-profits-in-it-solutions.html"><i class="fa fa-tag"></i>Cloud Computing</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <h5 class="pq-blog-title"><a href="app-promotes-sales-profits-in-it-solutions.html">Mountaineering Is A Sport That Little Is Known About</a></h5>
-                                <a href="app-promotes-sales-profits-in-it-solutions.html" class="pq-button pq-btn-flat pq-mt-30">
-                                    <div class="pq-button-block">
-                                        <span class="pq-button-text">Read More</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="item">
-                        <div class="pq-blog-post">
-                            <div class="pq-post-media">
-                                <img src="~/Images/Content/blog3.jpg" alt="blog-img">
-                                <div class="pq-post-date">
-                                    <a href="app-promotes-sales-profits-in-it-solutions.html"><span>26</span>Jan</a>
-                                </div>
-                            </div>
-                            <div class="pq-blog-contain">
-                                <div class="pq-post-meta">
-                                    <ul>
-                                        <li class="pq-post-author"><i class="fa fa-user"></i>admin</li>
-                                        <li class="pq-post-meta">
-                                            <a href="app-promotes-sales-profits-in-it-solutions.html"><i class="fa fa-calendar"></i>January 2021</a>
-                                        </li>
-                                        <li class="pq-post-tag">
-                                            <a href="app-promotes-sales-profits-in-it-solutions.html"><i class="fa fa-tag"></i>Cloud Computing</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <h5 class="pq-blog-title"><a href="app-promotes-sales-profits-in-it-solutions.html">Ajloun Governorate, Where The Beauty Of Nature And The ..</a></h5>
-                                <a href="app-promotes-sales-profits-in-it-solutions.html" class="pq-button pq-btn-flat pq-mt-30">
-                                    <div class="pq-button-block">
-                                        <span class="pq-button-text">Read More</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                    }
 
                 </div>
             </div>
@@ -1112,7 +976,7 @@
                 </div>
             </div>
         </div>
-        </div>
+    </div>
 </section>
 
 <!-- Be Partner End -->

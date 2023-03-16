@@ -12,7 +12,9 @@ namespace hikaya_Ajloun.Controllers
         private hikaya_AjlounEntities3 db = new hikaya_AjlounEntities3();
         public ActionResult Home()
         {
-            return View();
+            var data = db.Articles.ToList();
+
+            return View(data);
         }
 
         public ActionResult aboutus()
