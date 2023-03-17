@@ -50,7 +50,7 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <div style="height: 500px;" class="pq-blog-contain">
+                                    <div  class="pq-blog-contain">
                                         <div class="pq-post-meta">
                                             <ul>
                                                 <li class="pq-post-author"><i class="fa fa-user"></i>@item.author.authorname</li>
@@ -60,7 +60,20 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <h5 class="pq-blog-title"><a href="/Home/SingleBlog?id=@item.articleId">@item.articleName</a></h5>
+                                        <h5  class="pq-blog-title"><a href="/Home/SingleBlog?id=@item.articleId">
+                                            
+                                            
+                                            @if (item.articleName.Length > 50)
+                                            {
+                                                @item.articleName.Substring(0, 50)
+                                            }
+                                            else
+                                            {
+                                                @item.articleName
+                                            }
+                                             
+                                             
+                                             </a></h5>
                                         @using System.Text.RegularExpressions;
 
 
@@ -72,10 +85,10 @@
                                             string subArticalClean = Regex.Replace(HttpUtility.HtmlDecode(subArtical), "<.*?>", String.Empty);
                                         }
 
-                                        <p>
-                                            @if (subArticalClean.Length > 300)
+                                        <p >
+                                            @if (subArticalClean.Length > 250)
                                             {
-                                                @subArticalClean.Substring(0, 300) <a href="/Home/SingleBlog?id=@item.articleId">Read more</a>
+                                                @subArticalClean.Substring(0, 250) <a href="/Home/SingleBlog?id=@item.articleId">Read more</a>
                                             }
                                             else
                                             {
