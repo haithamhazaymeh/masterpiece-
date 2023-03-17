@@ -50,41 +50,60 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <div style="height: 500px;" class="pq-blog-contain">
+                                    <div  class="pq-blog-contain">
                                         <div class="pq-post-meta">
                                             <ul>
                                                 <li class="pq-post-author"><i class="fa fa-user"></i>@item.author.authorname</li>
                                                 <li class="pq-post-meta"><a href="#"><i class="fa fa-calendar"></i>January 2021</a></li>
                                                 <li class="pq-post-tag">
-                                                    <a href="app-promotes-sales-profits-in-it-solutions.html"><i class="fa fa-tag"></i>@item.Category.categoryName</a>
+                                                    <a href="#"><i class="fa fa-tag"></i>@item.Category.categoryName</a>
                                                 </li>
                                             </ul>
                                         </div>
-                                        <h5 class="pq-blog-title"><a href="app-promotes-sales-profits-in-it-solutions.html">@item.articleName</a></h5>
+                                        <h5  class="pq-blog-title"><a href="/Home/SingleBlog?id=@item.articleId">
+                                            
+                                            
+                                            @if (item.articleName.Length > 50)
+                                            {
+                                                @item.articleName.Substring(0, 50)
+                                            }
+                                            else
+                                            {
+                                                @item.articleName
+                                            }
+                                             
+                                             
+                                             </a></h5>
+                                        @using System.Text.RegularExpressions;
+
+
                                         @{
                                             string filePath = @item.articleFile;
                                             string filepath1 = Server.MapPath(filePath);
                                             string fileContent = File.ReadAllText(filepath1);
-                                            string subArtical = fileContent;
-
-
+                                            string subArtical = HttpUtility.HtmlDecode(fileContent);
+                                            string subArticalClean = Regex.Replace(HttpUtility.HtmlDecode(subArtical), "<.*?>", String.Empty);
                                         }
-                                        <p>
-                                            @if (subArtical.Length > 300)
+
+                                        <p >
+                                            @if (subArticalClean.Length > 250)
                                             {
-                                                @subArtical.Substring(0, 300) <a href="/Home/SingleBlog?id=@item.articleId">Read more</a>
+                                                @subArticalClean.Substring(0, 250) <a href="/Home/SingleBlog?id=@item.articleId">Read more</a>
                                             }
                                             else
                                             {
-                                                @subArtical
+                                                @subArticalClean
                                             }
-                                            <div class="pq-btn-container">
-                                                <a href="app-promotes-sales-profits-in-it-solutions.html" class="pq-button">
-                                                    <div class="pq-button-block">
-                                                        <span class="pq-button-text">Read More</span>
-                                                    </div>
-                                                </a>
-                                            </div>
+                                        </p>
+
+
+                                        <div class="pq-btn-container">
+                                            <a href="/Home/SingleBlog?id=@item.articleId" class="pq-button">
+                                                <div class="pq-button-block">
+                                                    <span class="pq-button-text">Read More</span>
+                                                </div>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

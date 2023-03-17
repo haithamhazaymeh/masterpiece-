@@ -23,12 +23,20 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="~/Dashboard/dist/css/adminlte.min.css">
 </head>
-<body  class="hold-transition register-page">
+<body class="hold-transition register-page">
+
+    <style>
+        .reback {
+            background-image:url('~/Images/Content/Ajloun stadum.jpg') !important ;
+        }
+    </style>
 
     @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
 
-        <div style="background-image: url('~/Images/Content/Ajloun stadum.jpg') !important;  background-size:cover;">
+
+
+        <div class="reback">
             <div class="register-box">
                 <div class="card card-outline card-primary">
 
@@ -117,10 +125,11 @@
         <script src="~/Dashboard/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- AdminLTE App -->
         <script src="~/Dashboard/dist/js/adminlte.min.js"></script>
+
     }
 
 
-    </body>
+</body>
     
 </html>
 

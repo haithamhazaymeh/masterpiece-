@@ -646,3 +646,15 @@ C:\Users\dell\Documents\GitHub\masterpiece-\hikaya Ajloun\hikaya Ajloun\obj\Debu
 C:\Users\dell\Documents\GitHub\masterpiece-\hikaya Ajloun\hikaya Ajloun\obj\Debug\hikaya Ajloun.csproj.CopyComplete
 C:\Users\dell\Documents\GitHub\masterpiece-\hikaya Ajloun\hikaya Ajloun\obj\Debug\hikaya Ajloun.dll
 C:\Users\dell\Documents\GitHub\masterpiece-\hikaya Ajloun\hikaya Ajloun\obj\Debug\hikaya Ajloun.pdb
+C:\Users\dell\Documents\GitHub\masterpiece-\hikaya Ajloun\hikaya Ajloun\bin\AngleSharp.dll
+C:\Users\dell\Documents\GitHub\masterpiece-\hikaya Ajloun\hikaya Ajloun\bin\System.Buffers.dll
+C:\Users\dell\Documents\GitHub\masterpiece-\hikaya Ajloun\hikaya Ajloun\bin\System.Memory.dll
+C:\Users\dell\Documents\GitHub\masterpiece-\hikaya Ajloun\hikaya Ajloun\bin\System.Numerics.Vectors.dll
+C:\Users\dell\Documents\GitHub\masterpiece-\hikaya Ajloun\hikaya Ajloun\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\dell\Documents\GitHub\masterpiece-\hikaya Ajloun\hikaya Ajloun\bin\System.Text.Encoding.CodePages.dll
+C:\Users\dell\Documents\GitHub\masterpiece-\hikaya Ajloun\hikaya Ajloun\bin\AngleSharp.xml
+C:\Users\dell\Documents\GitHub\masterpiece-\hikaya Ajloun\hikaya Ajloun\bin\System.Buffers.xml
+C:\Users\dell\Documents\GitHub\masterpiece-\hikaya Ajloun\hikaya Ajloun\bin\System.Memory.xml
+C:\Users\dell\Documents\GitHub\masterpiece-\hikaya Ajloun\hikaya Ajloun\bin\System.Numerics.Vectors.xml
+C:\Users\dell\Documents\GitHub\masterpiece-\hikaya Ajloun\hikaya Ajloun\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\dell\Documents\GitHub\masterpiece-\hikaya Ajloun\hikaya Ajloun\bin\System.Text.Encoding.CodePages.xml

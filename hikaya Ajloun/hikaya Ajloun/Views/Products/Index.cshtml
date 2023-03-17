@@ -75,18 +75,7 @@
                     <th>
                         @Html.DisplayNameFor(model => model.productImage_1)
                     </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.productImage_2)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.productImage_3)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.productImage_4)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.productImage_5)
-                    </th>
+                    
                     <th>
                         @Html.DisplayNameFor(model => model.price)
                     </th>
@@ -112,19 +101,7 @@
                             @Html.DisplayFor(modelItem => item.productName)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.productImage_1)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.productImage_2)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.productImage_3)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.productImage_4)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.productImage_5)
+                            <img alt="" class="thumbnail" src="~/Images/Products/@item.productImage_1" style="height:70px;width:70px;" />
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.price)
