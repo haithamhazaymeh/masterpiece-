@@ -42,7 +42,8 @@ namespace hikaya_Ajloun.Controllers
         public ActionResult Create()
         {
             ViewBag.authorid = new SelectList(db.authors, "authorid", "authorname");
-            ViewBag.categoryId = new SelectList(db.Categories.Where(x=>x.type=="Articles"), "categoryId", "categoryName");
+            ViewBag.categoryId = new SelectList(db.Categories.Where(x=>x.type== "Articals"), "categoryId", "categoryName");
+
             return View();
         }
 
