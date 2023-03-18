@@ -1,5 +1,5 @@
 ﻿
-@model IEnumerable<hikaya_Ajloun.Models.Product>
+@model List<hikaya_Ajloun.Models.Cart>
 
 @{
     ViewBag.Title = "Cart";
@@ -46,19 +46,34 @@
                                 <th scope="col" class="alt-font">Total</th>
                             </tr>
                         </thead>
+
+
+
                         <tbody>
+
+
 
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <td class="product-thumbnail"><a href="single-product.html"><img class="blur-up rounded-3 lazyloaded" data-src="~/Images/Products/@item.productImage_1" src="~/Images/Products/@item.productImage_1" alt="product" title="product"></a></td>
+                                    <td class="product-thumbnail"><a href="single-product.html"><img class="blur-up rounded-3 lazyloaded" data-src="~/Images/Products/@item.Product.productImage_1" src="~/Images/Products/@item.Product.productImage_1" alt="product" title="product"></a></td>
                                     <td class="product-name">
-                                        <a href="single-product.html">@item.productName</a>
+                                        <a href="single-product.html">@item.Product.productName</a>
                                     </td>
                                     <td class="product-remove">
-                                        <a href="#" class="btn-default text-large remove"><i class="cp cp-trash"></i></a>
+                                        @*<a href="#" class="btn-default text-large remove"><i class="cp cp-trash"></i></a>*@
+
+                                        @using (Html.BeginForm("Delete", "Carts", FormMethod.Post))
+                                        {
+                                            @Html.AntiForgeryToken()
+
+
+                                            @Html.Hidden("id", item.cartId)
+                                            <input type="submit" value="Remove" class="btn btn-danger" />
+                                        }
+
                                     </td>
-                                    <td class="product-price" data-title="Price">$@item.price</td>
+                                    <td class="product-price" data-title="Price">$@item.Product.price</td>
                                     <td class="product-quantity" data-title="Quantity">
                                         <div class="qtyField">
                                             <label class="screen-reader-text">Quantity</label>

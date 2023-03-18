@@ -864,6 +864,7 @@
     <Content Include="Views\Carts\Edit.cshtml" />
     <Content Include="Views\Carts\Index.cshtml" />
     <Content Include="Views\Carts\Cart.cshtml" />
+    <Content Include="Views\Carts\CheckOut.cshtml" />
     <None Include="Views\Home\aboutus.cshtml" />
     <None Include="Views\Home\Blog.cshtml" />
     <Content Include="Dashboard\build\config\postcss.config.js" />

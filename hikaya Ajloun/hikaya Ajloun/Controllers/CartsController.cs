@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using hikaya_Ajloun.Models;
@@ -16,24 +17,78 @@ namespace hikaya_Ajloun.Controllers
         private hikaya_AjlounEntities3 db = new hikaya_AjlounEntities3();
 
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> CheckOut(string Email, string customerPhone, string address, int postalCode, string city)
+        {
+
+
+
+            Order order = new Order();
+            Order_Details order_Details= new Order_Details();
+            Product product = new Product();
+
+            var id = User.Identity.GetUserId();
+            var user = db.AspNetUsers.Where(x => x.Id == id).FirstOrDefault();
+            var cart = db.Carts.Where(x => x.userId == id).ToList();
+
+
+            decimal totalAmount = 0;
+
+            foreach (var item in cart)
+            {
+                totalAmount += Convert.ToDecimal(item.amount);
+
+            }
+
+
+
+
+         
+
+            var orderDetailOrder = db.Orders.Where(x => x.User_id == id).OrderByDescending(x => x.orderId).FirstOrDefault();
+            foreach (var item in cart)
+            {
+
+                order_Details.Order_id = orderDetailOrder.orderId;
+                order_Details.Product_id = item.productId;
+                order_Details.Quantity= item.quantity;
+                order_Details.Quantity = item.Product.price * item.quantity;
+                db.Order_Details.Add(order_Details);
+
+
+
+
+                await db.SaveChangesAsync();
+
+                
+
+                db.SaveChanges();
+                db.Carts.Remove(item);
+            }
+            await db.SaveChangesAsync();
+
+            return RedirectToAction("Index", "Home");
+
+        }
 
 
         public ActionResult Cart()
         {
-            //var carts = db.Carts.Include(c => c.Customer).Include(c => c.Product);
-            //return View(carts.ToList());
 
-            string email = User.Identity.GetUserName();
-            var productsInCart = db.Carts
-                .Where(c => c.AspNetUser.Email == email && c.is_chekout == false)
-                .Join(db.Products, c => c.productId, p => p.productId, (c, p) => p)
-                .ToList();
-            return View(productsInCart);
+        
+
+            var id = User.Identity.GetUserId();
+            //ViewBag.userId = id;
+            var carts = db.Carts.Where(x => x.AspNetUser.Id == id).Include(c => c.Product);
+            return View(carts.ToList());
 
         }
 
         public ActionResult Buy(int id)
         {
+
+
 
             if (User.Identity.GetUserId() == null)
             return RedirectToAction("Login", "Account", "");
@@ -166,9 +221,10 @@ namespace hikaya_Ajloun.Controllers
             Cart cart = db.Carts.Find(id);
             db.Carts.Remove(cart);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("cart");
         }
 
+       
         protected override void Dispose(bool disposing)
         {
             if (disposing)
