@@ -1,4 +1,6 @@
-﻿
+﻿@model hikaya_Ajloun.Models.Product
+
+
 @{
     ViewBag.Title = "SingleProduct";
     Layout = "~/Views/Shared/Navbar and footer 2.cshtml";
@@ -14,7 +16,7 @@
                     <div class="pq-breadcrumb-title mt-5">
                         <h1>Product</h1>
                     </div>
-                   
+
                 </nav>
             </div>
         </div>
@@ -26,7 +28,7 @@
 
     <!--Product Details-->
     <div class="section">
-        <div class="container">
+        <div class="container"> 
             <div class="product-single">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
@@ -34,7 +36,7 @@
                             <div class="product-zoom">
                                 <div class="zoompro-wrap product-zoom-right pl-20">
                                     <div class="zoompro-span">
-                                        <img id="zoompro" class="zoompro prlightbox" src="@Url.Content("~/Images/Content/s1.jpg")" data-zoom-image="@Url.Content("~/Images/Content/s1.jpg")" alt="" />
+                                        <img id="zoompro" class="zoompro prlightbox" src="/Images/Products/@Model.productImage_1" data-zoom-image="/Images/Products/@Model.productImage_1" alt="" />
                                     </div>
                                     <div class="product-labels"><span class="lbl new rounded">New</span></div>
                                     <div class="product-buttons">
@@ -45,38 +47,48 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="product-thumb product-horizontal-thumb">
                                 <div id="gallery" class="product-thumb-style1">
-                                    <a class="active" data-image="@Url.Content("~/Images/Content/s1.jpg")" data-zoom-image="@Url.Content("~/Images/Content/s1.jpg")" data-slick-index="-4" aria-hidden="true" tabindex="-1">
-                                        <img class="blur-up lazyload" data-src="@Url.Content("~/Images/Content/s1.jpg")" src="@Url.Content("~/Images/Content/s1.jpg")" alt="" />
 
+                    
+
+                                    <a class="active" data-image="/Images/Products/@Model.productImage_1" data-zoom-image="/Images/Products/@Model.productImage_1" data-slick-index="-4" aria-hidden="true" tabindex="-1">
+                                        <img class="blur-up lazyload" data-src="/Images/Products/@Model.productImage_1" src="/Images/Products/@Model.productImage_1" alt="" />
                                     </a>
-                                    <a data-image="@Url.Content("~/Images/Content/s2.jpg")" data-zoom-image="@Url.Content("~/Images/Content/s2.jpg")" data-slick-index="-3" aria-hidden="true" tabindex="-1">
-                                        <img class="blur-up lazyload" data-src="@Url.Content("~/Images/Content/s2.jpg")" src="@Url.Content("~/Images/Content/s2.jpg")" alt="" />
 
+                                    <a data-image="/Images/Products/@Model.productImage_2" data-zoom-image="/Images/Products/@Model.productImage_2" data-slick-index="-3" aria-hidden="true" tabindex="-1">
+                                        <img class="blur-up lazyload" data-src="/Images/Products/@Model.productImage_2" src="/Images/Products/@Model.productImage_2" alt="" />
                                     </a>
-                                    <a data-image="@Url.Content("~/Images/Content/s3.jpg")" data-zoom-image="@Url.Content("~/Images/Content/s3.jpg")" data-slick-index="-3" aria-hidden="true" tabindex="-1">
-                                        <img class="blur-up lazyload" data-src="@Url.Content("~/Images/Content/s3.jpg")" src="@Url.Content("~/Images/Content/s3.jpg")" alt="" />
 
-                                        <a data-image="@Url.Content("~/Images/Content/s4.jpg")" data-zoom-image="@Url.Content("~/Images/Content/s4.jpg")" data-slick-index="-3" aria-hidden="true" tabindex="-1">
-                                            <img class="blur-up lazyload" data-src="@Url.Content("~/Images/Content/s4.jpg")" src="@Url.Content("~/Images/Content/s4.jpg")" alt="" />
+                                    <a data-image="/Images/Products/@Model.productImage_3" data-zoom-image="/Images/Products/@Model.productImage_3" data-slick-index="-3" aria-hidden="true" tabindex="-1">
+                                        <img class="blur-up lazyload" data-src="/Images/Products/@Model.productImage_3" src="/Images/Products/@Model.productImage_3" alt="" />
+                                    </a>
 
-                                        </a>
+                                    <a data-image="/Images/Products/@Model.productImage_4" data-zoom-image="/Images/Products/@Model.productImage_4" data-slick-index="-3" aria-hidden="true" tabindex="-1">
+                                        <img class="blur-up lazyload" data-src="/Images/Products/@Model.productImage_4" src="/Images/Products/@Model.productImage_4" alt="" />
+                                    </a>
 
-                                </div>
+
+
                             </div>
+                            </div>
+
                             <div class="lightboximages">
-                                <a href="~/Images/Content//s1.jpg" data-size="700x700"></a>
-                                <a href="~/Images/Content/s2.jpg" data-size="700x700"></a>
-                                <a href="~/Images/Content/s3.jpg" data-size="700x700"></a>
-                                <a href="~/Images/Content/s4.jpg" data-size="700x700"></a>
-
+                                <a href="/Images/Products/@Model.productImage_1" data-size="700x700"></a>
+                                <a href="/Images/Products/@Model.productImage_2" data-size="700x700"></a>
+                                <a href="/Images/Products/@Model.productImage_3" data-size="700x700"></a>
+                                <a href="/Images/Products/@Model.productImage_4" data-size="700x700"></a>
                             </div>
+
+
+                         
+
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                         <div class="product-single-detail">
-                            <h1 class="product-title text-uppercase">Dried sage sticks 1kg</h1>
+                            <h1 class="product-title text-uppercase">@Model.productName</h1>
                             <div class="d-flex justify-content-between">
                                 <div class="product-review mb-2">
                                     <i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cps cp-star-half-alt"></i>
@@ -84,17 +96,54 @@
                                 </div>
                             </div>
 
-                            <div class="stock mb-1"><b><span class="inStock text-uppercase"><i class="cp cp-check-circle"></i> In Stock</span></b></div>
-                            <div class="brands mb-1"><b>Brand:</b> Herbs</div>
+                            <p>Availability: @Model.availability</p>
+
+
+                            @*@if (Model.availability == "On Stock")  //
+                            {
+
+                                <div class="stock mb-1"><b><span class="inStock text-uppercase"><i class="cp cp-check-circle"></i> On Stock</span></b></div>
+
+
+                            }
+                            else
+                            {
+
+                                <div class="stockout mb-1"><b><span class="stockout text-uppercase"><i class="cp cp-check-circle"></i>Out of stock</span></b></div>
+
+                            }*@
+
+
+                            <div class="brands mb-1"><b>Brand:</b> @Model.Category.categoryName</div>
                             <div class="price-box">
                                 <span class="visually-hidden">Regular price</span>
-                                <span class="old-price">$25.00</span>
-                                <span class="sale-price">$19.00</span>
+
+                                @{
+                                    var descount = Model.price * 0.15;
+                                    var oldprice = descount + Model.price;
+                                }
+
+                            <span class="old-price">$ @oldprice.ToString("F0")</span>
+                                <span class="sale-price">$ @Model.price</span>
                             </div>
 
                             <div class="sort-description">
                                 <h4 class="title">Short Description</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
+
+                                <p>
+
+                                    @if (Model.productDescription.Length > 400)
+                                    {
+                                        var cutIndex = Model.productDescription.LastIndexOf(" ", 200);
+                                        var cutDescription = Model.productDescription.Substring(0, (cutIndex > 0 ? cutIndex : 200)) + "...";
+                                        @cutDescription
+                                    }
+                                    else
+                                    {
+                                        @Model.productDescription
+                                    }
+
+                                </p>
                                 <hr>
                             </div>
 
@@ -111,7 +160,14 @@
                                             </div>
                                         </div>
                                         <div class="product-form-submit flex-1">
-                                            <button type="submit" class="btn rounded w-100 add-to-cart-btn"><i class="cp cp-shopping-cart"></i> <span>Add to cart</span></button>
+                                            @*<a class="option1" href="@Url.Action("Buy", "Carts", new { id = Model.productId })">
+            <button type="submit" class="btn rounded w-100 add-to-cart-btn"><i class="cp cp-shopping-cart"></i> <span>Add to cart</span></button>
+        </a>*@
+
+                                            <a class="option1" href="@Url.Action("Buy", "Carts", new { id = Model.productId })" data-ajax="true" data-ajax-method="POST" data-ajax-complete="onAddToCartComplete">
+                                                <button type="button" class="btn rounded w-100 add-to-cart-btn"><i class="cp cp-shopping-cart"></i> <span>Add to cart</span></button>
+                                            </a>
+
                                             <button type="submit" class="btn rounded d-none" disabled="disabled">Sold out</button>
                                         </div>
                                     </div>
@@ -132,7 +188,7 @@
                             <!--Guranteed Checkout-->
                             <div class="guaranteed-safe-checkout">
                                 <h4>Guaranteed Safe Checkout</h4>
-                                <img width="60%" class="fade-in lazyload" src="~/Images/Content/paymethod.png"  data-image="@Url.Content("~/Images/Content/paymethod.png")" alt="Guaranteed Safe Checkout">
+                                <img width="60%" class="fade-in lazyload" src="~/Images/Content/paymethod.png" data-image="@Url.Content("~/Images/Content/paymethod.png")" alt="Guaranteed Safe Checkout">
                             </div>
                             <!--End Guranteed Checkout-->
                         </div>
@@ -154,18 +210,7 @@
                                     <div class="product-description">
                                         <div class="row">
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 mb-4 mb-md-0">
-                                                <p>Nam pellentesque rhoncus maximus. Pellentesque vestibulum turpis eu leo maximus fermentum. Suspendisse suscipit enim at orci sollicitudin, vitae facilisis ligula ornare. Donec facilisis sodales massa, quis porttitor felis euismod suscipit.</p>
-                                                <h4 class="pt-2 text-uppercase">Suspendisse eu quam</h4>
-                                                <p>Nam pellentesque rhoncus maximus. Pellentesque vestibulum turpis eu leo maximus fermentum. Suspendisse suscipit enim at orci sollicitudin, vitae facilisis ligula ornare. Donec facilisis sodales massa, quis porttitor felis euismod suscipit. Fusce et tincidunt eros.</p>
-                                                <ul class="list-items">
-                                                    <li>Donec placerat ipsum sed aliquam elementum.</li>
-                                                    <li>Sed congue felis non cursus fringilla.</li>
-                                                    <li>Sed sagittis nibh ullamcorper semper placerat.</li>
-                                                </ul>
-                                                <h4 class="pt-2 text-uppercase">Nulla ac lacus sit amet libero ornare</h4>
-                                                <p>In egestas pharetra tortor eget condimentum. Proin at dui vel diam iaculis imperdiet mattis nec mi. Ut in lorem vel tortor aliquet mollis non et augue. Nunc purus lacus, convallis sed posuere vel, interdum nec mauris.</p>
-                                                <h4 class="pt-2 text-uppercase">Vestibulum tincidunt est eget</h4>
-                                                <p>Quisque magna massa, sodales ut velit ac, vestibulum accumsan sapien. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec gravida tellus nec laoreet lobortis.</p>
+                                                <p>@Model.productDescription</p>
                                             </div>
                                         </div>
                                     </div>
@@ -249,18 +294,9 @@
                                 <!--Shipping & Returns-->
                                 <h3 class="tabs-ac-style acor-ttl d-md-none" rel="shipping-return">Shipping &amp; Return</h3>
                                 <div id="shipping-return" class="tab-content">
-                                    <h4 class="pt-2 text-uppercase">Delivery</h4>
-                                    <ul class="list-items">
-                                        <li>Dispatch: Within 24 Hours</li>
-                                        <li>Free shipping across all products on a minimum purchase of $50.</li>
-                                        <li>International delivery time - 7-10 business days</li>
-                                        <li>Cash on delivery might be available</li>
-                                        <li>Easy 30 days returns and exchanges</li>
-                                    </ul>
-                                    <h4 class="pt-2 text-uppercase">Returns</h4>
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-                                    <h4 class="pt-2 text-uppercase">Shipping</h4>
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage.</p>
+
+                                    <p>@Model.shipping_return</p>
+
                                 </div>
                                 <!--End Shipping & Returns-->
                             </div>
@@ -287,10 +323,10 @@
                     <div class="product-image">
                         <a href="#" class="rounded-3 product-thumb">
                             <!--Image-->
-                            <img class="primary blur-up lazyload rounded-3"  src="~/Images/Content/p1.jpg" alt="Air Filter" title="Air Filter" />
+                            <img class="primary blur-up lazyload rounded-3" src="~/Images/Content/p1.jpg" alt="Air Filter" title="Air Filter" />
                             <!--End Image-->
                             <!--Hover Image-->
-                            <img class="hover blur-up lazyload rounded-3"  src="~/Images/Content/p1.jpg" alt="Air Filter" title="Air Filter" />
+                            <img class="hover blur-up lazyload rounded-3" src="~/Images/Content/p1.jpg" alt="Air Filter" title="Air Filter" />
                             <!--End Hover Image-->
                         </a>
                         <!--Button Action-->
@@ -320,7 +356,7 @@
                     <div class="product-image">
                         <a href="#" class="rounded-3 product-thumb">
                             <!--Image-->
-                            <img class="blur-up lazyload rounded-3"  src="~/Images/Content/p3.jpg" alt="Front Wheel Hub For Fiat Punto Diesel " title="Front Wheel Hub For Fiat Punto Diesel " />
+                            <img class="blur-up lazyload rounded-3" src="~/Images/Content/p3.jpg" alt="Front Wheel Hub For Fiat Punto Diesel " title="Front Wheel Hub For Fiat Punto Diesel " />
                             <!--End Image-->
                         </a>
                         <!--Product Label-->
@@ -356,7 +392,7 @@
                             <img class="primary blur-up lazyload rounded-3" src="~/Images/Content/p2.jpg" alt="Radio Transmitter Adapter" title="Radio Transmitter Adapter" />
                             <!--End Image-->
                             <!--Hover Image-->
-                            <img class="hover blur-up lazyload rounded-3"  src="~/Images/Content/p2.jpg" alt="Radio Transmitter Adapter" title="Radio Transmitter Adapter" />
+                            <img class="hover blur-up lazyload rounded-3" src="~/Images/Content/p2.jpg" alt="Radio Transmitter Adapter" title="Radio Transmitter Adapter" />
                             <!--End Hover Image-->
                         </a>
                         <!--Button Action-->
@@ -386,7 +422,7 @@
                     <div class="product-image">
                         <a href="#" class="rounded-3 product-thumb">
                             <!--Image-->
-                            <img class="primary blur-up lazyload rounded-3"  src="~/Images/Content/p4.jpg" alt="Hankook DynaPro AT-m RF10" title="Hankook DynaPro AT-m RF10" />
+                            <img class="primary blur-up lazyload rounded-3" src="~/Images/Content/p4.jpg" alt="Hankook DynaPro AT-m RF10" title="Hankook DynaPro AT-m RF10" />
                             <!--End Image-->
                             <!--Hover Image-->
                             <img class="hover blur-up lazyload rounded-3" src="~/Images/Content/p4.jpg" alt="Hankook DynaPro AT-m RF10" title="Hankook DynaPro AT-m RF10" />
@@ -419,7 +455,7 @@
                     <div class="product-image">
                         <a href="#" class="rounded-3 product-thumb">
                             <!--Image-->
-                            <img class="blur-up lazyload rounded-3"  src="~/Images/Content/p4.jpg" alt="ACDelco 335 Professional" title="ACDelco 335 Professional" />
+                            <img class="blur-up lazyload rounded-3" src="~/Images/Content/p4.jpg" alt="ACDelco 335 Professional" title="ACDelco 335 Professional" />
                             <!--End Image-->
                         </a>
                         <!--Product Label-->
@@ -452,11 +488,5 @@
     <!--End Related products-->
 
 </main><!--End Page Content-->
-
-
-
-
-
-
 
 

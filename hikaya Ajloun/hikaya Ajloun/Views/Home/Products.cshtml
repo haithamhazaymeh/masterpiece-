@@ -1,4 +1,7 @@
-﻿@{
+﻿@model Tuple<List<hikaya_Ajloun.Models.Product>, List<hikaya_Ajloun.Models.Category>>
+
+
+@{
     ViewBag.Title = "Cart";
     Layout = "~/Views/Shared/Navbar and footer 2.cshtml";
 }
@@ -149,341 +152,35 @@
                     <!--Product Grid-->
                     <div class="products-grid">
                         <div class="row">
-                            <div class="col-6 col-sm-6 col-md-4 col-lg-4">
-                                <!--Product Item-->
-                                <div class="item">
-                                    <!--Product Image-->
-                                    <div class="product-image">
-                                        <a href="#" class="rounded-3 product-thumb">
-                                            <!--Image-->
-                                            <img class="primary blur-up lazyload rounded-3"  src="~/Images/Content/p1.jpg" alt="Hankook DynaPro AT-m RF10" title="Hankook DynaPro AT-m RF10" />
-                                            <!--End Image-->
-                                            <!--Hover Image-->
-                                            <img class="hover blur-up lazyload rounded-3" src="~/Images/Content/p1.jpg" alt="Hankook DynaPro AT-m RF10" title="Hankook DynaPro AT-m RF10" />
-                                            <!--End Hover Image-->
-                                        </a>
-                                        <!--Product Label-->
-                                        <div class="product-labels"><span class="lbl new rounded">New</span></div>
-                                        <!--End Product Label-->
-                                        <!--Button Action-->
-                                        <div class="button-hover">
-                                            <a href="wishlist.html" class="btn btn-wishlist" title="Wishlist"><i class="cpr cp-heart"></i></a>
-                                            <a class="btn pro-addtocart-popup rounded btn-cart btn-primary" href="shopping-cart.html" title="Add To Cart"><i class="cps cp-shopping-cart"></i></a>
-                                        </div>
-                                        <!--End Button Action-->
-                                    </div>
-                                    <!--End Product Image-->
-                                    <!--Product Detail-->
-                                    <div class="product-details d-flex">
-                                        <div class="product-details-in">
-                                            <div class="h3"><a href="#">Dried fog</a></div>
-                                            <div class="price-box"><span class="price">$20.00</span></div>
-                                        </div>
-                                        <div class="product-review">
-                                            <i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cps cp-star-half-alt"></i>
-                                        </div>
-                                    </div>
-                                    <!--End Product Detail-->
-                                </div>
-                                <!--End Product Item-->
-                            </div>
-                            <div class="col-6 col-sm-6 col-md-4 col-lg-4">
-                                <!--Product Item-->
-                                <div class="item">
-                                    <!--Product Image-->
-                                    <div class="product-image">
-                                        <a href="#" class="rounded-3 product-thumb">
-                                            <!--Image-->
-                                            <img class="primary blur-up lazyload rounded-3" src="~/Images/Content/p2.jpg" alt="Carbon Steering Wheel" title="Carbon Steering Wheel" />
-                                            <!--End Image-->
-                                            <!--Hover Image-->
-                                            <img class="hover blur-up lazyload rounded-3"  src="~/Images/Content/p2.jpg" alt="Carbon Steering Wheel" title="Carbon Steering Wheel" />
-                                            <!--End Hover Image-->
-                                        </a>
-                                        <!--Button Action-->
-                                        <div class="button-hover">
-                                            <a href="wishlist.html" class="btn btn-wishlist" title="Wishlist"><i class="cpr cp-heart"></i></a>
-                                            <a class="btn pro-addtocart-popup rounded btn-cart btn-primary" href="shopping-cart.html" title="Add To Cart"><i class="cps cp-shopping-cart"></i></a>
-                                        </div>
-                                        <!--End Button Action-->
-                                    </div>
-                                    <!--End Product Image-->
-                                    <!--Product Detail-->
-                                    <div class="product-details d-flex">
-                                        <div class="product-details-in">
-                                            <div class="h3"><a href="#">Local sumac</a></div>
-                                            <div class="price-box"><span class="price">$25.00</span></div>
-                                        </div>
-                                        <div class="product-review">
-                                            <i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cpr cp-star"></i>
-                                        </div>
-                                    </div>
-                                    <!--End Product Detail-->
-                                </div>
-                                <!--End Product Item-->
-                            </div>
-                            <div class="col-6 col-sm-6 col-md-4 col-lg-4">
-                                <!--Product Item-->
-                                <div class="item">
-                                    <!--Product Image-->
-                                    <div class="product-image">
-                                        <a href="#" class="rounded-3 product-thumb">
-                                            <!--Image-->
-                                            <img class="primary blur-up lazyload rounded-3"  src="~/Images/Content/p3.jpg" alt="Michelin Season Radial Tire" title="Michelin Season Radial Tire" />
-                                            <!--End Image-->
-                                            <!--Hover Image-->
-                                            <img class="hover blur-up lazyload rounded-3"  src="~/Images/Content/p3.jpg" alt="Michelin Season Radial Tire" title="Michelin Season Radial Tire" />
-                                            <!--End Hover Image-->
-                                        </a>
-                                        <!--Product Label-->
-                                        <div class="product-labels"><span class="lbl on-sale rounded">-5%</span></div>
-                                        <!--End Product Label-->
-                                        <!--Button Action-->
-                                        <div class="button-hover">
-                                            <a href="wishlist.html" class="btn btn-wishlist" title="Wishlist"><i class="cpr cp-heart"></i></a>
-                                            <a class="btn pro-addtocart-popup rounded btn-cart btn-primary" href="shopping-cart.html" title="Add To Cart"><i class="cps cp-shopping-cart"></i></a>
-                                        </div>
-                                        <!--End Button Action-->
-                                    </div>
-                                    <!--End Product Image-->
-                                    <!--Product Detail-->
-                                    <div class="product-details d-flex">
-                                        <div class="product-details-in">
-                                            <div class="h3"><a href="#">Dried sage</a></div>
-                                            <div class="price-box"><span class="price">$10.00</span></div>
-                                        </div>
-                                        <div class="product-review">
-                                            <i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cpr cp-star"></i><i class="cpr cp-star"></i><i class="cpr cp-star"></i>
-                                        </div>
-                                    </div>
-                                    <!--End Product Detail-->
-                                </div>
-                                <!--End Product Item-->
-                            </div>
-                            <div class="col-6 col-sm-6 col-md-4 col-lg-4">
-                                <!--Product Item-->
-                                <div class="item">
-                                    <!--Product Image-->
-                                    <div class="product-image">
-                                        <a href="#" class="rounded-3 product-thumb">
-                                            <!--Image-->
-                                            <img class="primary blur-up lazyload rounded-3"  src="~/Images/Content/p1.jpg" alt="Hankook DynaPro AT-m RF10" title="Hankook DynaPro AT-m RF10" />
-                                            <!--End Image-->
-                                            <!--Hover Image-->
-                                            <img class="hover blur-up lazyload rounded-3"  src="~/Images/Content/p1.jpg" alt="Hankook DynaPro AT-m RF10" title="Hankook DynaPro AT-m RF10" />
-                                            <!--End Hover Image-->
-                                        </a>
-                                        <!--Product Label-->
-                                        <div class="product-labels"><span class="lbl new rounded">New</span></div>
-                                        <!--End Product Label-->
-                                        <!--Button Action-->
-                                        <div class="button-hover">
-                                            <a href="wishlist.html" class="btn btn-wishlist" title="Wishlist"><i class="cpr cp-heart"></i></a>
-                                            <a class="btn pro-addtocart-popup rounded btn-cart btn-primary" href="shopping-cart.html" title="Add To Cart"><i class="cps cp-shopping-cart"></i></a>
-                                        </div>
-                                        <!--End Button Action-->
-                                    </div>
-                                    <!--End Product Image-->
-                                    <!--Product Detail-->
-                                    <div class="product-details d-flex">
-                                        <div class="product-details-in">
-                                            <div class="h3"><a href="#">Dried fog</a></div>
-                                            <div class="price-box"><span class="price">$20.00</span></div>
-                                        </div>
-                                        <div class="product-review">
-                                            <i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cps cp-star-half-alt"></i>
-                                        </div>
-                                    </div>
-                                    <!--End Product Detail-->
-                                </div>
-                                <!--End Product Item-->
-                            </div>
-                            <div class="col-6 col-sm-6 col-md-4 col-lg-4">
-                                <!--Product Item-->
-                                <div class="item">
-                                    <!--Product Image-->
-                                    <div class="product-image">
-                                        <a href="#" class="rounded-3 product-thumb">
-                                            <!--Image-->
-                                            <img class="primary blur-up lazyload rounded-3"  src="~/Images/Content/p2.jpg" alt="Carbon Steering Wheel" title="Carbon Steering Wheel" />
-                                            <!--End Image-->
-                                            <!--Hover Image-->
-                                            <img class="hover blur-up lazyload rounded-3"  src="~/Images/Content/p2.jpg" alt="Carbon Steering Wheel" title="Carbon Steering Wheel" />
-                                            <!--End Hover Image-->
-                                        </a>
-                                        <!--Button Action-->
-                                        <div class="button-hover">
-                                            <a href="wishlist.html" class="btn btn-wishlist" title="Wishlist"><i class="cpr cp-heart"></i></a>
-                                            <a class="btn pro-addtocart-popup rounded btn-cart btn-primary" href="shopping-cart.html" title="Add To Cart"><i class="cps cp-shopping-cart"></i></a>
-                                        </div>
-                                        <!--End Button Action-->
-                                    </div>
-                                    <!--End Product Image-->
-                                    <!--Product Detail-->
-                                    <div class="product-details d-flex">
-                                        <div class="product-details-in">
-                                            <div class="h3"><a href="#">Local sumac</a></div>
-                                            <div class="price-box"><span class="price">$25.00</span></div>
-                                        </div>
-                                        <div class="product-review">
-                                            <i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cpr cp-star"></i>
-                                        </div>
-                                    </div>
-                                    <!--End Product Detail-->
-                                </div>
-                                <!--End Product Item-->
-                            </div>
-                            <div class="col-6 col-sm-6 col-md-4 col-lg-4">
-                                <!--Product Item-->
-                                <div class="item">
-                                    <!--Product Image-->
-                                    <div class="product-image">
-                                        <a href="#" class="rounded-3 product-thumb">
-                                            <!--Image-->
-                                            <img class="primary blur-up lazyload rounded-3" src="~/Images/Content/p3.jpg" alt="Michelin Season Radial Tire" title="Michelin Season Radial Tire" />
-                                            <!--End Image-->
-                                            <!--Hover Image-->
-                                            <img class="hover blur-up lazyload rounded-3"  src="~/Images/Content/p3.jpg" alt="Michelin Season Radial Tire" title="Michelin Season Radial Tire" />
-                                            <!--End Hover Image-->
-                                        </a>
-                                        <!--Product Label-->
-                                        <div class="product-labels"><span class="lbl on-sale rounded">-5%</span></div>
-                                        <!--End Product Label-->
-                                        <!--Button Action-->
-                                        <div class="button-hover">
-                                            <a href="wishlist.html" class="btn btn-wishlist" title="Wishlist"><i class="cpr cp-heart"></i></a>
-                                            <a class="btn pro-addtocart-popup rounded btn-cart btn-primary" href="shopping-cart.html" title="Add To Cart"><i class="cps cp-shopping-cart"></i></a>
-                                        </div>
-                                        <!--End Button Action-->
-                                    </div>
-                                    <!--End Product Image-->
-                                    <!--Product Detail-->
-                                    <div class="product-details d-flex">
-                                        <div class="product-details-in">
-                                            <div class="h3"><a href="#">Dried sage</a></div>
-                                            <div class="price-box"><span class="price">$10.00</span></div>
-                                        </div>
-                                        <div class="product-review">
-                                            <i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cpr cp-star"></i><i class="cpr cp-star"></i><i class="cpr cp-star"></i>
-                                        </div>
-                                    </div>
-                                    <!--End Product Detail-->
-                                </div>
-                                <!--End Product Item-->
-                            </div>
+
+                            @foreach (var item in Model.Item1)
+                            {
 
 
-                            <div class="col-6 col-sm-6 col-md-4 col-lg-4">
-                                <!--Product Item-->
-                                <div class="item">
-                                    <!--Product Image-->
-                                    <div class="product-image">
-                                        <a href="#" class="rounded-3 product-thumb">
-                                            <!--Image-->
-                                            <img class="primary blur-up lazyload rounded-3"  src="~/Images/Content/p1.jpg" alt="Hankook DynaPro AT-m RF10" title="Hankook DynaPro AT-m RF10" />
-                                            <!--End Image-->
-                                            <!--Hover Image-->
-                                            <img class="hover blur-up lazyload rounded-3"  src="~/Images/Content/p1.jpg" alt="Hankook DynaPro AT-m RF10" title="Hankook DynaPro AT-m RF10" />
-                                            <!--End Hover Image-->
-                                        </a>
-                                        <!--Product Label-->
-                                        <div class="product-labels"><span class="lbl new rounded">New</span></div>
-                                        <!--End Product Label-->
-                                        <!--Button Action-->
-                                        <div class="button-hover">
-                                            <a href="wishlist.html" class="btn btn-wishlist" title="Wishlist"><i class="cpr cp-heart"></i></a>
-                                            <a class="btn pro-addtocart-popup rounded btn-cart btn-primary" href="shopping-cart.html" title="Add To Cart"><i class="cps cp-shopping-cart"></i></a>
+
+                            <div class="col-md-8 col-lg-6 col-xl-4">
+                                <div class="card text-black">
+                                 <a href="/Home/SingleProduct?id=@item.productId">   <img src="~/Images/Products/@item.productImage_1"
+                                         class="card-img-top"
+                                         alt="@item.productDescription" />   </a>
+                                    <div class="card-body">
+                                        <div class="text-center">
+                                            <a href="/Home/SingleProduct?id=@item.productId">
+                                                <h5 class="card-title">@item.productName</h5>
+                                                </a>
                                         </div>
-                                        <!--End Button Action-->
-                                    </div>
-                                    <!--End Product Image-->
-                                    <!--Product Detail-->
-                                    <div class="product-details d-flex">
-                                        <div class="product-details-in">
-                                            <div class="h3"><a href="#">Dried fog</a></div>
-                                            <div class="price-box"><span class="price">$20.00</span></div>
+                                        <div class="d-flex justify-content-center total font-weight-bold mt-4">
+                                            <span>$ @item.price</span>
                                         </div>
-                                        <div class="product-review">
-                                            <i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cps cp-star-half-alt"></i>
+                                        <div class="d-flex justify-content-center total font-weight-bold mt-4">
+                                            <a class="option1 btn btn-cart" href="@Url.Action("Buy", "Carts", new { id = item.productId })">Add To Cart</a>
+
                                         </div>
                                     </div>
-                                    <!--End Product Detail-->
                                 </div>
-                                <!--End Product Item-->
                             </div>
-                            <div class="col-6 col-sm-6 col-md-4 col-lg-4">
-                                <!--Product Item-->
-                                <div class="item">
-                                    <!--Product Image-->
-                                    <div class="product-image">
-                                        <a href="#" class="rounded-3 product-thumb">
-                                            <!--Image-->
-                                            <img class="primary blur-up lazyload rounded-3"  src="~/Images/Content/p2.jpg" alt="Carbon Steering Wheel" title="Carbon Steering Wheel" />
-                                            <!--End Image-->
-                                            <!--Hover Image-->
-                                            <img class="hover blur-up lazyload rounded-3"  src="~/Images/Content/p2.jpg" alt="Carbon Steering Wheel" title="Carbon Steering Wheel" />
-                                            <!--End Hover Image-->
-                                        </a>
-                                        <!--Button Action-->
-                                        <div class="button-hover">
-                                            <a href="wishlist.html" class="btn btn-wishlist" title="Wishlist"><i class="cpr cp-heart"></i></a>
-                                            <a class="btn pro-addtocart-popup rounded btn-cart btn-primary" href="shopping-cart.html" title="Add To Cart"><i class="cps cp-shopping-cart"></i></a>
-                                        </div>
-                                        <!--End Button Action-->
-                                    </div>
-                                    <!--End Product Image-->
-                                    <!--Product Detail-->
-                                    <div class="product-details d-flex">
-                                        <div class="product-details-in">
-                                            <div class="h3"><a href="#">Local sumac</a></div>
-                                            <div class="price-box"><span class="price">$25.00</span></div>
-                                        </div>
-                                        <div class="product-review">
-                                            <i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cpr cp-star"></i>
-                                        </div>
-                                    </div>
-                                    <!--End Product Detail-->
-                                </div>
-                                <!--End Product Item-->
-                            </div>
-                            <div class="col-6 col-sm-6 col-md-4 col-lg-4">
-                                <!--Product Item-->
-                                <div class="item">
-                                    <!--Product Image-->
-                                    <div class="product-image">
-                                        <a href="#" class="rounded-3 product-thumb">
-                                            <!--Image-->
-                                            <img class="primary blur-up lazyload rounded-3"  src="~/Images/Content/p3.jpg" alt="Michelin Season Radial Tire" title="Michelin Season Radial Tire" />
-                                            <!--End Image-->
-                                            <!--Hover Image-->
-                                            <img class="hover blur-up lazyload rounded-3"  src="~/Images/Content/p3.jpg" alt="Michelin Season Radial Tire" title="Michelin Season Radial Tire" />
-                                            <!--End Hover Image-->
-                                        </a>
-                                        <!--Product Label-->
-                                        <div class="product-labels"><span class="lbl on-sale rounded">-5%</span></div>
-                                        <!--End Product Label-->
-                                        <!--Button Action-->
-                                        <div class="button-hover">
-                                            <a href="wishlist.html" class="btn btn-wishlist" title="Wishlist"><i class="cpr cp-heart"></i></a>
-                                            <a class="btn pro-addtocart-popup rounded btn-cart btn-primary" href="shopping-cart.html" title="Add To Cart"><i class="cps cp-shopping-cart"></i></a>
-                                        </div>
-                                        <!--End Button Action-->
-                                    </div>
-                                    <!--End Product Image-->
-                                    <!--Product Detail-->
-                                    <div class="product-details d-flex">
-                                        <div class="product-details-in">
-                                            <div class="h3"><a href="#">Dried sage</a></div>
-                                            <div class="price-box"><span class="price">$10.00</span></div>
-                                        </div>
-                                        <div class="product-review">
-                                            <i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cpr cp-star"></i><i class="cpr cp-star"></i><i class="cpr cp-star"></i>
-                                        </div>
-                                    </div>
-                                    <!--End Product Detail-->
-                                </div>
-                                <!--End Product Item-->
-                            </div>
+
+                            }
 
                             <!--Pagination-->
                             <div class="row">

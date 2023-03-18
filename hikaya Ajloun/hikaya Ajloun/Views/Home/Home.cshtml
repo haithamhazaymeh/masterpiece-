@@ -1,4 +1,4 @@
-﻿@model List<hikaya_Ajloun.Models.Article>
+﻿@model Tuple<List<hikaya_Ajloun.Models.Article>, List<hikaya_Ajloun.Models.Product>, List<hikaya_Ajloun.Models.Category>>
 @using System.IO;
 
 @{
@@ -10,10 +10,10 @@
 <div class="banner py-0">
     <p class="rs-p-wp-fix"></p>
     <rs-module-wrap id="rev_slider_15_1_wrapper" data-alias="slider-1" data-source="gallery" style="background:transparent;padding:0;margin:0px auto;margin-top:0;margin-bottom:0;">
-        <rs-module  id="rev_slider_15_1" data-version="6.3.2">
+        <rs-module id="rev_slider_15_1" data-version="6.3.2">
             <rs-slides>
                 <rs-slide data-key="rs-43" data-title="Slide" data-thumb="~/Images/Content/main slaid.jpg" data-anim="ei:d;eo:d;s:d;r:default;t:crossfade;sl:d;">
-                    <img src="~/Images/Content/main slaid.jpg" title="banner-1-1.jpg"  data-panzoom="d:10000ms;e:power0.in;ss:120%;se:100%;bs:0px;os:0px/0;" class="rev-slidebg" data-no-retina>
+                    <img src="~/Images/Content/main slaid.jpg" title="banner-1-1.jpg" data-panzoom="d:10000ms;e:power0.in;ss:120%;se:100%;bs:0px;os:0px/0;" class="rev-slidebg" data-no-retina>
                     <!--
                                             -->
                     <h5 id="slider-15-slide-43-layer-1"
@@ -185,40 +185,87 @@
                     <div class="pq-filters">
                         <div class="filters pq-filter-button-group">
                             <ul>
-                                <li class="active pq-filter-btn" data-filter="*">All</li>
-                                <li class="pq-filter-btn" data-filter=".olive"></li>
-                                <li class="pq-filter-btn" data-filter=".herbs">Herbs</li>
-                                <li class="pq-filter-btn" data-filter=".handmade">Handmade</li>
-                                <li class="pq-filter-btn" data-filter=".oils">Oils</li>
+                                @foreach (var item in Model.Item3)
+                                {
+                                    if (item.categoryName == "All")
+                                    {
+                                        <li class="active pq-filter-btn" data-filter="*">@item.categoryName</li>
+
+
+                                    }
+
+
+                                }
+
+
+                                @{
+
+                                    int x = 0;
+                                }
+                                @foreach (var item in Model.Item3)
+                                {
+                                    x++;
+                                    if (item.categoryName != "All")
+
+                                    {
+                                        <li class=" pq-filter-btn" data-filter=".@item.categoryName">@item.categoryName</li>
+
+                                    }
+                                    if (x == 6)
+                                    {
+                                        break;
+                                    }
+
+                                }
                             </ul>
                         </div>
                     </div>
                     <div class="pq-grid " data-next_items="3" data-initial_items="6">
-                        <div class="pq-grid-item pq-filter-items pq-col-4  pq-crop-img olive">
-                            <div class="box">
-                                <div>
-                                    <div class="img-box">
-                                        <img src="~/Images/Content/Stuffed-Mammoth.png" alt="">
-                                    </div>
-                                    <div class="detail-box">
-                                        <h5>
-                                            Stuffed Olives
-                                        </h5>
-                                        <p>
-                                            These are whole olives that have been pitted and filled with a variety of ingredients, such as cheese, garlic, or nuts.
-                                        </p>
-                                        <div class="options">
-                                            <h6>
-                                                $20
-                                            </h6>
-                                            <a href="">
-                                                <i class="fa-solid fa-cart-shopping"></i>
+
+                        @foreach (var item in Model.Item2)
+                        {
+                            <div class="pq-grid-item pq-filter-items pq-col-4  pq-crop-img @item.Category.categoryName">
+                                <div class="box">
+                                    <div>
+                                        <div width="50%" class="img-box">
+                                            <a href="/Home/SingleProduct?id=@item.productId"> <img src="~/Images/Products/@item.productImage_1" alt=""> </a>
+                                        </div>
+                                        <div class="detail-box">
+                                            <a href="/Home/SingleProduct?id=@item.productId">
+                                                <h5>
+                                                    @item.productName
+                                                </h5>
                                             </a>
+                                            <p>
+                                                @if (item.productDescription.Length > 220)
+                                                {
+                                                    var cutIndex = item.productDescription.LastIndexOf(" ", 220);
+                                                    var cutDescription = item.productDescription.Substring(0, (cutIndex > 0 ? cutIndex : 220)) + "...";
+                                                    @cutDescription
+                                                }
+                                                else
+                                                {
+                                                    @item.productDescription
+                                                }
+                                            </p>
+                                            <div class="options">
+                                                <h6>
+                                                    $ @item.price
+                                                </h6>
+                                                <a class="option1" href="@Url.Action("Buy", "Carts", new { id = item.productId })"> <i class="fa-solid fa-cart-shopping"> </i></a>
+
+                                                @*<a href="/Carts/Cart/Buy?id=@item.productId">
+                                                    <i class="fa-solid fa-cart-shopping"> </i>
+
+
+
+                                                </a>*@
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        }
 
                     </div>
                     <div class="text-center">
@@ -676,7 +723,7 @@
             <div class="col-lg-12">
                 <div class="owl-carousel owl-loaded owl-drag" data-dots="true" data-nav="false" data-desk_num="3" data-lap_num="2" data-tab_num="2" data-mob_num="1" data-mob_sm="1" data-autoplay="true" data-loop="true" data-margin="30">
 
-                    @foreach (var item in Model.Take(9))
+                    @foreach (var item in Model.Item1.Take(9))
                     {
 
                         <div class="item">

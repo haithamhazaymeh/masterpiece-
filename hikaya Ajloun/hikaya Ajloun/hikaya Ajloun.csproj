@@ -192,6 +192,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArticlesController.cs" />
     <Compile Include="Controllers\authorsController.cs" />
+    <Compile Include="Controllers\CartsController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -216,6 +217,9 @@
     <Compile Include="Models\AspNetUserLogin.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AspNetUserRole.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\author.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -223,9 +227,6 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Category.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\checkout.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\C__MigrationHistory.cs">
@@ -247,6 +248,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Order.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Order_Details.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\place.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -377,6 +384,15 @@
     <Content Include="Images\logos\logo-1.png" />
     <Content Include="Images\logos\logo.png" />
     <Content Include="Images\logos\حكاية عتجلون.png" />
+    <Content Include="Images\Products\alandalus_university_logo.png" />
+    <Content Include="Images\Products\blog1.jpg" />
+    <Content Include="Images\Products\blog2.jpg" />
+    <Content Include="Images\Products\blog3.jpg" />
+    <Content Include="Images\Products\F69zC3YRAHYo191vboGRfNtuNVYdwMdEhgT9NJEk%40md.jpg" />
+    <Content Include="Images\Products\filmora.png" />
+    <Content Include="Images\Products\images.jfif" />
+    <Content Include="Images\Products\Screenshot 2023-03-09 113826.png" />
+    <Content Include="Images\Products\task 8-3 2.png" />
     <Content Include="js\ajax_sendmail.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\custom.js" />
@@ -842,6 +858,12 @@
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="Views\Carts\Create.cshtml" />
+    <Content Include="Views\Carts\Delete.cshtml" />
+    <Content Include="Views\Carts\Details.cshtml" />
+    <Content Include="Views\Carts\Edit.cshtml" />
+    <Content Include="Views\Carts\Index.cshtml" />
+    <Content Include="Views\Carts\Cart.cshtml" />
     <None Include="Views\Home\aboutus.cshtml" />
     <None Include="Views\Home\Blog.cshtml" />
     <Content Include="Dashboard\build\config\postcss.config.js" />
@@ -2985,7 +3007,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="File\ArticleFile\" />
     <Folder Include="Images\article\" />
-    <Folder Include="Images\Products\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

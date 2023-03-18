@@ -51,6 +51,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserRoles">
+      <EntityTypeMapping TypeName="Model.AspNetUserRole">
+        <MappingFragment StoreEntitySet="AspNetUserRoles">
+          <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="AspNetUsers">
       <EntityTypeMapping TypeName="Model.AspNetUser">
         <MappingFragment StoreEntitySet="AspNetUsers">
@@ -72,6 +81,7 @@
     <EntitySetMapping Name="authors">
       <EntityTypeMapping TypeName="Model.author">
         <MappingFragment StoreEntitySet="authors">
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
           <ScalarProperty Name="authorname" ColumnName="authorname" />
           <ScalarProperty Name="authorid" ColumnName="authorid" />
         </MappingFragment>
@@ -80,6 +90,7 @@
     <EntitySetMapping Name="Carts">
       <EntityTypeMapping TypeName="Model.Cart">
         <MappingFragment StoreEntitySet="Cart">
+          <ScalarProperty Name="is_chekout" ColumnName="is chekout" />
           <ScalarProperty Name="quantity" ColumnName="quantity" />
           <ScalarProperty Name="amount" ColumnName="amount" />
           <ScalarProperty Name="userId" ColumnName="userId" />
@@ -99,10 +110,20 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="checkouts">
-      <EntityTypeMapping TypeName="Model.checkout">
-        <MappingFragment StoreEntitySet="checkout">
-          <ScalarProperty Name="user_id" ColumnName="user_id" />
+    <EntitySetMapping Name="Order_Details">
+      <EntityTypeMapping TypeName="Model.Order_Details">
+        <MappingFragment StoreEntitySet="Order_Details">
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Product_id" ColumnName="Product_id" />
+          <ScalarProperty Name="Order_id" ColumnName="Order_id" />
+          <ScalarProperty Name="OrderDetails_id" ColumnName="OrderDetails_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="Model.Order">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
           <ScalarProperty Name="city" ColumnName="city" />
           <ScalarProperty Name="Payment_Mthod" ColumnName="Payment Mthod" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
@@ -152,6 +173,7 @@
     <EntitySetMapping Name="Reviews">
       <EntityTypeMapping TypeName="Model.Review">
         <MappingFragment StoreEntitySet="Reviews">
+          <ScalarProperty Name="User_id" ColumnName="User_id" />
           <ScalarProperty Name="userImage" ColumnName="userImage" />
           <ScalarProperty Name="userName" ColumnName="userName" />
           <ScalarProperty Name="comment" ColumnName="comment" />
@@ -171,13 +193,5 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="AspNetUserRoles" TypeName="Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
-      <EndProperty Name="AspNetUser">
-        <ScalarProperty Name="Id" ColumnName="UserId" />
-      </EndProperty>
-      <EndProperty Name="AspNetRole">
-        <ScalarProperty Name="Id" ColumnName="RoleId" />
-      </EndProperty>
-    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

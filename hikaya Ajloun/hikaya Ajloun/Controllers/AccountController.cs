@@ -22,7 +22,7 @@ namespace hikaya_Ajloun.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -34,9 +34,9 @@ namespace hikaya_Ajloun.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -66,8 +66,12 @@ namespace hikaya_Ajloun.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl , int?id)
         {
+
+            hikaya_AjlounEntities3 db = new hikaya_AjlounEntities3();
+            AspNetUser user = new AspNetUser();
+
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -75,11 +79,35 @@ namespace hikaya_Ajloun.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
+
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var roleId = db.AspNetUserRoles.Where(x => x.UserEmail == model.Email).FirstOrDefault();
+
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToAction("Home","Home");
+
+                    if (roleId != null && roleId.RoleId == 1.ToString())
+                    {
+                        return RedirectToAction("Dashboard", "Dashboard");
+
+                    }
+                    else if (roleId != null && roleId.RoleId == 3.ToString())
+                    {
+                        Cart cart1 = db.Carts.Find(id);
+                        if (cart1 == null)
+                        {
+                            return RedirectToAction("Home", "Home");
+
+                        }
+                        else
+                        {
+                            return RedirectToAction("Carts", "Cart");
+
+                        }
+                    }
+
+                    return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -90,6 +118,7 @@ namespace hikaya_Ajloun.Controllers
                     return View(model);
             }
         }
+   
 
         //
         // GET: /Account/VerifyCode
@@ -449,7 +478,7 @@ namespace hikaya_Ajloun.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Home", "Home");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

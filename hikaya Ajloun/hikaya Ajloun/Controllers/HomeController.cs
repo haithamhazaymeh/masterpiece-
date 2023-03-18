@@ -1,4 +1,5 @@
 ﻿using hikaya_Ajloun.Models;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,12 @@ namespace hikaya_Ajloun.Controllers
         private hikaya_AjlounEntities3 db = new hikaya_AjlounEntities3();
         public ActionResult Home()
         {
-            var data = db.Articles.ToList();
+            var articl = db.Articles.ToList();
+            var product = db.Products.ToList();
+            var category = db.Categories.Where(x => x.type == "Products").ToList();
+            return View(Tuple.Create(articl, product , category));
 
-            return View(data);
+
         }
 
         public ActionResult aboutus()
@@ -26,9 +30,9 @@ namespace hikaya_Ajloun.Controllers
 
         public ActionResult Products()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            var product = db.Products.ToList();
+            var category = db.Categories.Where(x => x.type == "Products").ToList();
+            return View(Tuple.Create( product, category));
         }
 
         public ActionResult Blog()
@@ -62,12 +66,14 @@ namespace hikaya_Ajloun.Controllers
             return View();
         }
 
-        public ActionResult Cart()
-        {
-            ViewBag.Message = "Your application description page.";
+        //public ActionResult Cart()
+        //{
+        //    ViewBag.Message = "Your application description page.";
 
-            return View();
-        }
+        //    return View();
+        //}
+
+
 
         public ActionResult Chekout()
         {
@@ -84,11 +90,14 @@ namespace hikaya_Ajloun.Controllers
         }
 
 
-        public ActionResult SingleProduct()
+        public ActionResult SingleProduct(int id)
         {
+
+
+            var product = db.Products.Find(id);
             ViewBag.Message = "Your application description page.";
 
-            return View();
+            return View(product);
         }
 
         public ActionResult SingleBlog(int id)
