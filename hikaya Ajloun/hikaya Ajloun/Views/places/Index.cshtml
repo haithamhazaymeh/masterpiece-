@@ -1,0 +1,172 @@
+﻿@model IEnumerable<hikaya_Ajloun.Models.place>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hikayat Ajloun Dashboard</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="~/Dashboard/https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/jqvmap/jqvmap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Dashboard/dist/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/daterangepicker/daterangepicker.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/summernote/summernote-bs4.min.css">
+    <link rel="shortcut icon" href="~/Images/logos/favicon.png">
+
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+
+    <style>
+        .thumbnail {
+            top: -50px;
+            left: -35px;
+            display: block;
+            z-index: 999;
+            cursor: pointer;
+            -webkit-transition-property: all;
+            -webkit-transition-duration: 0.3s;
+            -webkit-transition-timing-function: ease;
+        }
+
+            .thumbnail:hover {
+                transform: scale(3);
+            }
+    </style>
+
+    @RenderPage("~/Views/Shared/_saidbar-navbar.cshtml")
+
+    <div style="padding:30px" class="content-wrapper">
+
+
+        <div class="preloader flex-column justify-content-center align-items-center">
+            <img class="animation__shake" src="~/Images/logos/Hekayt Ajloun logo Green.png" alt="Hekaya Ajloun" height="60" width="150">
+        </div>
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.placeName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.placeImage1)
+                </th>
+                
+                <th>
+                    @Html.DisplayNameFor(model => model.description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.price_per_day)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.owner)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.phonenumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Category.categoryName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Review.comment)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.placeName)
+                    </td>
+                    <td>
+                        <img alt="" class="thumbnail" src="~/Images/places/@item.placeImage1" style="height:70px;width:70px;" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.price_per_day)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.owner)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.phonenumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category.categoryName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Review.comment)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.placeId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.placeId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.placeId })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+
+
+
+
+
+
+
+
+
+    @RenderPage("~/Views/Shared/footer.cshtml")
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+    <script src="~/Dashboard//plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/Dashboard//plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/Dashboard//dist/js/adminlte.min.js"></script>
+    <!-- Summernote -->
+    <script src="~/Dashboard//plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- CodeMirror -->
+    <script src="~/Dashboard//plugins/codemirror/codemirror.js"></script>
+    <script src="~/Dashboard//plugins/codemirror/mode/css/css.js"></script>
+    <script src="~/Dashboard//plugins/codemirror/mode/xml/xml.js"></script>
+    <script src="~/Dashboard//plugins/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/Dashboard//dist/js/demo.js"></script>
+    <!-- Page specific script -->
+    <script>$(function () {
+            // Summernote
+            $('#summernote').summernote()
+
+            // CodeMirror
+            CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
+                mode: "htmlmixed",
+                theme: "monokai"
+            });
+        })</script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+﻿@model hikaya_Ajloun.Models.Article
+
+@{
+    ViewBag.Title = "Create";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Add Articl</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/fontawesome-free/css/all.min.css">
+
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Dashboard/dist/css/adminlte.min.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/summernote/summernote-bs4.min.css">
+    <!-- CodeMirror -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/codemirror/codemirror.css">
+    <link rel="stylesheet" href="~/Dashboard/plugins/codemirror/theme/monokai.css">
+    <link rel="shortcut icon" href="~/Images/logos/favicon.png">
+
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+
+
+
+
+    @RenderPage("~/Views/Shared/_saidbar-navbar.cshtml")
+
+    <div style="padding:50px" class="content-wrapper">
+
+
+
+        @using (Html.BeginForm("Create", "Articles", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Article</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="col-sm-12 mt-3">
+                @Html.EditorFor(model => model.articleName, new { htmlAttributes = new { @class = "form-control form-control-lg", placeholder = "Titel" } })
+                @Html.ValidationMessageFor(model => model.articleName, "", new { @class = "text-danger" })
+            </div>
+
+            <div class=" row mb-2">
+
+                <div class="form-group col-sm-6 mt-3">
+                    <label>Main image</label>
+                    <div class="input-group custom-file">
+                        <input type="file" class="form-control custom-file-input" id="articleImage" name="articleImage">
+                        <label class="custom-file-label" for="articleImage">Choose file</label>
+                    </div>
+                </div>
+
+
+                <div class="form-group col-sm-6 mt-3">
+                    @Html.LabelFor(model => model.categoryId, "categoryId", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div>
+                        @Html.DropDownList("categoryId", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.categoryId, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <label for="articleFile" class="control-label col-md-2">Article File</label>
+                <div class="col-md-12">
+                    <textarea name="articleFile" id="summernote">
+                                    
+                    </textarea>
+                </div>
+            </div>
+
+            <!--<div class="form-group">
+                @Html.LabelFor(model => model.articleDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.Raw($"<p>{DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss")}</p>")
+                    @Html.ValidationMessageFor(model => model.articleDate, "", new { @class = "text-danger" })
+                </div>
+            </div>-->
+
+
+            @*<div class="form-group">
+            @Html.LabelFor(model => model.articleDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.articleDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.articleDate, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.authorid, "authorid", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("authorid", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.authorid, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div style="float">
+        @Html.ActionLink("Back to List", "Index", null , new { @class = "btn btn-primary" })
+    </div>
+
+</div>
+
+    @RenderPage("~/Views/Shared/footer.cshtml")
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+    <script src="~/Dashboard//plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/Dashboard//plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/Dashboard//dist/js/adminlte.min.js"></script>
+    <!-- Summernote -->
+    <script src="~/Dashboard//plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- CodeMirror -->
+    <script src="~/Dashboard//plugins/codemirror/codemirror.js"></script>
+    <script src="~/Dashboard//plugins/codemirror/mode/css/css.js"></script>
+    <script src="~/Dashboard//plugins/codemirror/mode/xml/xml.js"></script>
+    <script src="~/Dashboard//plugins/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/Dashboard//dist/js/demo.js"></script>
+    <!-- Page specific script -->
+    <script>
+        $(function () {
+            // Summernote
+            $('#summernote').summernote()
+
+            // CodeMirror
+            CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
+                mode: "htmlmixed",
+                theme: "monokai"
+            });
+        })
+    </script>
+</body>
+</html>
+

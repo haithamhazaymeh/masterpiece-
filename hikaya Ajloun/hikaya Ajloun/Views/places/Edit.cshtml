@@ -1,0 +1,210 @@
+﻿@model hikaya_Ajloun.Models.place
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hikayat Ajloun Dashboard</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="~/Dashboard/https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/jqvmap/jqvmap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Dashboard/dist/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/daterangepicker/daterangepicker.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/summernote/summernote-bs4.min.css">
+    <link rel="shortcut icon" href="~/Images/logos/favicon.png">
+
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+
+    <style>
+        .thumbnail {
+            top: -50px;
+            left: -35px;
+            display: block;
+            z-index: 999;
+            cursor: pointer;
+            -webkit-transition-property: all;
+            -webkit-transition-duration: 0.3s;
+            -webkit-transition-timing-function: ease;
+        }
+
+            .thumbnail:hover {
+                transform: scale(3);
+            }
+    </style>
+
+    @RenderPage("~/Views/Shared/_saidbar-navbar.cshtml")
+
+    <div style="padding:30px" class="content-wrapper">
+
+
+        <div class="preloader flex-column justify-content-center align-items-center">
+            <img class="animation__shake" src="~/Images/logos/Hekayt Ajloun logo Green.png" alt="Hekaya Ajloun" height="60" width="150">
+        </div>
+
+        @using (Html.BeginForm("Edit", "places", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>place</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.placeId)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.placeName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.placeName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.placeName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="Raw">
+
+                    <div class="form-group col-sm-3 mt-3">
+                        <label>Main image</label>
+                        <div class="input-group custom-file">
+                            <input type="file" class="form-control custom-file-input" id="placeImage1" name="placeImage1">
+                            <label class="custom-file-label" for="placeImage1">Choose file</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-sm-3 mt-3">
+                        <label>Main image</label>
+                        <div class="input-group custom-file">
+                            <input type="file" class="form-control custom-file-input" id="placeImage2" name="placeImage2">
+                            <label class="custom-file-label" for="placeImage2">Choose file</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-sm-3 mt-3">
+                        <label>Main image</label>
+                        <div class="input-group custom-file">
+                            <input type="file" class="form-control custom-file-input" id="placeImage3" name="placeImage3">
+                            <label class="custom-file-label" for="placeImage3">Choose file</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-sm-3 mt-3">
+                        <label>Main image</label>
+                        <div class="input-group custom-file">
+                            <input type="file" class="form-control custom-file-input" id="placeImage4" name="placeImage4">
+                            <label class="custom-file-label" for="placeImage4">Choose file</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-sm-3 mt-3">
+                        <label>Main image</label>
+                        <div class="input-group custom-file">
+                            <input type="file" class="form-control custom-file-input" id="placeImage5" name="placeImage5">
+                            <label class="custom-file-label" for="placeImage5">Choose file</label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.categoryId, "categoryId", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("categoryId", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.categoryId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.price_per_day, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.price_per_day, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.price_per_day, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.owner, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.owner, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.owner, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.phonenumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.phonenumber, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.phonenumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+        </div>
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+        @RenderPage("~/Views/Shared/footer.cshtml")
+        <!-- ./wrapper -->
+        <!-- jQuery -->
+        <script src="~/Dashboard//plugins/jquery/jquery.min.js"></script>
+        <!-- Bootstrap 4 -->
+        <script src="~/Dashboard//plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- AdminLTE App -->
+        <script src="~/Dashboard//dist/js/adminlte.min.js"></script>
+        <!-- Summernote -->
+        <script src="~/Dashboard//plugins/summernote/summernote-bs4.min.js"></script>
+        <!-- CodeMirror -->
+        <script src="~/Dashboard//plugins/codemirror/codemirror.js"></script>
+        <script src="~/Dashboard//plugins/codemirror/mode/css/css.js"></script>
+        <script src="~/Dashboard//plugins/codemirror/mode/xml/xml.js"></script>
+        <script src="~/Dashboard//plugins/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+        <!-- AdminLTE for demo purposes -->
+        <script src="~/Dashboard//dist/js/demo.js"></script>
+        <!-- Page specific script -->
+        <script>$(function () {
+            // Summernote
+            $('#summernote').summernote()
+
+            // CodeMirror
+            CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
+                mode: "htmlmixed",
+                theme: "monokai"
+            });
+        })</script>
+</body>
+</html>

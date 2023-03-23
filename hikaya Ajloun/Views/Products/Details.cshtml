@@ -1,0 +1,114 @@
+﻿@model hikaya_Ajloun.Models.Product
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Product</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.productName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.productName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.productImage_1)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.productImage_1)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.productImage_2)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.productImage_2)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.productImage_3)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.productImage_3)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.productImage_4)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.productImage_4)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.productImage_5)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.productImage_5)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.price)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.price)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.productDescription)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.productDescription)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.availability)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.availability)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.shipping_return)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.shipping_return)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Category.categoryName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Category.categoryName)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.productId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
