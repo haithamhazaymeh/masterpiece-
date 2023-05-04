@@ -1,0 +1,112 @@
+﻿@model IEnumerable<hikaya_Ajloun.Models.Contact>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/fontawesome-free/css/all.min.css">
+
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Dashboard/dist/css/adminlte.min.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/summernote/summernote-bs4.min.css">
+    <!-- CodeMirror -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/codemirror/codemirror.css">
+    <link rel="stylesheet" href="~/Dashboard/plugins/codemirror/theme/monokai.css">
+    <link rel="shortcut icon" href="~/Images/logos/favicon.png">
+
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+
+
+    @RenderPage("~/Views/Shared/_saidbar-navbar.cshtml")
+
+    <div style="padding:50px" class="content-wrapper">
+        <p>
+            @Html.ActionLink("Create New", "Create",null, new { @class = "btn btn-primary" } )
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PhoneNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Subject)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Message)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        <a href="tel:@Html.DisplayFor(modelItem => item.PhoneNumber)">@Html.DisplayFor(modelItem => item.PhoneNumber)</a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Subject)
+                    </td>
+                    <td>
+                        @{
+                            var words = item.Message.Split(' ');
+                            var shortDescription = String.Join(" ", words.Take(13)) + (words.Length > 13 ? "..." : "");
+                        }
+                        @Html.DisplayFor(modelItem => shortDescription)
+
+                    </td>
+                    <td style="width:20%;">
+                        @Html.ActionLink("Details", "Details", new { id = item.id }, new { @class = "btn btn-info" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.id }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+
+    @RenderPage("~/Views/Shared/footer.cshtml")
+
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+    <script src="~/Dashboard//plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/Dashboard//plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/Dashboard//dist/js/adminlte.min.js"></script>
+    <!-- Summernote -->
+    <script src="~/Dashboard//plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- CodeMirror -->
+    <script src="~/Dashboard//plugins/codemirror/codemirror.js"></script>
+    <script src="~/Dashboard//plugins/codemirror/mode/css/css.js"></script>
+    <script src="~/Dashboard//plugins/codemirror/mode/xml/xml.js"></script>
+    <script src="~/Dashboard//plugins/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/Dashboard//dist/js/demo.js"></script>
+    <!-- Page specific script -->
+
+</body>
+</html>

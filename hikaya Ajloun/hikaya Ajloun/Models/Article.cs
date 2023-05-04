@@ -18,6 +18,15 @@ using System;
 public partial class Article
 {
 
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public Article()
+    {
+
+        this.Comments = new HashSet<Comment>();
+
+    }
+
+
     public int articleId { get; set; }
 
     public string articleName { get; set; }
@@ -38,6 +47,12 @@ public partial class Article
 
     public virtual Category Category { get; set; }
 
-}
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+    public virtual ICollection<Comment> Comments { get; set; }
+    public int articalid { get; set; } // new property
+
+
+    }
 
 }

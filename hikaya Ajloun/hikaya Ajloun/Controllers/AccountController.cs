@@ -17,6 +17,8 @@ namespace hikaya_Ajloun.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private hikaya_AjlounEntities3 db = new hikaya_AjlounEntities3();
+
 
         public AccountController()
         {
@@ -185,7 +187,19 @@ namespace hikaya_Ajloun.Controllers
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
+                    var profile = db.AspNetUsers.FirstOrDefault(x => x.UserName == model.Email);
+
+                    if (profile != null)
+                    {
+                        var profile1 = new Profile
+                        {
+                            id = profile.Id,
+                            
+                            
+                       };
+                       
+                    }
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);

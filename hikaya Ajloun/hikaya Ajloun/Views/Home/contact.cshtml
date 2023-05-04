@@ -79,32 +79,32 @@
                             <h5 class="pq-section-title" id="quote" data-high_text="Quote" data-title_text="Request A Quote" data-rough_color="#fd4a18" data-rough_type="underline">Direct communication</h5>
                             <p class="pq-section-description">Through this form, you will be able to communicate with us directly, and the technical support team will respond to you as soon as possible</p>
                         </div>
-                        <form action="#" class="pq-contactform pq-applyform" novalidate>
+                        @using (Html.BeginForm("Create", "contacts", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+
+                            @Html.AntiForgeryToken()
+
                             <div class="row">
                                 <div class="col-lg-6 col-md-6">
-                                    <input type="text" id="first-name" class="name-field" placeholder="Your Name" required>
+                                    <input type="text" id="first-name" class="name-field" placeholder="Your Name" required name="Name">
                                 </div>
                                 <div class="col-lg-6 col-md-6">
-                                    <input type="text" id="e-mail" class="e-mail-field" placeholder="Email" required>
+                                    <input type="text" id="e-mail" class="e-mail-field" placeholder="Email" required name="Email">
                                 </div>
                                 <div class="col-lg-6 col-md-6">
-                                    <input type="text" id="phone-number" class="phone-number-field" placeholder="Cell Phone" required>
+                                    <input type="text" id="phone-number" class="phone-number-field" placeholder="Cell Phone" required name="PhoneNumber">
                                 </div>
                                 <div class="col-lg-6 col-md-6">
-                                    <input type="text" id="subject" class="subject-field" placeholder="Subject" required>
+                                    <input type="text" id="subject" class="subject-field" placeholder="Subject" required name="Subject">
                                 </div>
                                 <div class="col-lg-12">
-                                    <textarea id="message" rows="5" cols="10" placeholder="Your Message" required></textarea>
+                                    <textarea id="message" rows="5" cols="10" placeholder="Your Message" required name="Message"></textarea>
                                 </div>
                                 <div class="col-lg-12">
-                                    <a class="pq-button form-btn">
-                                        <div class="pq-button-block">
-                                            <span class="pq-button-text">Send Message</span>
-                                        </div>
-                                    </a>
+                                    <input type="submit" class="pq-button-text" value="Send Message">
                                 </div>
                             </div>
-                        </form>
+                        }
                     </div>
                 </div>
             </div>

@@ -51,6 +51,10 @@ public partial class Order
 
     public string User_id { get; set; }
 
+    public string status { get; set; }
+
+    public string profileId { get; set; }
+
 
 
     public virtual AspNetUser AspNetUser { get; set; }
@@ -58,6 +62,8 @@ public partial class Order
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
     public virtual ICollection<Order_Details> Order_Details { get; set; }
+
+    public virtual Profile Profile { get; set; }
 
 }
 

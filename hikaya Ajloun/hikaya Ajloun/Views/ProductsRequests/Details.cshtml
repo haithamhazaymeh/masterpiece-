@@ -1,0 +1,136 @@
+﻿@model hikaya_Ajloun.Models.ProductsRequest
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Products Requests</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/fontawesome-free/css/all.min.css">
+
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Dashboard/dist/css/adminlte.min.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/summernote/summernote-bs4.min.css">
+    <!-- CodeMirror -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/codemirror/codemirror.css">
+    <link rel="stylesheet" href="~/Dashboard/plugins/codemirror/theme/monokai.css">
+    <link rel="shortcut icon" href="~/Images/logos/favicon.png">
+
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+
+
+    <style>
+        .thumbnail {
+            top: -50px;
+            left: -35px;
+            display: block;
+            z-index: 999;
+            cursor: pointer;
+            -webkit-transition-property: all;
+            -webkit-transition-duration: 0.3s;
+            -webkit-transition-timing-function: ease;
+        }
+
+            .thumbnail:hover {
+                transform: scale(3);
+            }
+    </style>
+
+
+    @RenderPage("~/Views/Shared/_saidbar-navbar.cshtml")
+
+    <div style="padding:50px" class="content-wrapper">
+        <div>
+            <h4>ProductsRequest</h4>
+            <hr />
+
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Name)</th>
+                        <td>@Html.DisplayFor(model => model.Name)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Email)</th>
+                        <td>@Html.DisplayFor(model => model.Email)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.PhoneNumber)</th>
+                        <td>@Html.DisplayFor(model => model.PhoneNumber)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.ProductName)</th>
+                        <td>@Html.DisplayFor(model => model.ProductName)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Adress1)</th>
+                        <td>@Html.DisplayFor(model => model.Adress1)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Adress2)</th>
+                        <td>@Html.DisplayFor(model => model.Adress2)</td>
+                    </tr>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Message)</th>
+                        <td>@Html.DisplayFor(model => model.Message)</td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <div class="row  ">
+                <div class="col-md-6 mb-3">
+                    <img alt="" src="~/Images/ProductsRequests/@Model.image1" style="height:500px;width:500px;" />
+                </div>
+                <div class="col-md-6 mb-3">
+                    <img alt=""  src="~/Images/ProductsRequests/@Model.image2" style="height:500px;width:500px;" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <img alt=""  src="~/Images/ProductsRequests/@Model.image3" style="height:500px;width:500px;" />
+                </div>
+                <div class="col-md-6 mb-3">
+                    <img alt=""  src="~/Images/ProductsRequests/@Model.image4" style="height:500px;width:500px;" />
+                </div>
+            </div>
+
+
+        </div>
+        <p>
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
+        </p>
+    </div>
+
+    @RenderPage("~/Views/Shared/footer.cshtml")
+
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+    <script src="~/Dashboard//plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/Dashboard//plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/Dashboard//dist/js/adminlte.min.js"></script>
+    <!-- Summernote -->
+    <script src="~/Dashboard//plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- CodeMirror -->
+    <script src="~/Dashboard//plugins/codemirror/codemirror.js"></script>
+    <script src="~/Dashboard//plugins/codemirror/mode/css/css.js"></script>
+    <script src="~/Dashboard//plugins/codemirror/mode/xml/xml.js"></script>
+    <script src="~/Dashboard//plugins/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/Dashboard//dist/js/demo.js"></script>
+    <!-- Page specific script -->
+
+</body>
+</html>

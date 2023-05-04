@@ -12,7 +12,7 @@ using hikaya_Ajloun.Models;
 
 namespace hikaya_Ajloun.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    
 
     public class placesController : Controller
     {

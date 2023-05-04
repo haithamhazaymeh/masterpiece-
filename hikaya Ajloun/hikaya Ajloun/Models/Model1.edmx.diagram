@@ -4,25 +4,28 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c913d63e033a40c98cdea8e0c2c9670b" Name="Diagram1" ZoomLevel="93">
+      <Diagram DiagramId="c913d63e033a40c98cdea8e0c2c9670b" Name="Diagram1" ZoomLevel="94">
         <EntityTypeShape EntityType="Model.C__MigrationHistory" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="Model.Article" Width="1.5" PointX="5.25" PointY="28.625" />
-        <EntityTypeShape EntityType="Model.AspNetRole" Width="1.5" PointX="0.75" PointY="19.5" />
-        <EntityTypeShape EntityType="Model.AspNetUserClaim" Width="1.5" PointX="3" PointY="8.75" />
-        <EntityTypeShape EntityType="Model.AspNetUserLogin" Width="1.5" PointX="3" PointY="22" />
-        <EntityTypeShape EntityType="Model.AspNetUserRole" Width="1.5" PointX="3" PointY="16.375" />
-        <EntityTypeShape EntityType="Model.AspNetUser" Width="1.5" PointX="0.75" PointY="14" />
-        <EntityTypeShape EntityType="Model.author" Width="1.5" PointX="3" PointY="28" />
-        <EntityTypeShape EntityType="Model.Cart" Width="1.5" PointX="6" PointY="16" />
-        <EntityTypeShape EntityType="Model.Category" Width="1.5" PointX="6" PointY="20.625" />
-        <EntityTypeShape EntityType="Model.Order_Details" Width="1.5" PointX="5.25" PointY="12.25" />
-        <EntityTypeShape EntityType="Model.Order" Width="1.5" PointX="3" PointY="11.5" />
-        <EntityTypeShape EntityType="Model.place" Width="1.5" PointX="5.25" PointY="23.875" />
-        <EntityTypeShape EntityType="Model.Product" Width="1.5" PointX="8.25" PointY="23.75" />
-        <EntityTypeShape EntityType="Model.Review" Width="1.5" PointX="3" PointY="24.5" />
+        <EntityTypeShape EntityType="Model.Article" Width="1.5" PointX="5.25" PointY="34.875" />
+        <EntityTypeShape EntityType="Model.AspNetRole" Width="1.5" PointX="0.75" PointY="22.125" />
+        <EntityTypeShape EntityType="Model.AspNetUserClaim" Width="1.5" PointX="3" PointY="32.625" />
+        <EntityTypeShape EntityType="Model.AspNetUserLogin" Width="1.5" PointX="3" PointY="30" />
+        <EntityTypeShape EntityType="Model.AspNetUserRole" Width="1.5" PointX="3" PointY="20.875" />
+        <EntityTypeShape EntityType="Model.AspNetUser" Width="1.5" PointX="0.75" PointY="16.5" />
+        <EntityTypeShape EntityType="Model.author" Width="1.5" PointX="3" PointY="35.25" />
+        <EntityTypeShape EntityType="Model.Cart" Width="1.5" PointX="3" PointY="17.625" />
+        <EntityTypeShape EntityType="Model.Category" Width="1.5" PointX="3" PointY="38.625" />
+        <EntityTypeShape EntityType="Model.Comment" Width="1.5" PointX="7.5" PointY="35.125" />
+        <EntityTypeShape EntityType="Model.Order_Details" Width="1.5" PointX="7.5" PointY="21.125" />
+        <EntityTypeShape EntityType="Model.Order" Width="1.5" PointX="5.25" PointY="14.375" />
+        <EntityTypeShape EntityType="Model.place" Width="1.5" PointX="8.25" PointY="26" />
+        <EntityTypeShape EntityType="Model.Product" Width="1.5" PointX="5.25" PointY="25.75" />
+        <EntityTypeShape EntityType="Model.Profile" Width="1.5" PointX="3" PointY="11.625" />
+        <EntityTypeShape EntityType="Model.Review" Width="1.5" PointX="3" PointY="26.5" />
         <EntityTypeShape EntityType="Model.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" />
         <AssociationConnector Association="Model.FK_Articles_authors1" />
         <AssociationConnector Association="Model.FK_Articles_Categories" />
+        <AssociationConnector Association="Model.FK_Comment_Articles" />
         <AssociationConnector Association="Model.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" />
         <AssociationConnector Association="Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
         <AssociationConnector Association="Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
@@ -30,14 +33,19 @@
         <AssociationConnector Association="Model.FK_authors_AspNetUsers" />
         <AssociationConnector Association="Model.FK_Cart_AspNetUsers" />
         <AssociationConnector Association="Model.FK_Orders_AspNetUsers" />
+        <AssociationConnector Association="Model.FK_Profile_AspNetUsers" />
         <AssociationConnector Association="Model.FK_Reviews_AspNetUsers" />
         <AssociationConnector Association="Model.FK_Cart_Products" />
         <AssociationConnector Association="Model.FK_places_Categories" />
         <AssociationConnector Association="Model.FK_Products_Categories" />
         <AssociationConnector Association="Model.FK_Order_Details_Orders" />
         <AssociationConnector Association="Model.FK_Order_Details_Products" />
+        <AssociationConnector Association="Model.FK_Orders_Profile" />
         <AssociationConnector Association="Model.FK_places_Reviews" />
         <AssociationConnector Association="Model.FK_Products_Reviews1" />
+        <EntityTypeShape EntityType="Model.PlacesRequest" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="Model.ProductsRequest" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="Model.Contact" Width="1.5" PointX="4.75" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

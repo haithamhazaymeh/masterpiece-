@@ -88,14 +88,11 @@
                                             @Html.ActionLink("Blog", "Blog", "Home", null, new { @class = "pq-submenu-icon" })
                                         </li>
 
-                                        <li class="menu-item current-menu-item manu-item-has-children text-center">
-                                            <i style="font-size:20px" class="fa-solid fa-user"></i>  <i class="fa fa-chevron-down pq-submenu-icon"></i>
-                                            <ul class="sub-menu">
-                                                <li class="menu-item">
-                                                    @Html.Partial("_LoginPartial")
-                                                </li>
-                                            </ul>
+                                        <li class="menu-item">
+                                            @Html.Partial("_LoginPartial")
                                         </li>
+
+                                        
 
                                         @if (Request.IsAuthenticated)
 
@@ -108,7 +105,24 @@
                                                 </li>
                                             }
 
-                                        
+
+
+                                        }
+
+
+
+                                        @if (Request.IsAuthenticated)
+
+                                        {
+
+                                            if (User.IsInRole("Users"))
+                                            {
+                                                <li class="menu-item">
+                                                    @Html.ActionLink("Profile", "Profile", "Home", null, new { @class = "pq-submenu-icon" })
+                                                </li>
+                                            }
+
+
 
                                         }
 
@@ -126,23 +140,8 @@
                                 <div class="pq-header-call">
                                     <a href="/carts/Cart"><i class="fa-solid fa-cart-shopping"></i></a>
                                 </div>
-                                <div class="pq-menu-search-block">
-                                    <a href="javascript:void(0)" id="pq-seacrh-btn"><i class="fa fa-search"></i></a>
-                                    <div class="pq-search-form">
-
-                                        <form role="search" method="get" class="search-form"
-                                              action="https://techtrix.peacefulqode.com/">
-                                            <label>
-                                                <span class="screen-reader-text">Search for:</span>
-                                                <input type="search" class="search-field" placeholder="Search …" value="" name="s">
-                                            </label>
-                                            <button type="submit" class="search-submit">
-                                                <span class="screen-reader-text">Search</span>
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                                <a href="/Home/contact" class="pq-button">
+                                
+                                <a href="/Home/contact" class="pq-button ms-3">
                                     <div class="pq-button-block">
                                         <span class="pq-button-text"><i class="fa-solid fa-phone-volume"></i> Contact us</span>
                                     </div>
@@ -194,8 +193,9 @@
                                     <i class="ti-email"></i>
                                     <div class="pq-footer-items-info">
                                         <h4>Email Us</h4>
-                                        <a href="Support@Hekaytajloun.com"><span>Support@Hekaytajloun.com</span></a>
+                                        <a href="mailto:Support@Hekaytajloun.com"><span>Support@Hekaytajloun.com</span></a>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -214,34 +214,28 @@
                                 </p>
                                 <div class="pq-footer-social">
                                     <ul>
-                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-github"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-skype"></i></a></li>
+                                        <li><a href="https://www.facebook.com/nabd20jo" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="https://www.instagram.com/hikayajo/?hl=bg" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                                        <li><a href="https://join.skype.com/invite/CQhRwg7yu9Kb" target="_blank"><i class="fab fa-skype"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <div class="col-xl-4  col-md-6">
                             <div class="widget">
-                                <h4 class="footer-title">Our Services</h4>
+                                <h4 class="footer-title">"What's your contribution?"</h4>
                                 <div class="menu-useful-service-links-container">
                                     <ul id="menu-useful-service-links" class="menu">
                                         <li>
-                                            <a href="software-development.html">Software Development</a>
+                                            <a href="/Home/contact" target="_blank">Add Artical</a>
                                         </li>
                                         <li>
-                                            <a href="web-development.html">Web Development</a>
+                                            <a href="/Home/FormProduct" target="_blank">Add a product</a>
                                         </li>
                                         <li>
-                                            <a href="mobile-development.html">Mobile Development</a>
+                                            <a href="/Home/FormPlace" target="_blank">Add a place</a>
                                         </li>
-                                        <li>
-                                            <a href="app-development.html">App Development</a>
-                                        </li>
-                                        <li>
-                                            <a href="qa-testing.html">QA Testing</a>
-                                        </li>
+                                        
                                     </ul>
                                 </div>
                             </div>
@@ -252,20 +246,18 @@
                                 <div class="menu-useful-link-container">
                                     <ul id="menu-usefull-link" class="menu">
                                         <li>
-                                            <a href="#">Fact Search Engine</a>
+                                            <a href="/Home/Places" target="_blank">Places</a>
                                         </li>
                                         <li>
-                                            <a href="#">Learn and Code</a>
+                                            <a href="/Home/Products" target="_blank">Product</a>
                                         </li>
                                         <li>
-                                            <a href="#">Video Sharing Website</a>
+                                            <a href="/Home/Blog" target="_blank">Blog</a>
                                         </li>
                                         <li>
-                                            <a href="#">File &amp; URL Scanner</a>
+                                            <a href="/Home/contact" target="_blank">contact</a>
                                         </li>
-                                        <li>
-                                            <a href="#">Online Software Package</a>
-                                        </li>
+                                       
                                     </ul>
                                 </div>
                             </div>
@@ -280,7 +272,7 @@
                         <div class="col-lg-6 col-md-6">
                             <span class="pq-copyright">
                                 <a target="_blank" href="#">
-                                    Copyright 2022 Techtrix All Rights
+                                    Copyright 2023 Hekayt Ajloun All Rights
                                     Reserved.
                                 </a>
                             </span>
@@ -288,9 +280,8 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="pq-footer-link">
                                 <ul>
-                                    <li><a href="#">Career</a></li>
-                                    <li><a href="#">Term Of Use</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="/Home/TermOfUse" target="_blank">Term Of Use</a></li>
+                                    <li><a href="/Home/PrivacyPolicy"  target="_blank">Privacy Policy</a></li>
                                 </ul>
                             </div>
                         </div>

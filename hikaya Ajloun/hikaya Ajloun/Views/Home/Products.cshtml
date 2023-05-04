@@ -112,38 +112,24 @@
                     <div class="toolbar py-3 pt-0">
                         <div class="filters-toolbar-wrapper">
                             <ul class="list-unstyled d-flex align-items-center justify-content-between m-0">
-                                <li class="collection-view d-flex align-items-center">
-                                    <div class="filters-toolbar__item collection-view-as d-flex align-items-center me-3">
-                                    </div>
-                                    <div class="product-count d-flex align-items-center">
-                                        <button type="button" class="btn rounded btn-filter d-block d-lg-none me-2 me-sm-3"><span class="hidden">Filter</span></button>
-                                        <div class="filters-toolbar__item">
-                                            <span class="filters-toolbar__product-count d-none d-sm-block">Showing: 12 products</span>
-                                        </div>
-                                    </div>
-                                </li>
+                               
                                 <li class="filters-select ms-auto ms-sm-0 d-flex align-items-center">
-                                    <div class="filters-toolbar-select d-flex align-items-center rounded mx-2">
-                                        <label for="showby" class="m-0 text-uppercase">Show:</label>
-                                        <select name="showby" id="showby" class="show-by border-0">
-                                            <option value="9" selected="selected">9</option>
-                                            <option value="18">18</option>
-                                            <option value="27">27</option>
-                                        </select>
-                                    </div>
-                                    <div class="filters-toolbar-select d-flex align-items-center border-0 p-0">
-                                        <label for="SortBy" class="flex-1 m-0 hidden">Sort by:</label>
-                                        <select name="SortBy" id="SortBy" class="sort-by flex-1 rounded">
-                                            <option value="Sort" selected="selected">Sort</option>
-                                            <option value="best-selling">Best selling</option>
-                                            <option value="title-ascending">Alphabetically, A-Z</option>
-                                            <option value="title-descending">Alphabetically, Z-A</option>
-                                            <option value="price-ascending">Price, low to high</option>
-                                            <option value="price-descending">Price, high to low</option>
-                                            <option value="created-ascending">Date, old to new</option>
-                                            <option value="created-descending">Date, new to old</option>
-                                        </select>
-                                    </div>
+                                   
+                                    @using (Html.BeginForm("Index", "Products", FormMethod.Get))
+                                    {
+                                        <div class="filters-toolbar-select d-flex align-items-center border-0 p-0">
+                                            <label for="SortBy" class="flex-1 m-0 hidden">Sort by:</label>
+                                            <select name="sortOrder" id="SortBy" class="sort-by flex-1 rounded">
+                                                <option value="">Sort</option>
+                                                <option value="AlphabeticallyAZ">Alphabetically, A-Z</option>
+                                                <option value="AlphabeticallyZA">Alphabetically, Z-A</option>
+                                                <option value="PriceLowToHigh">Price, low to high</option>
+                                                <option value="PriceHighToLow">Price, high to low</option>
+                                            </select>
+
+                                            <button class="me-5" type="submit">Apply</button>
+                                        </div>
+                                    }
                                 </li>
                             </ul>
                         </div>
@@ -158,27 +144,29 @@
 
 
 
-                            <div class="col-md-8 col-lg-6 col-xl-4">
-                                <div class="card text-black">
-                                 <a href="/Home/SingleProduct?id=@item.productId">   <img src="~/Images/Products/@item.productImage_1"
-                                         class="card-img-top"
-                                         alt="@item.productDescription" />   </a>
-                                    <div class="card-body">
-                                        <div class="text-center">
-                                            <a href="/Home/SingleProduct?id=@item.productId">
-                                                <h5 class="card-title">@item.productName</h5>
+                                <div class="col-md-8 col-lg-6 col-xl-4 mt-3">
+                                    <div class="card text-black">
+                                        <a href="/Home/SingleProduct?id=@item.productId">
+                                            <img src="~/Images/Products/@item.productImage_1"
+                                                 class="card-img-top"
+                                                 alt="@item.productDescription" />
+                                        </a>
+                                        <div class="card-body">
+                                            <div class="text-center">
+                                                <a href="/Home/SingleProduct?id=@item.productId">
+                                                    <h5 class="card-title">@item.productName</h5>
                                                 </a>
-                                        </div>
-                                        <div class="d-flex justify-content-center total font-weight-bold mt-4">
-                                            <span>$ @item.price</span>
-                                        </div>
-                                        <div class="d-flex justify-content-center total font-weight-bold mt-4">
-                                            <a class="option1 btn btn-cart" href="@Url.Action("Buy", "Carts", new { productId = Convert.ToInt32(item.productId) })">Add To Cart</a>
+                                            </div>
+                                            <div class="d-flex justify-content-center total font-weight-bold mt-4">
+                                                <span>JOD @item.price</span>
+                                            </div>
+                                            <div class="d-flex justify-content-center total font-weight-bold mt-4">
+                                                <a class="option1 btn btn-cart" href="@Url.Action("Buy", "Carts", new { productId = Convert.ToInt32(item.productId) })">Add To Cart</a>
 
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
                             }
 
@@ -188,13 +176,20 @@
                                     <div class="pagination">
                                         <div class="container">
                                             <ul class="d-flex align-items-center justify-content-center">
-                                                <li class="prev arrow"><a href="#"><i class="cps cp-arrow-left"></i></a></li>
-                                                <li class="active"><a href="#">1</a></li>
-                                                <li><a href="#">2</a></li>
-                                                <li><a href="#">3</a></li>
-                                                <li><a href="#">...</a></li>
-                                                <li><a href="#">5</a></li>
-                                                <li class="next arrow"><a href="#"><i class="cps cp-arrow-right"></i></a></li>
+
+                                                <div class="container">
+                                                    <span id="rateMe1"></span>
+                                                </div>
+
+                                                <script>
+                                                    $(document).ready(function () {
+                                                        $('#rateMe1').mdbRate();
+
+                                                        // add your additional code here
+                                                    });
+                                                </script>
+
+
                                             </ul>
                                         </div>
                                     </div>
@@ -211,3 +206,4 @@
     <!--End Categories Content-->
 
 </main><!--End Page Content-->
+

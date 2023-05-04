@@ -41,7 +41,28 @@ namespace hikaya_Ajloun.Controllers
         {
 
             ViewBag.Message = "Your application description page.";
-           
+
+            var data = db.Articles.ToList();
+
+            return View(data);
+        }
+
+
+        public ActionResult TermOfUse()
+        {
+
+            ViewBag.Message = "Your application description page.";
+
+            var data = db.Articles.ToList();
+
+            return View(data);
+        }
+
+        public ActionResult PrivacyPolicy()
+        {
+
+            ViewBag.Message = "Your application description page.";
+
             var data = db.Articles.ToList();
 
             return View(data);
@@ -108,11 +129,21 @@ namespace hikaya_Ajloun.Controllers
             order.User_id = User_id;
             order.orderDate = DateTime.Now;
             db.Orders.Add(order);
+            db.SaveChanges();
+            int orderId = order.orderId;
+
             var cart = db.Carts.Where(x => x.userId == User_id).ToList();
+
             foreach (var item in cart)
             {
+                Order_Details orderd = new Order_Details();
+                orderd.Order_id = orderId;
+                orderd.Product_id = item.productId;
+                orderd.Quantity= item.quantity;
+                db.Order_Details.Add(orderd);
                 db.Carts.Remove(item);
             }
+
             db.SaveChanges();
 
             
@@ -132,7 +163,6 @@ namespace hikaya_Ajloun.Controllers
         public ActionResult SingleProduct(int id)
         {
 
-
             var product = db.Products.Find(id);
             ViewBag.Message = "Your application description page.";
 
@@ -141,11 +171,13 @@ namespace hikaya_Ajloun.Controllers
 
         public ActionResult SingleBlog(int id)
         {
-            var singlebloge = db.Articles.Find(id);
+            var singleblog = db.Articles.Find(id);
+          
             ViewBag.Message = "Your application description page.";
-
-            return View(singlebloge);
+            return View(singleblog);
         }
+
+
 
         public ActionResult FormProduct()
         {
@@ -161,6 +193,39 @@ namespace hikaya_Ajloun.Controllers
 
             return View();
         }
+
+
+        public ActionResult Profile(int? id)
+
+        {
+            var order = db.Orders.ToList();
+            var order_details = db.Order_Details.ToList();
+            var user = db.AspNetUsers.ToList();
+            var profile = db.Profiles.ToList();
+            string userId = id.ToString();
+            var userEmail = db.AspNetUsers.Where(u => u.Id == userId).FirstOrDefault();
+            ViewBag.UserEmail = userEmail;
+            ViewBag.UserId = userId;
+
+
+            return View(Tuple.Create(order, order_details, user, profile));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "id,First_Name,Last_Name,Adress1,Adress2,ZIP_Code,City,Phone_Number,userid")] Profile profile)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Profiles.Add(profile);
+                db.SaveChanges();
+                return RedirectToAction("/Home/Profile");
+            }
+
+            ViewBag.userid = new SelectList(db.AspNetUsers, "Id", "Email", profile.userid);
+            return View(profile);
+        }
+
 
 
     }

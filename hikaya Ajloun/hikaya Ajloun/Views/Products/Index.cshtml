@@ -122,7 +122,7 @@
                         <td>
                             @{
                                 var words2 = item.shipping_return.Split(' ');
-                                var shortDescription2 = String.Join(" ", words.Take(20));
+                                var shortDescription2 = String.Join(" ", words2.Take(20));
                                 @Html.DisplayFor(modelItem => shortDescription2)
                             }
                         </td>

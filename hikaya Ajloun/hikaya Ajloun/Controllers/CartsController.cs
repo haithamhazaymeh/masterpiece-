@@ -17,56 +17,7 @@ namespace hikaya_Ajloun.Controllers
         private hikaya_AjlounEntities3 db = new hikaya_AjlounEntities3();
 
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> CheckOut(string Email, string customerPhone, string address, int postalCode, string city)
-        {
-
-
-
-            Order order = new Order();
-            Order_Details order_Details= new Order_Details();
-            Product product = new Product();
-
-            var id = User.Identity.GetUserId();
-            var user = db.AspNetUsers.Where(x => x.Id == id).FirstOrDefault();
-            var cart = db.Carts.Where(x => x.userId == id).ToList();
-
-
-            decimal totalAmount = 0;
-
-            foreach (var item in cart)
-            {
-                totalAmount += Convert.ToDecimal(item.amount);
-
-            }
-
-
-            var orderDetailOrder = db.Orders.Where(x => x.User_id == id).OrderByDescending(x => x.orderId).FirstOrDefault();
-            foreach (var item in cart)
-            {
-
-                order_Details.Order_id = orderDetailOrder.orderId;
-                order_Details.Product_id = item.productId;
-                order_Details.Quantity= item.quantity;
-                order_Details.Quantity = item.Product.price * item.quantity;
-                db.Order_Details.Add(order_Details);
-
-
-
-
-                await db.SaveChangesAsync();
-
-                
-
-                db.SaveChanges();
-                db.Carts.Remove(item);
-            }
-            await db.SaveChangesAsync();
-
-            return RedirectToAction("Home", "Home");
-
-        }
+       
 
 
         public ActionResult Cart()
@@ -91,15 +42,37 @@ namespace hikaya_Ajloun.Controllers
             Product product = db.Products.Find(productId);
             int? price = Convert.ToInt32(product.price);
             quantity = quantity ?? 1; // تعيين القيمة الافتراضية لـ quantity إلى 1
-            var Cart = new Cart()
+            var cartdata = db.Carts.Where(x => x.userId == customer.Id).ToList();
+            bool there = false;
+
+            foreach (var item in cartdata)
             {
-                userId = customer.Id,
-                is_chekout = false,
-                productId = productId,
-                quantity = quantity,
-                amount = price
-            };
-            db.Carts.Add(Cart);
+                if (item.productId == productId)
+                {
+                    there = true;
+                }
+            }
+
+            if (there == false)
+            {
+                var Cart = new Cart()
+
+                {
+                    userId = customer.Id,
+                    is_chekout = false,
+                    productId = productId,
+                    quantity = quantity,
+                    amount = price
+
+                };
+                db.Carts.Add(Cart);
+            }
+            else
+            {
+                    var changepro = db.Carts.FirstOrDefault(x=> x.userId == customer.Id && x.productId == productId);
+                     changepro.quantity += quantity;
+            }
+
             db.SaveChanges();
 
             return RedirectToAction("Cart");
@@ -192,19 +165,16 @@ namespace hikaya_Ajloun.Controllers
         }
 
         // GET: Carts/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: Carts/Clear
+        public ActionResult Clear()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Cart cart = db.Carts.Find(id);
-            if (cart == null)
-            {
-                return HttpNotFound();
-            }
-            return View(cart);
+            // ابحث عن جميع المنتجات في السلة واحذفها جميعاً
+            var products = db.Carts.ToList();
+            db.Carts.RemoveRange(products);
+            db.SaveChanges();
+            return RedirectToAction("cart");
         }
+
 
         // POST: Carts/Delete/5
         [HttpPost, ActionName("Delete")]

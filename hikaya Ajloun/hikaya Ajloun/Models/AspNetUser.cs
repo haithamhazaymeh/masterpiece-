@@ -34,6 +34,8 @@ public partial class AspNetUser
 
         this.Orders = new HashSet<Order>();
 
+        this.Profiles = new HashSet<Profile>();
+
         this.Reviews = new HashSet<Review>();
 
     }
@@ -43,7 +45,7 @@ public partial class AspNetUser
 
     public string Email { get; set; }
 
-    public bool EmailConfirmed { get; set; }
+    public Nullable<bool> EmailConfirmed { get; set; }
 
     public string PasswordHash { get; set; }
 
@@ -88,6 +90,10 @@ public partial class AspNetUser
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 
     public virtual ICollection<Order> Orders { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+    public virtual ICollection<Profile> Profiles { get; set; }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 

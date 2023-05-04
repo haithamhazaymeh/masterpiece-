@@ -193,11 +193,18 @@
     <Compile Include="Controllers\ArticlesController.cs" />
     <Compile Include="Controllers\authorsController.cs" />
     <Compile Include="Controllers\CartsController.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
+    <Compile Include="Controllers\ContactsController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\Order_DetailsController.cs" />
     <Compile Include="Controllers\placesController.cs" />
+    <Compile Include="Controllers\PlacesRequestsController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\ProductsRequestsController.cs" />
+    <Compile Include="Controllers\ProfilesController.cs" />
     <Compile Include="Controllers\ReviewsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -231,6 +238,12 @@
     <Compile Include="Models\Category.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Comment.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Contact.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\C__MigrationHistory.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -260,7 +273,16 @@
     <Compile Include="Models\place.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PlacesRequest.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Product.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProductsRequest.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Profile.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Review.cs">
@@ -304,6 +326,7 @@
     <Content Include="fonts\themify-icons\themify-icons.js" />
     <Content Include="fonts\themify-icons\themify.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\category\pngegg.png" />
     <Content Include="Images\category\Screenshot 2023-03-04 102934.png" />
     <Content Include="Images\category\Screenshot 2023-03-04 145053.png" />
     <Content Include="Images\Content\1.jpg" />
@@ -338,6 +361,8 @@
     <Content Include="Images\Content\main slaid.jpg" />
     <Content Include="Images\Content\Mehbash.png" />
     <Content Include="Images\Content\Orange_logo.svg.png" />
+    <Content Include="Images\Content\ourproduct copy.jpg" />
+    <Content Include="Images\Content\ourproduct.JPG" />
     <Content Include="Images\Content\p1.jpg" />
     <Content Include="Images\Content\p2.jpg" />
     <Content Include="Images\Content\p3.jpg" />
@@ -345,6 +370,7 @@
     <Content Include="Images\Content\paymethod.png" />
     <Content Include="Images\Content\photo_2022-12-23_10-56-37.jpg" />
     <Content Include="Images\Content\PLACES.jpg" />
+    <Content Include="Images\Content\PLACESsingel.jpg" />
     <Content Include="Images\Content\pngegg %281%29.png" />
     <Content Include="Images\Content\pro.jpg" />
     <Content Include="Images\Content\s1.jpg" />
@@ -836,7 +862,6 @@
     <Content Include="Dashboard\plugins\summernote\summernote.min.js.map" />
     <Content Include="Dashboard\plugins\toastr\toastr.js.map" />
     <Content Include="Views\Dashboard\Dashboard.cshtml" />
-    <Content Include="Views\Dashboard\NewArtical.cshtml" />
     <Content Include="Views\Dashboard\Calendar.cshtml" />
     <Content Include="Views\Categories\Create.cshtml" />
     <Content Include="Views\Categories\Delete.cshtml" />
@@ -866,7 +891,16 @@
     <Content Include="Views\Carts\Edit.cshtml" />
     <Content Include="Views\Carts\Index.cshtml" />
     <Content Include="Views\Carts\Cart.cshtml" />
-    <Content Include="Views\Carts\CheckOut.cshtml" />
+    <Content Include="Views\Comments\Create.cshtml" />
+    <Content Include="Views\Comments\Delete.cshtml" />
+    <Content Include="Views\Comments\Details.cshtml" />
+    <Content Include="Views\Comments\Edit.cshtml" />
+    <Content Include="Views\Comments\Index.cshtml" />
+    <Content Include="Views\Comments\Acceptcomment.cshtml" />
+    <Content Include="Views\Categories\Acceptcomment.cshtml" />
+    <Content Include="Views\Contacts\Delete.cshtml" />
+    <Content Include="Views\Contacts\Details.cshtml" />
+    <Content Include="Views\Contacts\Index.cshtml" />
     <None Include="Views\Home\aboutus.cshtml" />
     <None Include="Views\Home\Blog.cshtml" />
     <Content Include="Dashboard\build\config\postcss.config.js" />
@@ -2991,7 +3025,6 @@
     <Content Include="Views\Home\services.cshtml" />
     <Content Include="Views\Home\Places.cshtml" />
     <Content Include="Views\Home\contact.cshtml" />
-    <Content Include="Views\Home\Cart.cshtml" />
     <Content Include="Views\Home\Chekout.cshtml" />
     <Content Include="Views\Home\SingleProduct.cshtml" />
     <Content Include="Views\Home\SingleBlog.cshtml" />
@@ -3016,12 +3049,38 @@
     <Content Include="Views\places\Edit.cshtml" />
     <Content Include="Views\places\Index.cshtml" />
     <Content Include="Views\places\Places.cshtml" />
+    <Content Include="Views\Home\Profile.cshtml" />
+    <Content Include="Views\Orders\Create.cshtml" />
+    <Content Include="Views\Orders\Delete.cshtml" />
+    <Content Include="Views\Orders\Details.cshtml" />
+    <Content Include="Views\Orders\Edit.cshtml" />
+    <Content Include="Views\Orders\Index.cshtml" />
+    <Content Include="Views\Order_Details\Create.cshtml" />
+    <Content Include="Views\Order_Details\Delete.cshtml" />
+    <Content Include="Views\Order_Details\Details.cshtml" />
+    <Content Include="Views\Order_Details\Edit.cshtml" />
+    <Content Include="Views\Order_Details\Index.cshtml" />
+    <Content Include="Views\Profiles\Create.cshtml" />
+    <Content Include="Views\Profiles\Delete.cshtml" />
+    <Content Include="Views\Profiles\Details.cshtml" />
+    <Content Include="Views\Profiles\Edit.cshtml" />
+    <Content Include="Views\Profiles\Index.cshtml" />
+    <Content Include="Views\ProductsRequests\Delete.cshtml" />
+    <Content Include="Views\ProductsRequests\Details.cshtml" />
+    <Content Include="Views\ProductsRequests\Index.cshtml" />
+    <Content Include="Views\PlacesRequests\Delete.cshtml" />
+    <Content Include="Views\PlacesRequests\Details.cshtml" />
+    <Content Include="Views\PlacesRequests\Index.cshtml" />
+    <Content Include="Views\Home\TermOfUse.cshtml" />
+    <Content Include="Views\Home\PrivacyPolicy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="File\ArticleFile\" />
     <Folder Include="Images\article\" />
+    <Folder Include="Images\PlacesRequest\" />
     <Folder Include="Images\Places\" />
+    <Folder Include="Images\ProductsRequests\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

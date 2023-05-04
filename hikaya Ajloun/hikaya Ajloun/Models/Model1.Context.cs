@@ -52,6 +52,8 @@ public partial class hikaya_AjlounEntities3 : DbContext
 
     public virtual DbSet<Category> Categories { get; set; }
 
+    public virtual DbSet<Comment> Comments { get; set; }
+
     public virtual DbSet<Order_Details> Order_Details { get; set; }
 
     public virtual DbSet<Order> Orders { get; set; }
@@ -60,9 +62,17 @@ public partial class hikaya_AjlounEntities3 : DbContext
 
     public virtual DbSet<Product> Products { get; set; }
 
+    public virtual DbSet<Profile> Profiles { get; set; }
+
     public virtual DbSet<Review> Reviews { get; set; }
 
     public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+
+    public virtual DbSet<PlacesRequest> PlacesRequests { get; set; }
+
+    public virtual DbSet<ProductsRequest> ProductsRequests { get; set; }
+
+    public virtual DbSet<Contact> Contacts { get; set; }
 
 }
 

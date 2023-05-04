@@ -28,7 +28,7 @@
 
     <!--Product Details-->
     <div class="section">
-        <div class="container"> 
+        <div class="container">
             <div class="product-single">
                 <div class="row">
                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
@@ -51,7 +51,7 @@
                             <div class="product-thumb product-horizontal-thumb">
                                 <div id="gallery" class="product-thumb-style1">
 
-                    
+
 
                                     <a class="active" data-image="/Images/Products/@Model.productImage_1" data-zoom-image="/Images/Products/@Model.productImage_1" data-slick-index="-4" aria-hidden="true" tabindex="-1">
                                         <img class="blur-up lazyload" data-src="/Images/Products/@Model.productImage_1" src="/Images/Products/@Model.productImage_1" alt="" />
@@ -71,7 +71,7 @@
 
 
 
-                            </div>
+                                </div>
                             </div>
 
                             <div class="lightboximages">
@@ -82,7 +82,7 @@
                             </div>
 
 
-                         
+
 
                         </div>
                     </div>
@@ -100,18 +100,18 @@
 
 
                             @*@if (Model.availability == "On Stock")  //
-                            {
+                                {
 
-                                <div class="stock mb-1"><b><span class="inStock text-uppercase"><i class="cp cp-check-circle"></i> On Stock</span></b></div>
+                                    <div class="stock mb-1"><b><span class="inStock text-uppercase"><i class="cp cp-check-circle"></i> On Stock</span></b></div>
 
 
-                            }
-                            else
-                            {
+                                }
+                                else
+                                {
 
-                                <div class="stockout mb-1"><b><span class="stockout text-uppercase"><i class="cp cp-check-circle"></i>Out of stock</span></b></div>
+                                    <div class="stockout mb-1"><b><span class="stockout text-uppercase"><i class="cp cp-check-circle"></i>Out of stock</span></b></div>
 
-                            }*@
+                                }*@
 
 
                             <div class="brands mb-1"><b>Brand:</b> @Model.Category.categoryName</div>
@@ -123,8 +123,8 @@
                                     var oldprice = descount + Model.price;
                                 }
 
-                            <span class="old-price">$ @oldprice.ToString("F0")</span>
-                                <span class="sale-price">$ @Model.price</span>
+                                <span class="old-price">JOD @oldprice.ToString("F0")</span>
+                                <span class="sale-price">JOD @Model.price</span>
                             </div>
 
                             <div class="sort-description">
@@ -149,7 +149,7 @@
 
                             <!-- Product Form -->
                             <form method="post" action="/Carts/Buy" id="product_form" class="product-form">
-                                @*@using (Html.BeginForm("Buy", "Carts")) {*@ 
+
 
 
 
@@ -165,12 +165,10 @@
                                             </div>
                                         </div>
                                         <div class="product-form-submit flex-1">
-                                            @*<a class="option1" href="@Url.Action("Buy", "Carts", new { id = Model.productId })">
-                        <button type="submit" class="btn rounded w-100 add-to-cart-btn"><i class="cp cp-shopping-cart"></i> <span>Add to cart</span></button>
-                    </a>*@
+
 
                                             @*<a class="option1" href="@Url.Action("Buy", "Carts", new { id = Model.productId })" data-ajax="true" data-ajax-method="POST" data-ajax-complete="onAddToCartComplete">*@
-                                                <button type="submit" class="btn rounded w-100 add-to-cart-btn"><i class="cp cp-shopping-cart"></i> <span>Add to cart</span></button>
+                                            <button type="submit" class="btn rounded w-100 add-to-cart-btn"><i class="cp cp-shopping-cart"></i> <span>Add to cart</span></button>
                                             @*</a>*@
 
                                             @*<button type="submit" class="btn rounded d-none" disabled="disabled">Sold out</button>*@
@@ -180,17 +178,8 @@
                                 @*}*@
                                 <!-- End Product Action -->
                             </form>
-    <!-- End Product Form -->
+                            <!-- End Product Form -->
                             <!--Social Share-->
-                            <div class="social-sharing d-flex mb-3 mt-3 clearfix">
-                                <span class="sharing-lbl me-2 text-uppercase">Share:</span>
-                                <a href="#;" target="_blank"><i class="cpb cp-facebook-f"></i></a>
-                                <a href="#;" target="_blank"><i class="cpb cp-twitter"></i></a>
-                                <a href="#;" target="_blank"><i class="cpb cp-instagram"></i></a>
-                                <a href="#;" target="_blank"><i class="cpb cp-google-plus"></i></a>
-                                <a href="#;" target="_blank"><i class="cpb cp-linkedin-in"></i></a>
-                                <a href="#;" target="_blank"><i class="cps cp-envelope"></i></a>
-                            </div>
                             <!--End Social Share-->
                             <!--Guranteed Checkout-->
                             <div class="guaranteed-safe-checkout">
@@ -316,182 +305,46 @@
     </div>
     <!--End Product Details-->
     <!--Related products-->
-    <section class="section product-slider">
-        <div class="container">
-            <div class="row">
-                <div class="section-title col-12 text-left">
-                    <h2 class="title text-uppercase">Related products</h2>
-                </div>
-            </div>
-            <div class="productSlider grid-products products-grid">
-                <!--Product Item-->
-                <div class="item">
-                    <!--Product Image-->
-                    <div class="product-image">
-                        <a href="#" class="rounded-3 product-thumb">
-                            <!--Image-->
-                            <img class="primary blur-up lazyload rounded-3" src="~/Images/Content/p1.jpg" alt="Air Filter" title="Air Filter" />
-                            <!--End Image-->
-                            <!--Hover Image-->
-                            <img class="hover blur-up lazyload rounded-3" src="~/Images/Content/p1.jpg" alt="Air Filter" title="Air Filter" />
-                            <!--End Hover Image-->
+    <h2 class="title text-uppercase">Related products</h2>
+    <!--Product Grid-->
+    <div class="products-grid">
+        <div class="row">
+
+            @*@foreach (var item in Model)
+            {*@
+
+
+
+                @*<div class="col-md-8 col-lg-6 col-xl-4 mt-3">
+                    <div class="card text-black">
+                        <a href="/Home/SingleProduct?id=@item.productId">
+                            <img src="~/Images/Products/@item.productImage_1"
+                                 class="card-img-top"
+                                 alt="@item.productDescription" />
                         </a>
-                        <!--Button Action-->
-                        <div class="button-hover">
-                            <a href="wishlist.html" class="btn btn-wishlist" title="Wishlist"><i class="cpr cp-heart"></i></a>
-                            <a class="btn pro-addtocart-popup rounded btn-cart btn-primary" href="shopping-cart.html" title="Add To Cart"><i class="cps cp-shopping-cart"></i></a>
-                        </div>
-                        <!--End Button Action-->
-                    </div>
-                    <!--End Product Image-->
-                    <!--Product Detail-->
-                    <div class="product-details d-flex">
-                        <div class="product-details-in">
-                            <div class="h3"><a href="#">Dried fog</a></div>
-                            <div class="price-box"><span class="price">$25.00</span></div>
-                        </div>
-                        <div class="product-review">
-                            <i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cpr cp-star"></i><i class="cpr cp-star"></i>
+                        <div class="card-body">
+                            <div class="text-center">
+                                <a href="/Home/SingleProduct?id=@item.productId">
+                                    <h5 class="card-title">@item.productName</h5>
+                                </a>
+                            </div>
+                            <div class="d-flex justify-content-center total font-weight-bold mt-4">
+                                <span>JOD @item.price</span>
+                            </div>
+                            <div class="d-flex justify-content-center total font-weight-bold mt-4">
+                                <a class="option1 btn btn-cart" href="@Url.Action("Buy", "Carts", new { productId = Convert.ToInt32(item.productId) })">Add To Cart</a>
+
+                            </div>
                         </div>
                     </div>
-                    <!--End Product Detail-->
-                </div>
-                <!--End Product Item-->
-                <!--Product Item-->
-                <div class="item">
-                    <!--Product Image-->
-                    <div class="product-image">
-                        <a href="#" class="rounded-3 product-thumb">
-                            <!--Image-->
-                            <img class="blur-up lazyload rounded-3" src="~/Images/Content/p3.jpg" alt="Front Wheel Hub For Fiat Punto Diesel " title="Front Wheel Hub For Fiat Punto Diesel " />
-                            <!--End Image-->
-                        </a>
-                        <!--Product Label-->
-                        <div class="product-labels"><span class="lbl new rounded">New</span></div>
-                        <!--End Product Label-->
-                        <!--Button Action-->
-                        <div class="button-hover">
-                            <a href="wishlist.html" class="btn btn-wishlist" title="Wishlist"><i class="cpr cp-heart"></i></a>
-                            <a class="btn pro-addtocart-popup rounded btn-cart btn-primary" href="shopping-cart.html" title="Add To Cart"><i class="cps cp-shopping-cart"></i></a>
-                        </div>
-                        <!--End Button Action-->
-                    </div>
-                    <!--End Product Image-->
-                    <!--Product Detail-->
-                    <div class="product-details d-flex">
-                        <div class="product-details-in">
-                            <div class="h3"><a href="#">Dried sage </a></div>
-                            <div class="price-box"><span class="price">$19.00</span></div>
-                        </div>
-                        <div class="product-review">
-                            <i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cpr cp-star"></i><i class="cpr cp-star"></i>
-                        </div>
-                    </div>
-                    <!--End Product Detail-->
-                </div>
-                <!--End Product Item-->
-                <!--Product Item-->
-                <div class="item">
-                    <!--Product Image-->
-                    <div class="product-image">
-                        <a href="#" class="rounded-3 product-thumb">
-                            <!--Image-->
-                            <img class="primary blur-up lazyload rounded-3" src="~/Images/Content/p2.jpg" alt="Radio Transmitter Adapter" title="Radio Transmitter Adapter" />
-                            <!--End Image-->
-                            <!--Hover Image-->
-                            <img class="hover blur-up lazyload rounded-3" src="~/Images/Content/p2.jpg" alt="Radio Transmitter Adapter" title="Radio Transmitter Adapter" />
-                            <!--End Hover Image-->
-                        </a>
-                        <!--Button Action-->
-                        <div class="button-hover">
-                            <a href="wishlist.html" class="btn btn-wishlist" title="Wishlist"><i class="cpr cp-heart"></i></a>
-                            <a class="btn pro-addtocart-popup rounded btn-cart btn-primary" href="shopping-cart.html" title="Add To Cart"><i class="cps cp-shopping-cart"></i></a>
-                        </div>
-                        <!--End Button Action-->
-                    </div>
-                    <!--End Product Image-->
-                    <!--Product Detail-->
-                    <div class="product-details d-flex">
-                        <div class="product-details-in">
-                            <div class="h3"><a href="#">Local sumac</a></div>
-                            <div class="price-box"><span class="price">$19.00</span></div>
-                        </div>
-                        <div class="product-review">
-                            <i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cps cp-star"></i>
-                        </div>
-                    </div>
-                    <!--End Product Detail-->
-                </div>
-                <!--End Product Item-->
-                <!--Product Item-->
-                <div class="item">
-                    <!--Product Image-->
-                    <div class="product-image">
-                        <a href="#" class="rounded-3 product-thumb">
-                            <!--Image-->
-                            <img class="primary blur-up lazyload rounded-3" src="~/Images/Content/p4.jpg" alt="Hankook DynaPro AT-m RF10" title="Hankook DynaPro AT-m RF10" />
-                            <!--End Image-->
-                            <!--Hover Image-->
-                            <img class="hover blur-up lazyload rounded-3" src="~/Images/Content/p4.jpg" alt="Hankook DynaPro AT-m RF10" title="Hankook DynaPro AT-m RF10" />
-                            <!--End Hover Image-->
-                        </a>
-                        <!--Button Action-->
-                        <div class="button-hover">
-                            <a href="wishlist.html" class="btn btn-wishlist" title="Wishlist"><i class="cpr cp-heart"></i></a>
-                            <a class="btn pro-addtocart-popup rounded btn-cart btn-primary" href="shopping-cart.html" title="Add To Cart"><i class="cps cp-shopping-cart"></i></a>
-                        </div>
-                        <!--End Button Action-->
-                    </div>
-                    <!--End Product Image-->
-                    <!--Product Detail-->
-                    <div class="product-details d-flex">
-                        <div class="product-details-in">
-                            <div class="h3"><a href="#">Green thyme</a></div>
-                            <div class="price-box"><span class="price">$10.00</span></div>
-                        </div>
-                        <div class="product-review">
-                            <i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cps cp-star-half-alt"></i>
-                        </div>
-                    </div>
-                    <!--End Product Detail-->
-                </div>
-                <!--End Product Item-->
-                <!--Product Item-->
-                <div class="item">
-                    <!--Product Image-->
-                    <div class="product-image">
-                        <a href="#" class="rounded-3 product-thumb">
-                            <!--Image-->
-                            <img class="blur-up lazyload rounded-3" src="~/Images/Content/p4.jpg" alt="ACDelco 335 Professional" title="ACDelco 335 Professional" />
-                            <!--End Image-->
-                        </a>
-                        <!--Product Label-->
-                        <div class="product-labels"><span class="lbl on-sale rounded">-10%</span></div>
-                        <!--End Product Label-->
-                        <!--Button Action-->
-                        <div class="button-hover">
-                            <a href="wishlist.html" class="btn btn-wishlist" title="Wishlist"><i class="cpr cp-heart"></i></a>
-                            <a class="btn pro-addtocart-popup rounded btn-cart btn-primary" href="shopping-cart.html" title="Add To Cart"><i class="cps cp-shopping-cart"></i></a>
-                        </div>
-                        <!--End Button Action-->
-                    </div>
-                    <!--End Product Image-->
-                    <!--Product Detail-->
-                    <div class="product-details d-flex">
-                        <div class="product-details-in">
-                            <div class="h3"><a href="#">ACDelco 335 Professional</a></div>
-                            <div class="price-box"><span class="price">$189.00</span></div>
-                        </div>
-                        <div class="product-review">
-                            <i class="cps cp-star"></i><i class="cpr cp-star"></i><i class="cpr cp-star"></i><i class="cpr cp-star"></i><i class="cpr cp-star"></i>
-                        </div>
-                    </div>
-                    <!--End Product Detail-->
-                </div>
-                <!--End Product Item-->
-            </div>
+                </div>*@
+
+            @*}*@
+
+          
         </div>
-    </section>
+        <!--End Content-->
+    </div>
     <!--End Related products-->
 
 </main><!--End Page Content-->

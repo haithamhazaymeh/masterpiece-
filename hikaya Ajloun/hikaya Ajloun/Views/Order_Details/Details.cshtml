@@ -1,0 +1,50 @@
+﻿@model hikaya_Ajloun.Models.Order_Details
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Order_Details</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Quantity)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Order.address_2)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Order.address_2)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Product.productName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Product.productName)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.OrderDetails_id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

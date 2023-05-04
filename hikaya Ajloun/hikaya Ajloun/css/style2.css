@@ -1029,8 +1029,8 @@ blockquote:before { content: "\f10d"; font-family:"capacity-bold"; font-size: 38
 .nav-box { border: 2px solid #eaeaea; border-radius: 10px; padding: 25px; }
 .nav-box .nav { margin: 0 -27px; }
 .dashboard-list li a { color:#303030; display:block; font-size:18px; font-weight:500; padding:15px 25px; margin-bottom: 2px; }
-.dashboard-list li a.active, .dashboard-list li a:hover { color:#303030; background-color:#ffcb00; position: relative; }
-.dashboard-list li a.active:after { content: ''; background-color: #ffcb00; width: 30px; height: 61px; position: absolute; right: -30px; top: 0; border-radius: 0 100px 100px 0; }
+.dashboard-list li a.active, .dashboard-list li a:hover { color:white; background-color:#2E7D32; position: relative; }
+.dashboard-list li a.active:after { content: ''; background-color: #2E7D32; width: 30px; height: 61px; position: absolute; right: -30px; top: 0; border-radius: 0 100px 100px 0; }
 .dashboard-content h3 { font-size:28px; line-height:30px; margin-bottom:15px; padding-bottom:15px; text-transform:uppercase; font-weight:600; padding:0; }
 .dashboard-content p { margin:0; }
 .product-order .table thead th { font-size: 16px; padding:15px 10px; font-weight:600; border-bottom-width: 2px; }

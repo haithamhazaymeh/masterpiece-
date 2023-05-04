@@ -63,7 +63,7 @@
     </Key>
     <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
     <Property Name="Email" Type="nvarchar" MaxLength="256" />
-    <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+    <Property Name="EmailConfirmed" Type="bit" />
     <Property Name="PasswordHash" Type="nvarchar(max)" />
     <Property Name="SecurityStamp" Type="nvarchar(max)" />
     <Property Name="PhoneNumber" Type="nvarchar(max)" />
@@ -103,6 +103,28 @@
     <Property Name="categoryImage" Type="nvarchar(max)" Nullable="false" />
     <Property Name="type" Type="nvarchar" MaxLength="100" Nullable="false" />
   </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="Comment" Type="text" />
+    <Property Name="status" Type="bit" />
+    <Property Name="articalid" Type="int" />
+  </EntityType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="100" />
+    <Property Name="Subject" Type="nvarchar" MaxLength="100" />
+    <Property Name="Message" Type="text" />
+  </EntityType>
   <EntityType Name="Order_Details">
     <Key>
       <PropertyRef Name="OrderDetails_id" />
@@ -128,6 +150,8 @@
     <Property Name="Payment Mthod" Type="varchar" MaxLength="50" />
     <Property Name="city" Type="varchar" MaxLength="100" />
     <Property Name="User_id" Type="nvarchar" MaxLength="128" />
+    <Property Name="status" Type="nvarchar" MaxLength="128" />
+    <Property Name="profileId" Type="nvarchar" MaxLength="128" />
   </EntityType>
   <EntityType Name="places">
     <Key>
@@ -147,6 +171,23 @@
     <Property Name="phonenumber" Type="int" />
     <Property Name="reviewid" Type="int" />
   </EntityType>
+  <EntityType Name="PlacesRequest">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="PlacesName" Type="nvarchar" MaxLength="200" />
+    <Property Name="Adress1" Type="nvarchar" MaxLength="100" />
+    <Property Name="Adress2" Type="nvarchar" MaxLength="100" />
+    <Property Name="Message" Type="text" />
+    <Property Name="image1" Type="nvarchar(max)" />
+    <Property Name="image2" Type="nvarchar(max)" />
+    <Property Name="image3" Type="nvarchar(max)" />
+    <Property Name="image4" Type="nvarchar(max)" />
+  </EntityType>
   <EntityType Name="Products">
     <Key>
       <PropertyRef Name="productId" />
@@ -164,6 +205,37 @@
     <Property Name="availability" Type="nchar" MaxLength="25" />
     <Property Name="shipping_return" Type="text" />
     <Property Name="reviewid" Type="int" />
+  </EntityType>
+  <EntityType Name="ProductsRequest">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Adress1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Adress2" Type="nvarchar" MaxLength="100" />
+    <Property Name="Message" Type="text" />
+    <Property Name="image1" Type="nvarchar(max)" />
+    <Property Name="image2" Type="nvarchar(max)" />
+    <Property Name="image3" Type="nvarchar(max)" />
+    <Property Name="image4" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Profile">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="First_Name" Type="nvarchar" MaxLength="128" />
+    <Property Name="Last_Name" Type="nvarchar" MaxLength="128" />
+    <Property Name="Adress1" Type="nvarchar" MaxLength="500" />
+    <Property Name="Adress2" Type="nvarchar" MaxLength="500" />
+    <Property Name="ZIP_Code" Type="int" />
+    <Property Name="City" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone_Number" Type="int" />
+    <Property Name="userid" Type="nvarchar" MaxLength="128" />
   </EntityType>
   <EntityType Name="Reviews">
     <Key>
@@ -243,6 +315,18 @@
       </Principal>
       <Dependent Role="Cart">
         <PropertyRef Name="productId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comment_Articles">
+    <End Role="Articles" Type="Self.Articles" Multiplicity="0..1" />
+    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Articles">
+        <PropertyRef Name="articleId" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="articalid" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -338,6 +422,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Orders_Profile">
+    <End Role="Profile" Type="Self.Profile" Multiplicity="0..1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="profileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_places_Categories">
     <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
     <End Role="places" Type="Self.places" Multiplicity="*" />
@@ -386,6 +482,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Profile_AspNetUsers">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+    <End Role="Profile" Type="Self.Profile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUsers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Profile">
+        <PropertyRef Name="userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Reviews_AspNetUsers">
     <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
     <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
@@ -409,10 +517,15 @@
     <EntitySet Name="authors" EntityType="Self.authors" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Order_Details" EntityType="Self.Order_Details" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="places" EntityType="Self.places" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PlacesRequest" EntityType="Self.PlacesRequest" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductsRequest" EntityType="Self.ProductsRequest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Profile" EntityType="Self.Profile" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Reviews" EntityType="Self.Reviews" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Articles_authors1" Association="Self.FK_Articles_authors1">
@@ -434,6 +547,10 @@
     <AssociationSet Name="FK_Cart_Products" Association="Self.FK_Cart_Products">
       <End Role="Products" EntitySet="Products" />
       <End Role="Cart" EntitySet="Cart" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comment_Articles" Association="Self.FK_Comment_Articles">
+      <End Role="Articles" EntitySet="Articles" />
+      <End Role="Comment" EntitySet="Comment" />
     </AssociationSet>
     <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -463,6 +580,10 @@
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
+    <AssociationSet Name="FK_Orders_Profile" Association="Self.FK_Orders_Profile">
+      <End Role="Profile" EntitySet="Profile" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
     <AssociationSet Name="FK_places_Categories" Association="Self.FK_places_Categories">
       <End Role="Categories" EntitySet="Categories" />
       <End Role="places" EntitySet="places" />
@@ -478,6 +599,10 @@
     <AssociationSet Name="FK_Products_Reviews1" Association="Self.FK_Products_Reviews1">
       <End Role="Reviews" EntitySet="Reviews" />
       <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Profile_AspNetUsers" Association="Self.FK_Profile_AspNetUsers">
+      <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+      <End Role="Profile" EntitySet="Profile" />
     </AssociationSet>
     <AssociationSet Name="FK_Reviews_AspNetUsers" Association="Self.FK_Reviews_AspNetUsers">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />

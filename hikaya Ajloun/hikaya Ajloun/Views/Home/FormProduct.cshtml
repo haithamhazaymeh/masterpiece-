@@ -36,46 +36,55 @@
 </div>
 
 
-<div class="col-lg-12 mt-4 mt-lg-0 mb-5">
-    <div class="form-div">
-          <form action="#" class="pq-contactform pq-applyform" novalidate>
-              <div class="row">
-                  <div class="col-lg-6 col-md-6">
-                      <input type="text" id="first-name" class="name-field" placeholder="Your Name" required>
-                  </div>
-                  <div class="col-lg-6 col-md-6">
-                      <input type="text" id="e-mail" class="e-mail-field" placeholder="Email" required>
-                  </div>
-                  <div class="col-lg-6 col-md-6">
-                      <input type="text" id="phone-number" class="phone-number-field" placeholder="Your Phone" required>
-                  </div>
-                  <div class="col-lg-6 col-md-6">
-                      <input type="text" id="subject" class="subject-field" placeholder="Places Name" required>
-                  </div>
-                  <div class="col-lg-3 col-md-6">
-                      <input type="file" id="subject"  required>
-                  </div>
-                  <div class="col-lg-3 col-md-6">
-                      <input type="file" id="subject"  required>
-                  </div>
-                  <div class="col-lg-3 col-md-6 ">
-                      <input type="file" id="subject"  required>
-                  </div>
-                  <div class="col-lg-3 col-md-6">
-                      <input type="file" id="subject"  required>
-                  </div>
-                  <div class="col-lg-12">
-                      <textarea id="message" rows="5" cols="10" placeholder="Your Message" required></textarea>
-                  </div>
-                  <div class="col-lg-12">
-                      <a class="pq-button form-btn">
-                          <div class="pq-button-block">
-                              <span class="pq-button-text">Send request</span>
-                          </div>
-                      </a>
-                  </div>
-              </div>
-        </form>
+<div class="row">
+    <div class="col-lg-8 mt-4 mt-lg-0 mb-5">
+        <div class="form-div">
+            @using (Html.BeginForm("Create", "ProductsRequests", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="row">
+                    <div class="col-lg-4 col-md-4">
+                        <input type="text" id="first-name" class="name-field" placeholder="Your Name" required name="Name">
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <input type="text" id="e-mail" class="e-mail-field" placeholder="Email" required name="Email">
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <input type="text" id="phone-number" class="phone-number-field" placeholder="Your Phone" required name="PhoneNumber">
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <input type="text" id="subject" class="subject-field" placeholder="Product Name" required name="ProductName">
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <input type="text" id="subject" class="subject-field" placeholder="Address 1" required name="Adress1">
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <input type="text" id="subject" class="subject-field" placeholder="Address 2" required name="Adress2">
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <input class="file-" type="file" id="subject" required name="image1">
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <input type="file" id="subject" required name="image2">
+                    </div>
+                    <div class="col-lg-3 col-md-6 ">
+                        <input type="file" id="subject" required name="image3">
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <input type="file" id="subject" required name="image4">
+                    </div>
+                    <div class="col-lg-12">
+                        <textarea id="message" rows="8" cols="10" placeholder="Your Message" required name="Message"></textarea>
+                    </div>
+                    <div class="col-lg-12">
+                        <input type="submit" class="pq-button-text" value="Send request">
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="col-lg-4 mt-4 mt-lg-0 mb-5">
+        <p> ملاحظة بمجرد نص نص نص نص نصن صنص نصن صن نص </p>
     </div>
 </div>
-

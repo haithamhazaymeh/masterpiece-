@@ -12,6 +12,9 @@ using hikaya_Ajloun.Models;
 
 namespace hikaya_Ajloun.Controllers
 {
+
+
+
     [Authorize(Roles = "Admin")]
 
     public class ProductsController : Controller
@@ -39,6 +42,8 @@ namespace hikaya_Ajloun.Controllers
             }
             return View(product);
         }
+
+
 
         // GET: Products/Create
         public ActionResult Create()

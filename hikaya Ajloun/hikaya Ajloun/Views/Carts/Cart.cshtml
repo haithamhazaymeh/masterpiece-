@@ -30,7 +30,7 @@
 </div>
 <!--Breadcrumb End-->
 <!--Cart Content-->
-<div class="section pb-0">
+<div class="section pb-0 mb-5">
     <div class="container">
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-8">
@@ -56,7 +56,7 @@
                                 int x = 0;
                                 int alltotal = 0;
                             }
-                          
+
 
                             @foreach (var item in Model)
                             {
@@ -85,19 +85,7 @@
                                         <div class="qtyField">
                                             <label class="screen-reader-text">Quantity</label>
                                             <a class="qtyBtn minus" href="javascript:void(0);"><i class="cps cp-minus"></i></a>
-
-                                           
-
-                                            @if (@item.quantity == null)
-                                            {
-                                                <input type="text" name="quantity" value="1" class="product-form__input qty">
-
-                                            }
-                                            else
-                                            {
-                                                <input type="text" name="quantity" value="@item.quantity" class="product-form__input qty" readonly>
-
-                                            }
+                                            <input type="text" name="quantity" value="@item.quantity" class="product-form__input qty" readonly>
                                             <a class="qtyBtn plus" href="javascript:void(0);"><i class="cps cp-plus"></i></a>
                                         </div>
                                     </td>
@@ -108,22 +96,29 @@
                                         alltotal += total;
 
                                     }
-
-                                    @{
-
-
-                                    }
                                     <td class="product-subtotal" data-title="Total">$ @total </td>
                                 </tr>
                             }
 
                         </tbody>
                     </table>
-                    <div class="d-flex justify-content-between button-set-bottom">
-                        <a href="#" class="btn btn-secondary rounded-3 cart-continue">Continue shopping</a>
-                        <button type="submit" name="clear" class="btn btn-border rounded-3 small--hide mx-4">Clear Shoping Cart</button>
-                        <button id="update-cart-btn" type="submit" name="update" class="btn btn-border rounded-3 cart-continue">UPDATE SHOPPING CART</button>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <a href="/Home/Products" class="btn btn-secondary rounded-3 cart-continue">Continue shopping</a>
+                        </div>
+                        <div class="col-md-4">
+                            @using (Html.BeginForm("Delete", "Carts", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                <button type="submit" name="clear" class="btn btn-danger rounded-3 cart-continue" formaction="@Url.Action("Clear", "Carts")">Clear Shopping Cart</button>
+                            }
+                        </div>
+                        <div class="col-md-4">
+                            <a href="/Home/Products" class="btn btn-secondary rounded-3 cart-continue">Update shopping cart</a>
+                        </div>
                     </div>
+
+
                 </form>
 
                 <!--End Cart Table-->
@@ -144,7 +139,7 @@
 
         </div>
         <!--Discount Codes-->
-        <div class="col-12 col-sm-12 col-md-6 col-lg-4 mb-4 cart-col">
+        @*<div class="col-12 col-sm-12 col-md-6 col-lg-4 mb-4 cart-col">
             <div class="box-content">
                 <h5 class="text-uppercase">Discount Codes</h5>
                 <form action="#" method="post">
@@ -157,8 +152,8 @@
                     </div>
                 </form>
             </div>
+        </div>*@
         </div>
-
     </div>
     <!--End Discount Codes-->
 

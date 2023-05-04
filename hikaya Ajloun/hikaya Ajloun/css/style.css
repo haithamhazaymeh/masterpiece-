@@ -645,7 +645,7 @@ Loading
 #back-to-top .top {
     position: fixed;
     bottom: 30px;
-    right: 30px;
+    left: 30px;
     margin: 0px;
     color: var(--white-color);
     background: var(--primary-color);
@@ -3365,6 +3365,14 @@ Breadcrumb
     position: relative;
     text-align: center;
     background-image: url(../images/Content/PLACES.jpg);
+    background-size: cover;
+}
+
+.pq-breadcrumb-Singelplaces {
+    padding: 150px 0;
+    position: relative;
+    text-align: center;
+    background-image: url(../images/Content/PLACESsingel.jpg);
     background-size: cover;
 }
 
