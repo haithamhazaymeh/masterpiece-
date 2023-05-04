@@ -116,7 +116,7 @@
                                             @Html.Partial("_LoginPartial")
                                         </li>
 
-                                        
+
 
                                         @if (Request.IsAuthenticated)
 
@@ -163,11 +163,11 @@
                             <div class="pq-header-info-box">
                                 <div class="pq-header-call">
                                     <a href="/carts/Cart">
-                                    <i class="fa" style="font-size:24px">&#xf07a;</i>
-                                    <span class='badge badge-warning' id='lblCartCount'> @Session["NumOfItems"] </span>
+                                        <i class="fa" style="font-size:24px">&#xf07a;</i>
+                                        <span class='badge badge-warning' id='lblCartCount'> @Session["NumOfItems"] </span>
                                     </a>
                                 </div>
-                                
+
                                 <a href="/Home/contact" class="pq-button ms-3">
                                     <div class="pq-button-block">
                                         <span class="pq-button-text"><i class="fa-solid fa-phone-volume"></i> Contact us</span>
@@ -262,7 +262,7 @@
                                         <li>
                                             <a href="/Home/FormPlace" target="_blank">Add a place</a>
                                         </li>
-                                        
+
                                     </ul>
                                 </div>
                             </div>
@@ -284,7 +284,7 @@
                                         <li>
                                             <a href="/Home/contact" target="_blank">contact</a>
                                         </li>
-                                       
+
                                     </ul>
                                 </div>
                             </div>
@@ -308,7 +308,7 @@
                             <div class="pq-footer-link">
                                 <ul>
                                     <li><a href="/Home/TermOfUse" target="_blank">Term Of Use</a></li>
-                                    <li><a href="/Home/PrivacyPolicy"  target="_blank">Privacy Policy</a></li>
+                                    <li><a href="/Home/PrivacyPolicy" target="_blank">Privacy Policy</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -319,9 +319,11 @@
     </footer>
     <!--Footer End-->
     <!--Back to top Start-->
-    <div style="float:left"  id="back-to-top">
+
+    <div style="float:left" id="back-to-top">
         <a class="top" id="#top" href="#"> <i class="ion-ios-arrow-up"></i> </a>
     </div>
+    @RenderSection("scripts", required: false)
     <!--Back to top End-->
     <!--Jquery js-->
     <script src="~/js/jquery.min.js"></script>
@@ -349,8 +351,7 @@
     <script src="~/js/rough-custom.js"></script>
     <script src="~/js/custom.js"></script>
     <!-- owl slider -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <!-- isotope js -->
     <script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
 </body>

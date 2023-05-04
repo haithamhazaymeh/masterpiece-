@@ -54,9 +54,9 @@ namespace hikaya_Ajloun
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "610508790788313",
+               appSecret: "e543d38c8ad0b8eef246eab2832d5cbe");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{

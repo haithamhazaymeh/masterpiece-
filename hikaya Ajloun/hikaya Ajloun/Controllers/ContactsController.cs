@@ -52,7 +52,7 @@ namespace hikaya_Ajloun.Controllers
             {
                 db.Contacts.Add(contact);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Home/Contact");
             }
 
             return View(contact);
