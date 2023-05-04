@@ -41,6 +41,30 @@
 </head>
 <body>
 
+    <style>
+        .badge {
+            padding-left: 6px;
+            padding-right: 9px;
+            -webkit-border-radius: 9px;
+            -moz-border-radius: 9px;
+            border-radius: 9px;
+        }
+
+        .label-warning[href],
+        .badge-warning[href] {
+            background-color: #c67605;
+        }
+
+        #lblCartCount {
+            font-size: 19px;
+            background: #ff0000;
+            color: #fff;
+            padding: 0 5px;
+            vertical-align: top;
+            margin-left: -20px;
+        }
+    </style>
+
     <script type="text/javascript">window.$crisp = []; window.CRISP_WEBSITE_ID = "9331f54f-9335-4ef0-92e6-a7ddd6e6f0dd"; (function () { d = document; s = d.createElement("script"); s.src = "https://client.crisp.chat/l.js"; s.async = 1; d.getElementsByTagName("head")[0].appendChild(s); })();</script>
 
     <!-- Loading Start-->
@@ -61,7 +85,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <nav class="navbar navbar-expand-lg">
-                            <a class="navbar-brand" href="main-home.html">
+                            <a class="navbar-brand" href="/Home/Home">
                                 <img class="img-fluid logo" src="~/Images/logos/Hekayt Ajloun logo Green.png" alt="techtrix">
                             </a>
                             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -138,7 +162,10 @@
 
                             <div class="pq-header-info-box">
                                 <div class="pq-header-call">
-                                    <a href="/carts/Cart"><i class="fa-solid fa-cart-shopping"></i></a>
+                                    <a href="/carts/Cart">
+                                    <i class="fa" style="font-size:24px">&#xf07a;</i>
+                                    <span class='badge badge-warning' id='lblCartCount'> @Session["NumOfItems"] </span>
+                                    </a>
                                 </div>
                                 
                                 <a href="/Home/contact" class="pq-button ms-3">

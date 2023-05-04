@@ -118,19 +118,22 @@
                             <table class="table table-hover text-center">
 
                                 @{
-                                    var shippingcost = 10 ;
+                                    var shippingcost = 5;
                                     int totel_ship = @ViewBag.totalAmount + shippingcost;
                                 }
 
                                 <tr>
+                                    <td class="text-start text-uppercase"><b>Products Price</b></td>
+                                    <td class="text-start"> @ViewBag.totalAmount JOD </td>
+                                </tr>
+
+                                <tr>
                                     <td class="text-start text-uppercase"><b>Shipping</b></td>
-                                    <td class="text-start">
-                                        @shippingcost
-                                    </td>
+                                    <td class="text-start"> @shippingcost JOD </td>
                                 </tr>
                                 <tr>
                                     <td class="text-start text-uppercase"><b>Total</b></td>
-                                    <td class="text-start red-text"><b>@totel_ship</b></td>
+                                    <td class="text-start red-text"><b>@totel_ship JOD</b></td>
                                     <input type="text" name="totalAmount" hidden value="@ViewBag.totalAmount" />
                                 </tr>
                             </table>
@@ -165,33 +168,37 @@
           layout: 'vertical',
           label: 'paypal',
 
-        },
+          },
 
-        createOrder: function(data, actions) {
-            return actions.order.create({
-                purchase_units: [{ "amount": { "currency_code": "USD", "value":@totel_ship} }]
+          @{ 
+              var ConvertJODtoUSDT = Math.Round(totel_ship / 0.71) ;
+
+          } 
+              createOrder: function(data, actions) {
+                  return actions.order.create({
+                  purchase_units: [{ "amount": { "currency_code": "USD", "value":@ConvertJODtoUSDT} }]
             });
-        },
+              },
 
         onApprove: function(data, actions) {
-          return actions.order.capture().then(function(orderData) {
+                  return actions.order.capture().then(function(orderData) {
 
-            // Full available details
-            console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                      // Full available details
+                      console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
 
-            // Show a success message within this page, e.g.
-            const element = document.getElementById('paypal-button-container');
-            element.innerHTML = '';
-            element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                      // Show a success message within this page, e.g.
+                      const element = document.getElementById('paypal-button-container');
+                      element.innerHTML = '';
+                      element.innerHTML = '<h3>Thank you for your payment!</h3>';
 
-            // Or go to another URL:  actions.redirect('thank_you.html');
+                      // Or go to another URL:  actions.redirect('thank_you.html');
 
-          });
-        },
+                  });
+              },
 
         onError: function(err) {
-          console.log(err);
-        }
+                  console.log(err);
+              }
       }).render('#paypal-button-container');
     }
                                          initPayPalButton();

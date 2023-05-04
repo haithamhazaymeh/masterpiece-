@@ -40,9 +40,7 @@
                 <div class="pq-blog-post">
                     <div class="pq-post-media">
                         <img src="~/Images/article/@Model.articleImage" alt="blog-img">
-                        <div class="pq-post-date">
-                            <a href="#"><span>26</span>Jan</a>
-                        </div>
+                       
                     </div>
                     <div class="pq-blog-contain">
                         <div class="pq-post-meta">
@@ -71,18 +69,7 @@
             </div>
             <div class="col-lg-4 mt-4 mt-lg-0">
                 <div id="secondary" class="sidebar widget-area">
-                    <div id="search-2" class="widget widget_search">
-                        <form role="search" method="get" class="search-form" action="main-home.html">
-                            <label>
-                                <span class="screen-reader-text">Search for:</span>
-                                <input type="search" class="search-field mb-0" placeholder="Search …" value=""
-                                       name="s">
-                            </label>
-                            <button type="submit" class="search-submit">
-                                <span class="screen-reader-text">Search</span>
-                            </button>
-                        </form>
-                    </div>
+                    
                     <div class="pq-widget-menu widget">
                         <h2 class="widget-title">Recent Post</h2>
 
@@ -119,7 +106,7 @@
                                 var displayedCategories = new HashSet<string>();
                             }
 
-                            @foreach (var item in artical.Take(4))  //Take(4)
+                            @foreach (var item in artical.Take(6))  //Take(6)
                             {
                                 if (!displayedCategories.Contains(item.Category.categoryName))
                                 {
@@ -133,37 +120,8 @@
                         </ul>
                     </div>
 
-                    <div id="tag_cloud-2" class="widget widget_tag_cloud">
-                        <h2 class="widget-title">Tags</h2>
-                        <div class="tagcloud">
-                            <a href="app-promotes-sales-profits-in-it-solutions.html" class="tag-cloud-link">
-                                Cloud Computing<span class="tag-link-count"> (4)</span>
-                            </a>
-                            <a href="app-promotes-sales-profits-in-it-solutions.html" class="tag-cloud-link">
-                                Cyber Security<span class="tag-link-count"> (3)</span>
-                            </a>
-                            <a href="app-promotes-sales-profits-in-it-solutions.html" class="tag-cloud-link">
-                                Device Management<span class="tag-link-count"> (6)</span>
-                            </a>
-                            <a href="app-promotes-sales-profits-in-it-solutions.html" class="tag-cloud-link">
-                                Events<span class="tag-link-count">
-                                    (7)
-                                </span>
-                            </a>
-                            <a href="app-promotes-sales-profits-in-it-solutions.html" class="tag-cloud-link">
-                                On Demand IT<span class="tag-link-count"> (5)</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div id="meta-2" class="widget widget_meta">
-                        <h2 class="widget-title">Meta</h2>
-                        <ul>
-                            <li><a href="#">Log in</a></li>
-                            <li><a href="#">Entries feed</a></li>
-                            <li><a href="#">Comments feed</a></li>
-                            <li><a href="#">WordPress.org</a></li>
-                        </ul>
-                    </div>
+                    
+                  
                 </div>
             </div>
 

@@ -80,7 +80,7 @@
                                         }
 
                                     </td>
-                                    <td class="product-price" data-title="Price">$@item.Product.price</td>
+                                    <td class="product-price" data-title="Price">JOD @item.Product.price</td>
                                     <td class="product-quantity" data-title="Quantity">
                                         <div class="qtyField">
                                             <label class="screen-reader-text">Quantity</label>
@@ -96,7 +96,7 @@
                                         alltotal += total;
 
                                     }
-                                    <td class="product-subtotal" data-title="Total">$ @total </td>
+                                    <td class="product-subtotal" data-title="Total">JOD @total </td>
                                 </tr>
                             }
 
@@ -126,13 +126,19 @@
             <div class="col-12 col-sm-12 col-md-12 col-lg-4">
                 <div class="solid-border cart-total rounded-3">
                     <h5 class="text-uppercase">Cart totals</h5>
-                    
+
                     <div class="row border-bottom pb-2 pt-2">
                         <span class="col-6 col-sm-6 cart__subtotal-title text-uppercase"><strong>Total</strong></span>
-                        <span class="col-6 col-sm-6 cart__subtotal-title cart__subtotal text-right"><b>$ @alltotal  </b></span>
+                        <span class="col-6 col-sm-6 cart__subtotal-title cart__subtotal text-right"><b>JOD @alltotal  </b></span>
                     </div>
-                    <a href="/Home/chekout" class="btn btn-lg btn-primary rounded-pill my-4 checkout w-100">Proceed To Checkout</a>
-                    <p><img class="blur-up lazyloaded" src="~/Images/Content/paymethod.png" data-src="~/Images/Content/paymethod.png" alt="Guaranteed Safe Checkout"></p>
+                    @if (ViewBag.NumOfItems > 0)
+                    {
+                        <a href="/Home/chekout" class="btn btn-lg btn-primary rounded-pill my-4 checkout w-100">Proceed To Checkout</a>
+                    }
+                    else
+                    {
+                        <button class="btn btn-lg btn-primary rounded-pill my-4 checkout w-100" disabled>Proceed To Checkout</button>
+                    }                    <p><img class="blur-up lazyloaded" src="~/Images/Content/paymethod.png" data-src="~/Images/Content/paymethod.png" alt="Guaranteed Safe Checkout"></p>
                 </div>
 
             </div>

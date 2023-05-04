@@ -28,9 +28,15 @@ namespace hikaya_Ajloun.Controllers
             var id = User.Identity.GetUserId();
             //ViewBag.userId = id;
             var carts = db.Carts.Where(x => x.AspNetUser.Id == id).Include(c => c.Product);
+            int numOfItems = carts.Count();
+            Session["NumOfItems"] = numOfItems;
+            ViewBag.NumOfItems = numOfItems;
             return View(carts.ToList());
 
         }
+
+       
+
 
         public ActionResult Buy(int? productId, int? quantity)
         {

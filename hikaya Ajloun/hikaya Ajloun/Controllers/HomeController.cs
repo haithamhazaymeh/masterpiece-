@@ -149,7 +149,7 @@ namespace hikaya_Ajloun.Controllers
             
 
 
-            return RedirectToAction("Products", "Home");
+            return RedirectToAction("Home", "Home");
         }
 
         public ActionResult Error()
