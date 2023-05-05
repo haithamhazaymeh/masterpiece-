@@ -227,49 +227,79 @@
 
                         @foreach (var item in Model.Item2)
                         {
-                            <div class="pq-grid-item pq-filter-items pq-col-4  pq-crop-img @item.Category.categoryName">
-                                <div class="box">
-                                    <div>
-                                        <div width="50%" class="img-box">
-                                            <a href="/Home/SingleProduct?id=@item.productId"> <img src="~/Images/Products/@item.productImage_1" alt=""> </a>
-                                        </div>
-                                        <div class="detail-box">
-                                            <a href="/Home/SingleProduct?id=@item.productId">
-                                                <h5>
-                                                    @item.productName
-                                                </h5>
-                                            </a>
-                                            <p>
-                                                @if (item.productDescription.Length > 220)
-                                                {
-                                                    var cutIndex = item.productDescription.LastIndexOf(" ", 220);
-                                                    var cutDescription = item.productDescription.Substring(0, (cutIndex > 0 ? cutIndex : 220)) + "...";
-                                                    @cutDescription
-                                                }
-                                                else
-                                                {
-                                                    @item.productDescription
-                                                }
-                                            </p>
-                                            <div class="options">
-                                                <h6>
-                                                    JOD @item.price
-                                                </h6>
-                                                @*<a class="option1 btn btn-cart" href="@Url.Action("Buy", "Carts", new { productId = Convert.ToInt32(item.productId) })">Add To Cart</a>*@
+                            if (item.availability != "Out Of Stock             ")
+                            {
+                                <div class="pq-grid-item pq-filter-items pq-col-4  pq-crop-img @item.Category.categoryName">
+                                    <div class="box">
+                                        <div>
+                                            <div width="50%" class="img-box">
+                                                <a href="/Home/SingleProduct?id=@item.productId"> <img src="~/Images/Products/@item.productImage_1" alt=""> </a>
+                                            </div>
+                                            <div class="detail-box">
+                                                <a href="/Home/SingleProduct?id=@item.productId">
+                                                    <h5>
+                                                        @item.productName
+                                                    </h5>
+                                                </a>
+                                                <p>
+                                                    @if (item.productDescription.Length > 220)
+                                                    {
+                                                        var cutIndex = item.productDescription.LastIndexOf(" ", 220);
+                                                        var cutDescription = item.productDescription.Substring(0, (cutIndex > 0 ? cutIndex : 220)) + "...";
+                                                        @cutDescription
+                                                    }
+                                                    else
+                                                    {
+                                                        @item.productDescription
+                                                    }
+                                                </p>
+                                                <div class="options">
+                                                    <h6>
+                                                        JOD @item.price
+                                                    </h6>
 
-                                                <a class="option1" href="@Url.Action("Buy", "Carts", new { productId = Convert.ToInt32(item.productId) })"> <i class="fa-solid fa-cart-shopping"> </i></a>
+                                                    <button style="color: black; padding:10px; border-radius:100px; background-color: #ffbe33; border: none" onclick="addToCart(@item.productId)"> <i class="fa fa-cart-plus"></i></button>
 
-                                                @*<a href="/Carts/Cart/Buy?id=@item.productId">
-            <i class="fa-solid fa-cart-shopping"> </i>
+                                                    <script>
+                                                       function addToCart(productId) {
+                                                    const Toast = Swal.mixin({
+                                                           toast: true,
+                                                        position: 'bottom-end',
+                                                       showConfirmButton: false,
+                                                       timer: 3000,
+                                                      timerProgressBar: true,
+                                                      didOpen: (toast) => {
+                                                           toast.addEventListener('mouseenter', Swal.stopTimer)
+                                                           toast.addEventListener('mouseleave', Swal.resumeTimer)
+                                                        }
+                                                 })
+                                            
+                                                 Toast.fire({
+                                                     icon: 'success',
+                                                     title: '"Added to cart successfully"'
+                                                 })
+
+                                                 $.ajax({
+                                                     type: "POST",
+                                                     url: "@Url.Action("Buy", "Carts")",
+                                                     data: { productId: productId },
+                                                        success: function () {
+                                                         setTimeout(function() {
+                                                             location.reload();
+                                                         }, 3000); // تأخير التحديث بمقدار ثانيتين
+                                                      }
+                                                    });
+                                             }
+                                                    </script>
 
 
-
-        </a>*@
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+
+                            }
                         }
 
                     </div>

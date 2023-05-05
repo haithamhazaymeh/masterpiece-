@@ -17,6 +17,7 @@ namespace hikaya_Ajloun.Controllers
         // GET: Orders
         public ActionResult Index()
         {
+            var order_Details = db.Order_Details.Include(o => o.Order).Include(o => o.Product);
             var orders = db.Orders.Include(o => o.AspNetUser);
             return View(orders.ToList());
         }

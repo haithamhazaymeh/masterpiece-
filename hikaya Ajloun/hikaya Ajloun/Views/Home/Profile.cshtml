@@ -96,6 +96,7 @@
                     @using (Html.BeginForm("Create", "Profiles", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
                         @Html.AntiForgeryToken()
+
                         <div id="profile" class="product-order tab-pane fade">
                             <h3>Profile</h3>
                             <form method="post" action="#" class="profile-form">
@@ -179,10 +180,6 @@
                                         </div>
                                     </div>
                                 </div>
-                               
-                                
-
-
                                 <div class="row align-items-center justify-content-between">
                                     <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-2">
                    

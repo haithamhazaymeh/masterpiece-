@@ -249,6 +249,20 @@
                 theme: "monokai"
             });
         })
+
+        // يحدد جميع عناصر input من النوع file التي تبدأ بـ "productImage_"
+        document.querySelectorAll('input[type="file"][id^="productImage_"]').forEach(function (input) {
+            input.addEventListener("change", function () {
+                if (this.files.length > 0) {
+                    this.classList.add("is-valid");
+                    this.nextElementSibling.innerText = this.files[0].name;
+                } else {
+                    this.classList.remove("is-valid");
+                    this.nextElementSibling.innerText = "Choose file";
+                }
+            });
+        });
+
     </script>
 </body>
 </html>

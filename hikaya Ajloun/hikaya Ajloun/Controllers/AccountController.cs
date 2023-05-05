@@ -187,6 +187,7 @@ namespace hikaya_Ajloun.Controllers
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    await UserManager.AddToRoleAsync(user.Id, "Users");
 
                     var profile = db.AspNetUsers.FirstOrDefault(x => x.UserName == model.Email);
 

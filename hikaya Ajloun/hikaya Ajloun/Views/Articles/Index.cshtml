@@ -44,116 +44,116 @@
             .thumbnail:hover {
                 transform: scale(3);
             }
-
     </style>
 
 
     @RenderPage("~/Views/Shared/_saidbar-navbar.cshtml")
 
-<div style="padding:50px" class="content-wrapper">
+    <div style="padding:50px" class="content-wrapper">
 
 
 
-    @using (Html.BeginForm("index", "Articles", FormMethod.Post, new { enctype = "multipart/form-data" }))
-    {
-        <p>
-            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
-        </p>
-        <div class="card">
-            <div class="card-body">
+        
+            <p>
+                @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+            </p>
+            <div class="card">
+                <div class="card-body">
 
 
-                <table id="example1" class="table table-bordered table-hover">
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.articleName)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.articleImage)
-                        </th>
-
-                        <th>
-                            @Html.DisplayNameFor(model => model.articleDate)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.author.authorname)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Category.categoryName)
-                        </th>
-                        <th>
-                            <label>Action</label>
-                        </th>
-                    </tr>
-
-                    @foreach (var item in Model)
-                    {
+                    <table id="example1" class="table table-bordered table-hover">
                         <tr>
-                            <td style="width:20%; overflow:hidden; ">
-                                @Html.DisplayFor(modelItem => item.articleName)
-                            </td>
-                            <td>
-                                <img alt="" class="thumbnail" src="~/Images/article/@item.articleImage" style="height:70px;width:70px;" />
-                            </td>
+                            <th>
+                                @Html.DisplayNameFor(model => model.articleName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.articleImage)
+                            </th>
 
-                            <td style="width:25%;">
-                                @Html.DisplayFor(modelItem => item.articleDate)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.author.authorname)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Category.categoryName)
-                            </td>
-                            <td style="width:30%;">
-                                @Html.ActionLink("Edit", "Edit", new { id = item.articleId }, new { @class = "btn btn-info" })
-                                @Html.ActionLink("Details", "Details", new { id = item.articleId }, new { @class = "btn btn-warning" })
-                                @Html.ActionLink("Delete", "Delete", new { id = item.articleId }, new { @class = "btn btn-danger" })
-                            </td>
+                            <th>
+                                @Html.DisplayNameFor(model => model.articleDate)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.author.authorname)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Category.categoryName)
+                            </th>
+                            <th>
+                                <label>Action</label>
+                            </th>
                         </tr>
-                    }
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td style="width:20%; overflow:hidden; ">
+                                    @Html.DisplayFor(modelItem => item.articleName)
+                                </td>
+                                <td>
+                                    <img alt="" class="thumbnail" src="~/Images/article/@item.articleImage" style="height:70px;width:70px;" />
+                                </td>
+
+                                <td style="width:25%;">
+                                    @Html.DisplayFor(modelItem => item.articleDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.author.authorname)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Category.categoryName)
+                                </td>
+                                <td style="width:20%;">
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.articleId }, new { @class = "btn btn-info" })
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.articleId }, new { @class = "btn btn-danger" })
+                                    <a href="/Home/SingleBlog?id=@item.articleId" class="btn btn-success" target="_blank">View</a>
+                                </td>
+                            </tr>
+                        }
 
 
-                </table>
+                    </table>
+                </div>
+
             </div>
 
-            </div>
 
 
+      
 
-            }
+    </div>
 
-        </div>
+    @RenderPage("~/Views/Shared/footer.cshtml")
+    <!-- ./wrapper -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-        @RenderPage("~/Views/Shared/footer.cshtml")
-        <!-- ./wrapper -->
-        <!-- jQuery -->
-        <script src="~/Dashboard//plugins/jquery/jquery.min.js"></script>
-        <!-- Bootstrap 4 -->
-        <script src="~/Dashboard//plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <!-- AdminLTE App -->
-        <script src="~/Dashboard//dist/js/adminlte.min.js"></script>
-        <!-- Summernote -->
-        <script src="~/Dashboard//plugins/summernote/summernote-bs4.min.js"></script>
-        <!-- CodeMirror -->
-        <script src="~/Dashboard//plugins/codemirror/codemirror.js"></script>
-        <script src="~/Dashboard//plugins/codemirror/mode/css/css.js"></script>
-        <script src="~/Dashboard//plugins/codemirror/mode/xml/xml.js"></script>
-        <script src="~/Dashboard//plugins/codemirror/mode/htmlmixed/htmlmixed.js"></script>
-        <!-- AdminLTE for demo purposes -->
-        <script src="~/Dashboard//dist/js/demo.js"></script>
-        <!-- Page specific script -->
-        <script>
-            $(function () {
-                // Summernote
-                $('#summernote').summernote()
+    <!-- jQuery -->
+    <script src="~/Dashboard//plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/Dashboard//plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/Dashboard//dist/js/adminlte.min.js"></script>
+    <!-- Summernote -->
+    <script src="~/Dashboard//plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- CodeMirror -->
+    <script src="~/Dashboard//plugins/codemirror/codemirror.js"></script>
+    <script src="~/Dashboard//plugins/codemirror/mode/css/css.js"></script>
+    <script src="~/Dashboard//plugins/codemirror/mode/xml/xml.js"></script>
+    <script src="~/Dashboard//plugins/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/Dashboard//dist/js/demo.js"></script>
+    <!-- Page specific script -->
+    <script>
+        $(function () {
+            // Summernote
+            $('#summernote').summernote()
 
-                // CodeMirror
-                CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
-                    mode: "htmlmixed",
-                    theme: "monokai"
-                });
-            })
-        </script>
+            // CodeMirror
+            CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
+                mode: "htmlmixed",
+                theme: "monokai"
+            });
+        })
+    </script>
 </body>
 </html>

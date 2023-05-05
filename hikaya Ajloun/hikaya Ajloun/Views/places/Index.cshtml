@@ -73,6 +73,7 @@
                     @Html.DisplayNameFor(model => model.placeImage1)
                 </th>
                 
+
                 <th>
                     @Html.DisplayNameFor(model => model.description)
                 </th>
@@ -91,7 +92,9 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Review.comment)
                 </th>
-                <th></th>
+                <th>
+                    <label>Action</label>
+                </th>
             </tr>
 
             @foreach (var item in Model)
@@ -104,7 +107,13 @@
                         <img alt="" class="thumbnail" src="~/Images/places/@item.placeImage1" style="height:70px;width:70px;" />
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.description)
+                       
+                        @{
+                            var words2 = item.description.Split(' ');
+                            var shortDescription2 = String.Join(" ", words2.Take(15));
+                            @Html.DisplayFor(modelItem => shortDescription2)
+                        }
+
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.price_per_day)
@@ -121,10 +130,10 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Review.comment)
                     </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.placeId }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.placeId }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.placeId })
+                    <td style="width:20%;">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.placeId }, new { @class = "btn btn-info" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.placeId }, new { @class = "btn btn-danger" })
+                        <a href="/places/Places?id=@item.placeId" class="btn btn-success" target="_blank">View</a>
                     </td>
                 </tr>
             }

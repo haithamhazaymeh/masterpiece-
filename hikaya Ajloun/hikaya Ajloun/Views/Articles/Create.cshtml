@@ -145,6 +145,18 @@
                 theme: "monokai"
             });
         })
+
+            
+        document.getElementById("articleImage").addEventListener("change", function () {
+            if (this.files.length > 0) {
+                this.classList.add("is-valid");
+                this.nextElementSibling.innerText = this.files[0].name; // إضافة سطر جديد لتعيين اسم الملف
+            } else {
+                this.classList.remove("is-valid");
+                this.nextElementSibling.innerText = "Choose file"; // إضافة سطر جديد لإعادة النص إلى "Choose file"
+            }
+        });
+   
     </script>
 </body>
 </html>

@@ -65,9 +65,9 @@
         @using (Html.BeginForm("index", "Articles", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             <p>
-                @Html.ActionLink("Create New", "Create" , null, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
             </p>
-            <table  id="example1" class="table table-bordered table-hover">
+            <table id="example1" class="table table-bordered table-hover">
                 <tr>
                     <th>
                         @Html.DisplayNameFor(model => model.productName)
@@ -111,7 +111,7 @@
                         <td>
                             @{
                                 var words = item.productDescription.Split(' ');
-                                var shortDescription = String.Join(" ", words.Take(20));
+                                var shortDescription = String.Join(" ", words.Take(15));
                                 @Html.DisplayFor(modelItem => shortDescription)
                             }
                         </td>
@@ -122,7 +122,7 @@
                         <td>
                             @{
                                 var words2 = item.shipping_return.Split(' ');
-                                var shortDescription2 = String.Join(" ", words2.Take(20));
+                                var shortDescription2 = String.Join(" ", words2.Take(15));
                                 @Html.DisplayFor(modelItem => shortDescription2)
                             }
                         </td>
@@ -132,9 +132,10 @@
                             @Html.DisplayFor(modelItem => item.Category.categoryName)
                         </td>
                         <td style="width:20%">
-                            @Html.ActionLink("Edit", "Edit", new { id = item.productId }, new { @class = "btn btn-info" }) 
-                            @Html.ActionLink("Details", "Details", new { id = item.productId }, new { @class = "btn btn-warning" }) 
+                            @Html.ActionLink("Edit", "Edit", new { id = item.productId }, new { @class = "btn btn-info" })
                             @Html.ActionLink("Delete", "Delete", new { id = item.productId }, new { @class = "btn btn-danger" })
+                            <a href="/Home/SingleProduct?id=@item.productId" class="btn btn-success" target="_blank">View</a>
+
                         </td>
                     </tr>
                 }
@@ -161,6 +162,8 @@
 
     @RenderPage("~/Views/Shared/footer.cshtml")
     <!-- ./wrapper -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- jQuery -->
     <script src="~/Dashboard//plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
@@ -188,6 +191,16 @@
                 theme: "monokai"
             });
         })
+
+        document.getElementById("articleImage").addEventListener("change", function () {
+            if (this.files.length > 0) {
+                this.classList.add("is-valid");
+                this.nextElementSibling.innerText = this.files[0].name; // إضافة سطر جديد لتعيين اسم الملف
+            } else {
+                this.classList.remove("is-valid");
+                this.nextElementSibling.innerText = "Choose file"; // إضافة سطر جديد لإعادة النص إلى "Choose file"
+            }
+        });
     </script>
 </body>
 </html>

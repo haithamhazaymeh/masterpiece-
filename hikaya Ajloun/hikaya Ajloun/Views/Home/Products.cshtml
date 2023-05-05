@@ -142,31 +142,65 @@
                             @foreach (var item in Model.Item1)
                             {
 
+                                if (item.availability != "Out Of Stock             ")
+                                {
+                                    <div class="col-md-8 col-lg-6 col-xl-4 mt-3">
+                                        <div class="card text-black">
+                                            <a href="/Home/SingleProduct?id=@item.productId">
+                                                <img src="~/Images/Products/@item.productImage_1"
+                                                     class="card-img-top"
+                                                     alt="@item.productDescription" />
+                                            </a>
+                                            <div class="card-body">
+                                                <div class="text-center">
+                                                    <a href="/Home/SingleProduct?id=@item.productId">
+                                                        <h5 class="card-title">@item.productName</h5>
+                                                    </a>
+                                                </div>
+                                                <div class="d-flex justify-content-center total font-weight-bold mt-4">
+                                                    <span>JOD @item.price</span>
+                                                </div>
+                                                <div class="d-flex justify-content-center total font-weight-bold mt-4">
+                                                    <button style="color: white; padding: 15px; border-radius: 30px; background-color: #2e7d32; border: none" onclick="addToCart(@item.productId)"> <i class="fa fa-cart-plus"> Add to cart</i></button>
 
+                                                    <script>
+    function addToCart(productId) {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'bottom-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
 
-                                <div class="col-md-8 col-lg-6 col-xl-4 mt-3">
-                                    <div class="card text-black">
-                                        <a href="/Home/SingleProduct?id=@item.productId">
-                                            <img src="~/Images/Products/@item.productImage_1"
-                                                 class="card-img-top"
-                                                 alt="@item.productDescription" />
-                                        </a>
-                                        <div class="card-body">
-                                            <div class="text-center">
-                                                <a href="/Home/SingleProduct?id=@item.productId">
-                                                    <h5 class="card-title">@item.productName</h5>
-                                                </a>
-                                            </div>
-                                            <div class="d-flex justify-content-center total font-weight-bold mt-4">
-                                                <span>JOD @item.price</span>
-                                            </div>
-                                            <div class="d-flex justify-content-center total font-weight-bold mt-4">
-                                                <a class="option1 btn btn-cart" href="@Url.Action("Buy", "Carts", new { productId = Convert.ToInt32(item.productId) })">Add To Cart</a>
+        Toast.fire({
+            icon: 'success',
+            title: '"Added to cart successfully"'
+        })
 
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("Buy", "Carts")",
+            data: { productId: productId },
+            success: function () {
+                setTimeout(function() {
+                    location.reload();
+                }, 3000); // تأخير التحديث بمقدار ثانيتين
+            }
+        });
+    }
+                                                    </script>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+
+                                }
+
 
                             }
 

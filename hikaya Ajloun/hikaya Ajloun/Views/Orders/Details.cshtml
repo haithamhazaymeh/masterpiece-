@@ -5,118 +5,146 @@
 }
 
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Order Details</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/fontawesome-free/css/all.min.css">
+
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Dashboard/dist/css/adminlte.min.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/summernote/summernote-bs4.min.css">
+    <!-- CodeMirror -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/codemirror/codemirror.css">
+    <link rel="stylesheet" href="~/Dashboard/plugins/codemirror/theme/monokai.css">
+    <link rel="shortcut icon" href="~/Images/logos/favicon.png">
+
 </head>
-<body>
-    <div>
-        <h4>Order</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.totalAmount)
-            </dt>
+<body class="hold-transition sidebar-mini layout-fixed">
+
+
     
-            <dd>
-                @Html.DisplayFor(model => model.totalAmount)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.orderDate)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.orderDate)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.address_2)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.address_2)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.address_1)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.address_1)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.email)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.email)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.phoneNumber)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.phoneNumber)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.LastName)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.LastName)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.FirstName)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Payment_Mthod)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Payment_Mthod)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.city)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.city)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.status)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.status)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.AspNetUser.Email)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.AspNetUser.Email)
-            </dd>
-    
-        </dl>
+
+
+    @RenderPage("~/Views/Shared/_saidbar-navbar.cshtml")
+
+    <div style="padding:50px" class="content-wrapper">
+        <table id="example1" class="table table-bordered table-hover">
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.totalAmount)</td>
+                <td>@Html.DisplayFor(model => model.totalAmount)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.orderDate)</td>
+                <td>@Html.DisplayFor(model => model.orderDate)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.address_2)</td>
+                <td>@Html.DisplayFor(model => model.address_2)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.address_1)</td>
+                <td>@Html.DisplayFor(model => model.address_1)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.email)</td>
+                <td>@Html.DisplayFor(model => model.email)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.phoneNumber)</td>
+                <td>@Html.DisplayFor(model => model.phoneNumber)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.LastName)</td>
+                <td>@Html.DisplayFor(model => model.LastName)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.FirstName)</td>
+                <td>@Html.DisplayFor(model => model.FirstName)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Payment_Mthod)</td>
+                <td>@Html.DisplayFor(model => model.Payment_Mthod)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.city)</td>
+                <td>@Html.DisplayFor(model => model.city)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.status)</td>
+                <td>@Html.DisplayFor(model => model.status)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.AspNetUser.Email)</td>
+                <td>@Html.DisplayFor(model => model.AspNetUser.Email)</td>
+            </tr>
+
+        </table>
+
+
+
+        @{
+            hikaya_Ajloun.Models.hikaya_AjlounEntities3 db1 = new hikaya_Ajloun.Models.hikaya_AjlounEntities3();
+            var orderde = db1.Order_Details.Where(x => x.Order_id == Model.orderId).ToList();
+        }
+
+        <table id="example1" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Order Count</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in orderde)
+                {
+                    <tr>
+                        <td>@item.Product.productName</td>
+                        <td>@item.Quantity</td>
+                        <td><img width="25%" src="~/Images/Products/@item.Product.productImage_1" alt="Product 1"></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+
+
+        <p>
+            @Html.ActionLink("Back to List", "Index" ,null , new { @class = "btn btn-info" })
+        </p>
+
     </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.orderId }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
+
+@RenderPage("~/Views/Shared/footer.cshtml")
+
+<!-- ./wrapper -->
+<!-- jQuery -->
+<script src="~/Dashboard//plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="~/Dashboard//plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="~/Dashboard//dist/js/adminlte.min.js"></script>
+<!-- Summernote -->
+<script src="~/Dashboard//plugins/summernote/summernote-bs4.min.js"></script>
+<!-- CodeMirror -->
+<script src="~/Dashboard//plugins/codemirror/codemirror.js"></script>
+<script src="~/Dashboard//plugins/codemirror/mode/css/css.js"></script>
+<script src="~/Dashboard//plugins/codemirror/mode/xml/xml.js"></script>
+<script src="~/Dashboard//plugins/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="~/Dashboard//dist/js/demo.js"></script>
+<!-- Page specific script -->
 </body>
 </html>

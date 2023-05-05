@@ -5,69 +5,124 @@
     Layout = null;
 }
 
-<h2>Delete</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hikayat Ajloun Dashboard</title>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Article</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.articleName)
-        </dt>
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="~/Dashboard/https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/jqvmap/jqvmap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/Dashboard/dist/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/daterangepicker/daterangepicker.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/summernote/summernote-bs4.min.css">
+    <link rel="shortcut icon" href="~/Images/logos/favicon.png">
 
-        <dd>
-            @Html.DisplayFor(model => model.articleName)
-        </dd>
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.articleImage)
-        </dt>
+    @RenderPage("~/Views/Shared/_saidbar-navbar.cshtml")
 
-        <dd>
-            @Html.DisplayFor(model => model.articleImage)
-        </dd>
+    <div style="padding:50px" class="content-wrapper">
+        <h3>Are you sure you want to delete this?</h3>
+        <div>
+            <h4>Article</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.articleName)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.articleFile)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.articleName)
+                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.articleFile)
-        </dd>
+                
 
-        <dt>
-            @Html.DisplayNameFor(model => model.articleDate)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.articleDate)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.articleDate)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.articleDate)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.author.authorname)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.author.authorname)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.author.authorname)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.author.authorname)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Category.categoryName)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Category.categoryName)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Category.categoryName)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Category.categoryName)
+                </dd>
 
-    </dl>
+            </dl>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-danger" /> |
+                    @Html.ActionLink("Back to List", "Index" , null, new { @class = "btn btn-info" })
+                </div>
+            }
         </div>
-    }
-</div>
+
+    </div>
+
+    @RenderPage("~/Views/Shared/footer.cshtml")
+    <!-- ./wrapper -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- jQuery -->
+    <script src="~/Dashboard//plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/Dashboard//plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/Dashboard//dist/js/adminlte.min.js"></script>
+    <!-- Summernote -->
+    <script src="~/Dashboard//plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- CodeMirror -->
+    <script src="~/Dashboard//plugins/codemirror/codemirror.js"></script>
+    <script src="~/Dashboard//plugins/codemirror/mode/css/css.js"></script>
+    <script src="~/Dashboard//plugins/codemirror/mode/xml/xml.js"></script>
+    <script src="~/Dashboard//plugins/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/Dashboard//dist/js/demo.js"></script>
+    <!-- Page specific script -->
+    <script>$(function () {
+            // Summernote
+            $('#summernote').summernote()
+
+            // CodeMirror
+            CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
+                mode: "htmlmixed",
+                theme: "monokai"
+            });
+        })</script>
+</body>
+</html>

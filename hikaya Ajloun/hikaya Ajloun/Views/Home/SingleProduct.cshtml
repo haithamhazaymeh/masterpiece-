@@ -96,22 +96,22 @@
                                 </div>
                             </div>
 
-                            <p>Availability: @Model.availability</p>
+                            @*<p>Availability: @Model.availability</p>*@
 
 
-                            @*@if (Model.availability == "On Stock")  //
-                                {
+                            @if (Model.availability == "Out Of Stock             ")  //
+                            {
 
-                                    <div class="stock mb-1"><b><span class="inStock text-uppercase"><i class="cp cp-check-circle"></i> On Stock</span></b></div>
+                                <div class="stockout mb-1"><b><span class="stockout text-uppercase"><i class="cp cp-check-circle"></i>Out of stock</span></b></div>
 
 
-                                }
-                                else
-                                {
+                            }
+                            else
+                            {
 
-                                    <div class="stockout mb-1"><b><span class="stockout text-uppercase"><i class="cp cp-check-circle"></i>Out of stock</span></b></div>
+                                <div class="stock mb-1"><b><span class="inStock text-uppercase"><i class="cp cp-check-circle"></i> On Stock</span></b></div>
 
-                                }*@
+                            }
 
 
                             <div class="brands mb-1"><b>Brand:</b> @Model.Category.categoryName</div>
@@ -167,11 +167,15 @@
                                         <div class="product-form-submit flex-1">
 
 
-                                            @*<a class="option1" href="@Url.Action("Buy", "Carts", new { id = Model.productId })" data-ajax="true" data-ajax-method="POST" data-ajax-complete="onAddToCartComplete">*@
-                                            <button type="submit" class="btn rounded w-100 add-to-cart-btn"><i class="cp cp-shopping-cart"></i> <span>Add to cart</span></button>
-                                            @*</a>*@
+                                            @if (Model.availability == "Out Of Stock             ")
+                                            {
+                                                <button type="submit" class="btn rounded w-100 add-to-cart-btn" disabled><i class="cp cp-shopping-cart"></i> <span>Add to cart</span></button>
+                                            }
+                                            else
+                                            {
+                                                <button type="submit" class="btn rounded w-100 add-to-cart-btn"><i class="cp cp-shopping-cart"></i> <span>Add to cart</span></button>
+                                            }
 
-                                            @*<button type="submit" class="btn rounded d-none" disabled="disabled">Sold out</button>*@
                                         </div>
                                     </div>
                                 </div>

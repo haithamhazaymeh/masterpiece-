@@ -194,11 +194,25 @@ namespace hikaya_Ajloun.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Product product = db.Products.Find(id);
-            db.Products.Remove(product);
+            Category category = db.Categories.Find(id);
+
+            // Check if there are any products, places, or articles in this category
+            var anyProductsInCategory = db.Products.Any(p => p.categoryId == id);
+            var anyPlacesInCategory = db.places.Any(p => p.categoryId == id);
+            var anyArticlesInCategory = db.Articles.Any(a => a.categoryId == id);
+
+            if (anyProductsInCategory || anyPlacesInCategory || anyArticlesInCategory)
+            {
+                ViewBag.ErrorMessage = "Cannot delete category. It has products, places, or articles associated with it.";
+                return View(category);
+            }
+
+            db.Categories.Remove(category);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+
 
         protected override void Dispose(bool disposing)
         {

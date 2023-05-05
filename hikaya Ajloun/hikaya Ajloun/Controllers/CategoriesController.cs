@@ -189,10 +189,23 @@ namespace hikaya_Ajloun.Models
         public ActionResult DeleteConfirmed(int id)
         {
             Category category = db.Categories.Find(id);
+            // Check if there are products, places, or articles associated with this category
+            var hasProducts = db.Products.Any(p => p.categoryId == id);
+            var hasPlaces = db.places.Any(pl => pl.categoryId == id);
+            var hasArticles = db.Articles.Any(a => a.categoryId == id);
+
+            if (hasProducts || hasPlaces || hasArticles)
+            {
+                ViewBag.ErrorMessage = "Cannot delete category. It has associated products, places, or articles.";
+                return View(category);
+            }
+
             db.Categories.Remove(category);
             db.SaveChanges();
             return RedirectToAction("Index");
+
         }
+
 
         protected override void Dispose(bool disposing)
         {

@@ -50,7 +50,7 @@
 
 
 
-            <div class="form-group  col-sm-10 mt-3">
+            <div class="form-group  col-sm-12 mt-3">
                 @Html.LabelFor(model => model.articleName, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.articleName, new { htmlAttributes = new { @class = "form-control form-control-lg " } })
@@ -131,7 +131,7 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
+                    <input type="submit" value="Save" class="btn btn-primary" />
                 </div>
             </div>
         </div>
@@ -139,7 +139,7 @@
             }
 
             <div>
-                @Html.ActionLink("Back to List", "Index")
+                @Html.ActionLink("Back to List", "Index" , null, new { @class = "btn btn-info" })
             </div>
         </div>
 
@@ -172,6 +172,17 @@
                 theme: "monokai"
             });
         })
+
+        document.getElementById("articleImage").addEventListener("change", function () {
+            if (this.files.length > 0) {
+                this.classList.add("is-valid");
+                this.nextElementSibling.innerText = this.files[0].name; // إضافة سطر جديد لتعيين اسم الملف
+            } else {
+                this.classList.remove("is-valid");
+                this.nextElementSibling.innerText = "Choose file"; // إضافة سطر جديد لإعادة النص إلى "Choose file"
+            }
+        });
+
     </script>
 </body>
 </html>

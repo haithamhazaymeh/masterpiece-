@@ -89,12 +89,7 @@ namespace hikaya_Ajloun.Controllers
             return View();
         }
 
-        //public ActionResult Cart()
-        //{
-        //    ViewBag.Message = "Your application description page.";
-
-        //    return View();
-        //}
+        
 
 
 
@@ -196,20 +191,30 @@ namespace hikaya_Ajloun.Controllers
 
 
         public ActionResult Profile(int? id)
-
         {
-            var order = db.Orders.ToList();
-            var order_details = db.Order_Details.ToList();
-            var user = db.AspNetUsers.ToList();
-            var profile = db.Profiles.ToList();
-            string userId = id.ToString();
-            var userEmail = db.AspNetUsers.Where(u => u.Id == userId).FirstOrDefault();
-            ViewBag.UserEmail = userEmail;
-            ViewBag.UserId = userId;
+            if (id == null)
+            {
+                // handle null id case
+                return RedirectToAction("Index", "Home");
+            }
 
+            var userProfile = db.Profiles.FirstOrDefault(p => p.userid == id.ToString());
+            if (userProfile == null)
+            {
+                // handle null user profile case
+                return RedirectToAction("Index", "Home");
+            }
 
-            return View(Tuple.Create(order, order_details, user, profile));
+            int userId = Convert.ToInt32(userProfile.userid);
+
+            var orders = db.Orders.Where(o => o.User_id == userId.ToString()).ToList();
+            var orderDetails = db.Order_Details.ToList();
+            var users = db.AspNetUsers.ToList();
+            var profiles = db.Profiles.ToList();
+            ViewBag.UserEmail = db.AspNetUsers.Where(u => u.Id == userProfile.userid).FirstOrDefault()?.Email;
+            return View(Tuple.Create(orders, orderDetails, users, profiles));
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
