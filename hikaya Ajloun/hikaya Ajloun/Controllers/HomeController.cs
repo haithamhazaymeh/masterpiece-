@@ -158,7 +158,7 @@ namespace hikaya_Ajloun.Controllers
         public ActionResult SingleProduct(int id)
         {
 
-            var product = db.Products.Find(id);
+            var product = db.Products.ToList();
             ViewBag.Message = "Your application description page.";
 
             return View(product);
@@ -192,28 +192,15 @@ namespace hikaya_Ajloun.Controllers
 
         public ActionResult Profile(int? id)
         {
-            if (id == null)
-            {
-                // handle null id case
-                return RedirectToAction("Index", "Home");
-            }
-
-            var userProfile = db.Profiles.FirstOrDefault(p => p.userid == id.ToString());
-            if (userProfile == null)
-            {
-                // handle null user profile case
-                return RedirectToAction("Index", "Home");
-            }
-
-            int userId = Convert.ToInt32(userProfile.userid);
-
-            var orders = db.Orders.Where(o => o.User_id == userId.ToString()).ToList();
+            var aspid = User.Identity.GetUserId();
+            var orders = db.Orders.Where(o => o.User_id == aspid).ToList();
             var orderDetails = db.Order_Details.ToList();
             var users = db.AspNetUsers.ToList();
             var profiles = db.Profiles.ToList();
-            ViewBag.UserEmail = db.AspNetUsers.Where(u => u.Id == userProfile.userid).FirstOrDefault()?.Email;
+            ViewBag.UserEmail = db.AspNetUsers.Where(u => u.Id == aspid).FirstOrDefault()?.Email;
             return View(Tuple.Create(orders, orderDetails, users, profiles));
         }
+
 
 
         [HttpPost]

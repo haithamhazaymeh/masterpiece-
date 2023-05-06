@@ -81,14 +81,17 @@
 
                                     </td>
                                     <td class="product-price" data-title="Price">JOD @item.Product.price</td>
+
                                     <td class="product-quantity" data-title="Quantity">
                                         <div class="qtyField">
                                             <label class="screen-reader-text">Quantity</label>
-                                            <a class="qtyBtn minus" href="javascript:void(0);"><i class="cps cp-minus"></i></a>
+                                            <button class="qtyBtn minus" disabled>-</button>
                                             <input type="text" name="quantity" value="@item.quantity" class="product-form__input qty" readonly>
-                                            <a class="qtyBtn plus" href="javascript:void(0);"><i class="cps cp-plus"></i></a>
+                                            <button class="qtyBtn plus" disabled>+</button>
                                         </div>
                                     </td>
+
+
 
                                     @{
                                         int total = Convert.ToInt32(item.Product.price * item.quantity);
@@ -113,9 +116,7 @@
                                 <button type="submit" name="clear" class="btn btn-danger rounded-3 cart-continue" formaction="@Url.Action("Clear", "Carts")">Clear Shopping Cart</button>
                             }
                         </div>
-                        <div class="col-md-4">
-                            <a href="/Home/Products" class="btn btn-secondary rounded-3 cart-continue">Update shopping cart</a>
-                        </div>
+                        
                     </div>
 
 

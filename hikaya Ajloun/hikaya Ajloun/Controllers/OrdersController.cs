@@ -22,6 +22,13 @@ namespace hikaya_Ajloun.Controllers
             return View(orders.ToList());
         }
 
+        public ActionResult Searchacc(string search)
+        {
+            var x1 = db.Orders.Where(x => (x.FirstName.Contains(search) || x.LastName.Contains(search))).ToList();
+            return View("Index", x1);
+        }
+
+
         // GET: Orders/Details/5
         public ActionResult Details(int? id)
         {

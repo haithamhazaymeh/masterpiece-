@@ -1,4 +1,4 @@
-﻿@model hikaya_Ajloun.Models.Product
+﻿@model  IEnumerable< hikaya_Ajloun.Models.Product>
 
 
 @{
@@ -36,7 +36,11 @@
                             <div class="product-zoom">
                                 <div class="zoompro-wrap product-zoom-right pl-20">
                                     <div class="zoompro-span">
-                                        <img id="zoompro" class="zoompro prlightbox" src="/Images/Products/@Model.productImage_1" data-zoom-image="/Images/Products/@Model.productImage_1" alt="" />
+                                        @{ 
+                                            string q = Request.QueryString["id"];
+                                            int productid = Convert.ToInt16(q);
+                                        }
+                                        <img id="zoompro" class="zoompro prlightbox" src="/Images/Products/@Model.FirstOrDefault(c=>c.productId == productid).productImage_1" data-zoom-image="/Images/Products/@Model.FirstOrDefault(c=>c.productId == productid).productImage_1" alt="" />
                                     </div>
                                     <div class="product-labels"><span class="lbl new rounded">New</span></div>
                                     <div class="product-buttons">
@@ -53,20 +57,20 @@
 
 
 
-                                    <a class="active" data-image="/Images/Products/@Model.productImage_1" data-zoom-image="/Images/Products/@Model.productImage_1" data-slick-index="-4" aria-hidden="true" tabindex="-1">
-                                        <img class="blur-up lazyload" data-src="/Images/Products/@Model.productImage_1" src="/Images/Products/@Model.productImage_1" alt="" />
+                                    <a class="active" data-image="/Images/Products/@Model.FirstOrDefault(c=>c.productId == productid).productImage_1" data-zoom-image="/Images/Products/@Model.FirstOrDefault(c=>c.productId == productid).productImage_1" data-slick-index="-4" aria-hidden="true" tabindex="-1">
+                                        <img class="blur-up lazyload" data-src="/Images/Products/@Model.FirstOrDefault(c=>c.productId == productid).productImage_1" src="/Images/Products/@Model.FirstOrDefault(c=>c.productId == productid).productImage_1" alt="" />
                                     </a>
 
-                                    <a data-image="/Images/Products/@Model.productImage_2" data-zoom-image="/Images/Products/@Model.productImage_2" data-slick-index="-3" aria-hidden="true" tabindex="-1">
-                                        <img class="blur-up lazyload" data-src="/Images/Products/@Model.productImage_2" src="/Images/Products/@Model.productImage_2" alt="" />
+                                    <a data-image="/Images/Products/@Model.FirstOrDefault(c=>c.productId == productid).productImage_2" data-zoom-image="/Images/Products/@Model.FirstOrDefault(c=>c.productId == productid).productImage_2" data-slick-index="-3" aria-hidden="true" tabindex="-1">
+                                        <img class="blur-up lazyload" data-src="/Images/Products/@Model.FirstOrDefault(c=>c.productId == productid).productImage_2" src="/Images/Products/@Model.FirstOrDefault(c=>c.productId == productid).productImage_2" alt="" />
                                     </a>
 
-                                    <a data-image="/Images/Products/@Model.productImage_3" data-zoom-image="/Images/Products/@Model.productImage_3" data-slick-index="-3" aria-hidden="true" tabindex="-1">
-                                        <img class="blur-up lazyload" data-src="/Images/Products/@Model.productImage_3" src="/Images/Products/@Model.productImage_3" alt="" />
+                                    <a data-image="/Images/Products/@Model.FirstOrDefault(c=>c.productId == productid).productImage_3" data-zoom-image="/Images/Products/@Model.FirstOrDefault(c=>c.productId == productid).productImage_3" data-slick-index="-3" aria-hidden="true" tabindex="-1">
+                                        <img class="blur-up lazyload" data-src="/Images/Products/@Model.FirstOrDefault(c=>c.productId == productid).productImage_3" src="/Images/Products/@Model.FirstOrDefault(c=>c.productId == productid).productImage_3" alt="" />
                                     </a>
 
-                                    <a data-image="/Images/Products/@Model.productImage_4" data-zoom-image="/Images/Products/@Model.productImage_4" data-slick-index="-3" aria-hidden="true" tabindex="-1">
-                                        <img class="blur-up lazyload" data-src="/Images/Products/@Model.productImage_4" src="/Images/Products/@Model.productImage_4" alt="" />
+                                    <a data-image="/Images/Products/@Model.FirstOrDefault(c=>c.productId == productid).productImage_4" data-zoom-image="/Images/Products/@Model.FirstOrDefault(c=>c.productId == productid).productImage_4" data-slick-index="-3" aria-hidden="true" tabindex="-1">
+                                        <img class="blur-up lazyload" data-src="/Images/Products/@Model.FirstOrDefault(c=>c.productId == productid).productImage_4" src="/Images/Products/@Model.FirstOrDefault(c=>c.productId == productid).productImage_4" alt="" />
                                     </a>
 
 
@@ -75,10 +79,10 @@
                             </div>
 
                             <div class="lightboximages">
-                                <a href="/Images/Products/@Model.productImage_1" data-size="700x700"></a>
-                                <a href="/Images/Products/@Model.productImage_2" data-size="700x700"></a>
-                                <a href="/Images/Products/@Model.productImage_3" data-size="700x700"></a>
-                                <a href="/Images/Products/@Model.productImage_4" data-size="700x700"></a>
+                                <a href="/Images/Products/@Model.FirstOrDefault(c=>c.productId == productid).productImage_1" data-size="700x700"></a>
+                                <a href="/Images/Products/@Model.FirstOrDefault(c=>c.productId == productid).productImage_2" data-size="700x700"></a>
+                                <a href="/Images/Products/@Model.FirstOrDefault(c=>c.productId == productid).productImage_3" data-size="700x700"></a>
+                                <a href="/Images/Products/@Model.FirstOrDefault(c=>c.productId == productid).productImage_4" data-size="700x700"></a>
                             </div>
 
 
@@ -88,18 +92,18 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                         <div class="product-single-detail">
-                            <h1 class="product-title text-uppercase">@Model.productName</h1>
+                            <h1 class="product-title text-uppercase">@Model.FirstOrDefault(c => c.productId == productid).productName</h1>
                             <div class="d-flex justify-content-between">
-                                <div class="product-review mb-2">
+                                @*<div class="product-review mb-2">
                                     <i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cps cp-star"></i><i class="cps cp-star-half-alt"></i>
                                     14 Reviews <span class="sep">|</span> <a href="#">Write Your Review</a>
-                                </div>
+                                </div>*@
                             </div>
 
                             @*<p>Availability: @Model.availability</p>*@
 
 
-                            @if (Model.availability == "Out Of Stock             ")  //
+                            @if (Model.FirstOrDefault(c => c.productId == productid).availability == "Out Of Stock             ")  //
                             {
 
                                 <div class="stockout mb-1"><b><span class="stockout text-uppercase"><i class="cp cp-check-circle"></i>Out of stock</span></b></div>
@@ -114,17 +118,17 @@
                             }
 
 
-                            <div class="brands mb-1"><b>Brand:</b> @Model.Category.categoryName</div>
+                            <div class="brands mb-1"><b>Brand:</b> @Model.FirstOrDefault(c => c.productId == productid).Category.categoryName</div>
                             <div class="price-box">
                                 <span class="visually-hidden">Regular price</span>
 
                                 @{
-                                    var descount = Model.price * 0.15;
-                                    var oldprice = descount + Model.price;
+                                    var descount = Model.FirstOrDefault(c => c.productId == productid).price * 0.15;
+                                    var oldprice = descount + Model.FirstOrDefault(c => c.productId == productid).price;
                                 }
 
                                 <span class="old-price">JOD @oldprice.ToString("F0")</span>
-                                <span class="sale-price">JOD @Model.price</span>
+                                <span class="sale-price">JOD @Model.FirstOrDefault(c => c.productId == productid).price</span>
                             </div>
 
                             <div class="sort-description">
@@ -132,15 +136,15 @@
 
                                 <p>
 
-                                    @if (Model.productDescription.Length > 400)
+                                    @if (Model.FirstOrDefault(c => c.productId == productid).productDescription.Length > 400)
                                     {
-                                        var cutIndex = Model.productDescription.LastIndexOf(" ", 200);
-                                        var cutDescription = Model.productDescription.Substring(0, (cutIndex > 0 ? cutIndex : 200)) + "...";
+                                        var cutIndex = Model.FirstOrDefault(c => c.productId == productid).productDescription.LastIndexOf(" ", 200);
+                                        var cutDescription = Model.FirstOrDefault(c => c.productId == productid).productDescription.Substring(0, (cutIndex > 0 ? cutIndex : 200)) + "...";
                                         @cutDescription
                                     }
                                     else
                                     {
-                                        @Model.productDescription
+                                        @Model.FirstOrDefault(c => c.productId == productid).productDescription
                                     }
 
                                 </p>
@@ -158,7 +162,7 @@
                                     <div class="d-flex w-100">
                                         <div class="product-form-quantity">
                                             <div class="qtyField">
-                                                <input type="number" name="productId" value="@Model.productId" hidden />
+                                                <input type="number" name="productId" value="@Model.FirstOrDefault(c=>c.productId == productid).productId" hidden />
                                                 <a class="qtyBtn minus" href="javascript:void(0);"><i class="cps cp-minus"></i></a>
                                                 <input type="text" name="quantity" value="1" class="product-form__input qty">
                                                 <a class="qtyBtn plus" href="javascript:void(0);"><i class="cps cp-plus"></i></a>
@@ -167,7 +171,7 @@
                                         <div class="product-form-submit flex-1">
 
 
-                                            @if (Model.availability == "Out Of Stock             ")
+                                            @if (Model.FirstOrDefault(c => c.productId == productid).availability == "Out Of Stock             ")
                                             {
                                                 <button type="submit" class="btn rounded w-100 add-to-cart-btn" disabled><i class="cp cp-shopping-cart"></i> <span>Add to cart</span></button>
                                             }
@@ -200,7 +204,7 @@
                         <div class="tabs-listing mt-2">
                             <ul class="product-tabs list-unstyled d-flex-wrap m-0 d-none d-md-flex justify-content-center">
                                 <li rel="description" class="active"><a class="tablink">Description</a></li>
-                                <li rel="reviews"><a class="tablink">Reviews (8)</a></li>
+                                @*<li rel="reviews"><a class="tablink">Reviews (8)</a></li>*@
                                 <li rel="shipping-return"><a class="tablink">Shipping &amp; Return</a></li>
                             </ul>
                             <div class="tab-container">
@@ -210,14 +214,14 @@
                                     <div class="product-description">
                                         <div class="row">
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 mb-4 mb-md-0">
-                                                <p>@Model.productDescription</p>
+                                                <p>@Model.FirstOrDefault(c => c.productId == productid).productDescription</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <!--End Description-->
                                 <!--Review-->
-                                <h3 class="tabs-ac-style acor-ttl d-md-none" rel="reviews">Review (5)</h3>
+                                <!--<h3 class="tabs-ac-style acor-ttl d-md-none" rel="reviews">Review (5)</h3>
                                 <div id="reviews" class="tab-content">
                                     <div class="row justify-content-center">
                                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 mt-2 px-4 mb-3">
@@ -289,13 +293,13 @@
                                             </form>
                                         </div>
                                     </div>
-                                </div>
+                                </div>-->
                                 <!--End Review-->
                                 <!--Shipping & Returns-->
                                 <h3 class="tabs-ac-style acor-ttl d-md-none" rel="shipping-return">Shipping &amp; Return</h3>
                                 <div id="shipping-return" class="tab-content">
 
-                                    <p>@Model.shipping_return</p>
+                                    <p>@Model.FirstOrDefault(c => c.productId == productid).shipping_return</p>
 
                                 </div>
                                 <!--End Shipping & Returns-->
@@ -309,17 +313,18 @@
     </div>
     <!--End Product Details-->
     <!--Related products-->
-    <h2 class="title text-uppercase">Related products</h2>
     <!--Product Grid-->
-    <div class="products-grid">
+    <div class="container-fluid">
         <div class="row">
-
-            @*@foreach (var item in Model)
-            {*@
+            <h2 class="title text-uppercase">Related products</h2>
 
 
+            @foreach (var item in Model)
+            {
 
-                @*<div class="col-md-8 col-lg-6 col-xl-4 mt-3">
+
+
+                <div class="col-md-34 col-lg-3 col-xl-3 mt-4 mb-5">
                     <div class="card text-black">
                         <a href="/Home/SingleProduct?id=@item.productId">
                             <img src="~/Images/Products/@item.productImage_1"
@@ -341,11 +346,11 @@
                             </div>
                         </div>
                     </div>
-                </div>*@
+                </div>
 
-            @*}*@
+            }
 
-          
+
         </div>
         <!--End Content-->
     </div>

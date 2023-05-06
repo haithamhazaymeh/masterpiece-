@@ -25,6 +25,30 @@ namespace hikaya_Ajloun.Controllers
             return View(articles.ToList());
         }
 
+        public ActionResult Searchacc(string search, string sortOrder)
+        {
+            var articles = db.Articles.Include(a => a.author);
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                articles = articles.Where(a => a.articleName.Contains(search) || a.author.authorname.Contains(search));
+            }
+
+            switch (sortOrder)
+            {
+                case "oldest":
+                    articles = articles.OrderBy(a => a.articleDate);
+                    break;
+                default:
+                    articles = articles.OrderByDescending(a => a.articleDate);
+                    break;
+            }
+
+
+            return View("Index", articles.ToList());
+        }   
+        
+        
         // GET: Articles/Details/5
         public ActionResult Details(int? id)
         {

@@ -7,6 +7,29 @@
     Layout = "~/Views/Shared/Navbar and footer 2.cshtml";
 }
 
+@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.EntityFramework
+@using Microsoft.Owin.Security
+@using System.Security.Claims
+
+<style>
+    .thumbnail {
+        top: -50px;
+        left: -35px;
+        display: block;
+        z-index: 999;
+        cursor: pointer;
+        -webkit-transition-property: all;
+        -webkit-transition-duration: 0.3s;
+        -webkit-transition-timing-function: ease;
+    }
+
+        .thumbnail:hover {
+            transform: scale(3);
+        }
+</style>
+
+
 <!--Breadcrumb Start-->
 <div class="pq-breadcrumb pq-breadcrumb-Product pq-bg-dark pq-bg-img-4">
     <div class="container">
@@ -35,18 +58,18 @@
             <div class="col-lg-4 col-md-4 col-sm-12 col-12">
                 <div class="nav-box mb-4">
                     <div class="profile-content">
-                        <div class="d-flex align-items-center mb-4">
-                            <img width="30%" class="blur-up lazyload rounded-pill" src="~/Images/Content/haitham alhazaymeh.jpg" data-image="~/Images/Content/haitham alhazaymeh.jpg" alt="" title="" />
-                            <div class="detail mx-3">
-                                <h3 class="text-uppercase mb-0">Haitham Hazaymeh</h3>
-                                <p class="mb-0">Joined April 06, 2023</p>
-                            </div>
-                        </div>
+                        @*<div class="d-flex align-items-center mb-4">
+                                <img width="30%" class="blur-up lazyload rounded-pill" src="~/Images/Content/haitham alhazaymeh.jpg" data-image="~/Images/Content/haitham alhazaymeh.jpg" alt="" title="" />
+                                <div class="detail mx-3">
+                                    <h3 class="text-uppercase mb-0">@</h3>
+                                    <p class="mb-0">Joined April 06, 2023</p>
+                                </div>
+                            </div>*@
                     </div>
                     <!-- Nav tabs -->
                     <ul class="nav flex-column dashboard-list" role="tablist">
                         <li><a class="nav-link active mt-5" data-bs-toggle="tab" href="#orders">Orders</a></li>
-                        <li><a class="nav-link" data-bs-toggle="tab" href="#profile">Profile</a></li>
+                        @*<li><a class="nav-link" data-bs-toggle="tab" href="#profile">Profile</a></li>*@
                         <li style="color:white !important ; margin:10px">
                             @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
                             {
@@ -66,142 +89,152 @@
                     <div id="orders" class="product-order tab-pane fade active show">
                         <h3>Orders</h3>
                         <div class="table-responsive">
-                            <table class="table">
+                            <table id="example1" class="table table-bordered table-hover">
                                 <thead class="alt-font">
                                     <tr>
-                                        <th>Order date</th>
-                                        @*<th class="status">Status</th>*@
-                                        <th>Action</th>
-                                        
-
+                                        <th>Product Name</th>
+                                        <th>Quantity</th>
+                                        <th>Image</th>
+                                        <th>orderDate</th>
+                                        <th>Total</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
-                                    @foreach (var item in Model.Item1.Zip(Model.Item2, Tuple.Create))
-                                    {
+
+                                    <tr>
+
+
+                                        @foreach (var item2 in Model.Item2.Where(i => i.Order.User_id == User.Identity.GetUserId()))
+                                        {
                                         <tr>
-                                            <td>@item.Item1.orderDate</td>
-                                            <td><a class='btn btn-danger' href='order.aspx?id={sdr2[0]}'>view</a></td>
+                                            <td>@item2.Product.productName</td>
+                                            <td>@item2.Quantity</td>
+                                            <td><img width="35%" class="thumbnail" src="~/Images/Products/@item2.Product.productImage_1" alt="Product 1"></td>
+                                            <td>@item2.Order.orderDate</td>
+                                            <td>@item2.Order.totalAmount</td>
                                         </tr>
                                     }
 
 
-                                </tbody>
-                            </table>
+                                        </tr>
+
+
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div>
-                    <!-- End Orders -->
-                    <!-- Profile -->
-                    @using (Html.BeginForm("Create", "Profiles", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                    {
-                        @Html.AntiForgeryToken()
+                        <!-- End Orders -->
+                        <!-- Profile -->
+                        @using (Html.BeginForm("Create", "Profiles", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
 
-                        <div id="profile" class="product-order tab-pane fade">
-                            <h3>Profile</h3>
-                            <form method="post" action="#" class="profile-form">
-                                <div class="row">
-                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-3">
-                                        <div class="form-group">
-                                            <label for="CustomerFirstName">First Name</label>
-                                            <input id="CustomerFirstName" type="text" name="First_Name" value="" placeholder="First Name" class="form-control" required="">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-3">
-                                        <div class="form-group">
-                                            <label for="CustomerLastName">Last Name</label>
-                                            <input id="CustomerLastName" type="text" name="Last_Name" value="" placeholder="Last Name" class="form-control" required="">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-3">
-                                        <div class="form-group">
-                                            <label for="phone">Phone Number</label>
-                                            <input id="phone" type="text" name="Phone_Number" placeholder="Phone Number" class="form-control" required="">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-3">
-                                        <div class="form-group">
-                                            <label for="phone">Email</label>
-                                            <input id="phone" type="text" name="Email" placeholder="Email" class="form-control" required="" readonly>
-                                        </div>
-                                    </div>
-
-                                    @*<div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-3">
-            <div class="form-group">
-                <label for="CustomerPassword">New Password</label>
-                <input id="CustomerPassword" type="password" name="customer[Password]" placeholder="Password" class="form-control" required="">
-            </div>
-        </div>
-        <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-3">
-            <div class="form-group">
-                <label for="CustomerConfirmPassword">Confirm Password</label>
-                <input id="CustomerConfirmPassword" type="Password" name="customer[ConfirmPassword]" placeholder="Confirm Password" class="form-control" required="">
-            </div>
-        </div>*@
-
-                                    <div class="row">
-                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-3">
-                                            <label for="address_province1" class="form-label">Town / City <span class="required">*</span></label>
-                                            <select id="address_province1" name="City" data-default="" class="form-control">
-                                                <option value="0" label="Select a state" selected="selected">Select a city</option>
-                                                <option value="AR">Irbid</option>
-                                                <option value="CA">Ajloun</option>
-                                                <option value="DE">Jerash</option>
-                                                <option value="FL">Mafraq</option>
-                                                <option value="GA">Balqa</option>
-                                                <option value="HI">Amman</option>
-                                                <option value="ID">Zarqa</option>
-                                                <option value="KS">Zarqa</option>
-                                                <option value="LA">Karak</option>
-                                                <option value="ME">Tafilah</option>
-                                                <option value="NC">Ma'an</option>
-                                                <option value="OR">Aqaba</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-3">
-                                            <div class="form-group">
-                                                <label for="input-postcode1" class="form-label">ZIP Code <span class="required">*</span></label>
-                                                <input name="ZIP_Code" value="" id="input-postcode1" type="text" class="form-control" placeholder="ZIP Code">
-                                            </div>
-                                        </div>
-                                    </div>
+                            <!--<div id="profile" class="product-order tab-pane fade">
+                                <h3>Profile</h3>
+                                <form method="post" action="#" class="profile-form">
                                     <div class="row">
                                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-3">
                                             <div class="form-group">
-                                                <label for="input-address-1" class="form-label">Address1</label>
-                                                <input name="Adress1" value="" id="input-address-1" type="text" required="" placeholder="Address1" class="form-control">
+                                                <label for="CustomerFirstName">First Name</label>
+                                                <input id="CustomerFirstName" type="text" name="First_Name" value="" placeholder="First Name" class="form-control" required="">
                                             </div>
                                         </div>
                                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-3">
                                             <div class="form-group">
-                                                <label for="input-address-2" class="form-label">Address2</label>
-                                                <input name="Adress2" value="" id="input-address-2" type="text" required="" placeholder="Address2" class="form-control">
+                                                <label for="CustomerLastName">Last Name</label>
+                                                <input id="CustomerLastName" type="text" name="Last_Name" value="" placeholder="Last Name" class="form-control" required="">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-3">
+                                            <div class="form-group">
+                                                <label for="phone">Phone Number</label>
+                                                <input id="phone" type="text" name="Phone_Number" placeholder="Phone Number" class="form-control" required="">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-3">
+                                            <div class="form-group">
+                                                <label for="phone">Email</label>
+                                                <input id="phone" type="text" name="Email" placeholder="Email" class="form-control" required="" readonly>
+                                            </div>
+                                        </div>-->
+
+                            @*<div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-3">
+                                    <div class="form-group">
+                                        <label for="CustomerPassword">New Password</label>
+                                        <input id="CustomerPassword" type="password" name="customer[Password]" placeholder="Password" class="form-control" required="">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-3">
+                                    <div class="form-group">
+                                        <label for="CustomerConfirmPassword">Confirm Password</label>
+                                        <input id="CustomerConfirmPassword" type="Password" name="customer[ConfirmPassword]" placeholder="Confirm Password" class="form-control" required="">
+                                    </div>
+                                </div>*@
+
+                            <!--<div class="row">
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-3">
+                                                <label for="address_province1" class="form-label">Town / City <span class="required">*</span></label>
+                                                <select id="address_province1" name="City" data-default="" class="form-control">
+                                                    <option value="0" label="Select a state" selected="selected">Select a city</option>
+                                                    <option value="AR">Irbid</option>
+                                                    <option value="CA">Ajloun</option>
+                                                    <option value="DE">Jerash</option>
+                                                    <option value="FL">Mafraq</option>
+                                                    <option value="GA">Balqa</option>
+                                                    <option value="HI">Amman</option>
+                                                    <option value="ID">Zarqa</option>
+                                                    <option value="KS">Zarqa</option>
+                                                    <option value="LA">Karak</option>
+                                                    <option value="ME">Tafilah</option>
+                                                    <option value="NC">Ma'an</option>
+                                                    <option value="OR">Aqaba</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-3">
+                                                <div class="form-group">
+                                                    <label for="input-postcode1" class="form-label">ZIP Code <span class="required">*</span></label>
+                                                    <input name="ZIP_Code" value="" id="input-postcode1" type="text" class="form-control" placeholder="ZIP Code">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-3">
+                                                <div class="form-group">
+                                                    <label for="input-address-1" class="form-label">Address1</label>
+                                                    <input name="Adress1" value="" id="input-address-1" type="text" required="" placeholder="Address1" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-3">
+                                                <div class="form-group">
+                                                    <label for="input-address-2" class="form-label">Address2</label>
+                                                    <input name="Adress2" value="" id="input-address-2" type="text" required="" placeholder="Address2" class="form-control">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row align-items-center justify-content-between">
-                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-2">
-                   
-                                    </div>
-                                    <div class="col-12 col-sm-12 col-md-6 col-lg-6 text-end">
-                                        <input type="submit" class="btn btn-lg btn-primary rounded-pill" value="Update Profile">
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                                    <div class="row align-items-center justify-content-between">
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-2">
 
-                    }
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 text-end">
+                                            <input type="submit" class="btn btn-lg btn-primary rounded-pill" value="Update Profile">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>-->
+
+                        }
                         <!-- End Profile -->
 
 
 
-                       
+
 
                     </div>
-                <!-- End Tab panes -->
+                    <!-- End Tab panes -->
+                </div>
             </div>
         </div>
     </div>
-</div>
 

@@ -26,6 +26,10 @@ namespace hikaya_Ajloun.Controllers
             var orderCount = db.Orders.Count();
             var orderd = db.Order_Details.ToList();
             var user = db.AspNetUsers.Count();
+            var comment = db.Comments.Count();
+           
+
+
 
             TotalVisitors++;
 
@@ -80,7 +84,7 @@ namespace hikaya_Ajloun.Controllers
             ViewBag.UniqueVisitors = UniqueVisitors[DateTime.Now.ToShortDateString()];
             ViewBag.BounceRate = (float)BounceVisitors / TotalVisitors * 100;
 
-            return View(Tuple.Create(orderCount, orderd, user));
+            return View(Tuple.Create(orderCount, orderd, user , comment ));
         }
 
 

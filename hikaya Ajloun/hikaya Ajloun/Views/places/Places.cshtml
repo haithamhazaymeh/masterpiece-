@@ -93,7 +93,7 @@
 
 <div class="container mt-5 mb-5 my-5">
     <h2>Place Information</h2>
-    <table class="table">
+    <table  id="example1" class="table table-bordered table-hover">
         <tbody>
             <tr>
                 <td>Name</td>
@@ -115,10 +115,10 @@
                 <td>Phone Number</td>
                 <td><a href="tel:+962 @Model.phonenumber">+962 @Model.phonenumber</a></td>
             </tr>
-            <tr>
+            @*<tr>
                 <td>Rating</td>
                 <td>@Model.reviewid/5</td>
-            </tr>
+            </tr>*@
         </tbody>
     </table>
 </div>

@@ -16,7 +16,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="~/Dashboard/plugins/fontawesome-free/css/all.min.css">
-
+    <!-- Select2 -->
+    <link rel="stylesheet" href="~/Dashboard/plugins/select2/css/select2.min.css">
+    
     <!-- Theme style -->
     <link rel="stylesheet" href="~/Dashboard/dist/css/adminlte.min.css">
     <!-- summernote -->
@@ -49,79 +51,114 @@
 
     @RenderPage("~/Views/Shared/_saidbar-navbar.cshtml")
 
-    <div style="padding:50px" class="content-wrapper">
+    
+
+<div style="padding:50px" class="content-wrapper">
 
 
-
-        
-            <p>
-                @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
-            </p>
-            <div class="card">
-                <div class="card-body">
-
-
-                    <table id="example1" class="table table-bordered table-hover">
-                        <tr>
-                            <th>
-                                @Html.DisplayNameFor(model => model.articleName)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.articleImage)
-                            </th>
-
-                            <th>
-                                @Html.DisplayNameFor(model => model.articleDate)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.author.authorname)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Category.categoryName)
-                            </th>
-                            <th>
-                                <label>Action</label>
-                            </th>
-                        </tr>
-
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td style="width:20%; overflow:hidden; ">
-                                    @Html.DisplayFor(modelItem => item.articleName)
-                                </td>
-                                <td>
-                                    <img alt="" class="thumbnail" src="~/Images/article/@item.articleImage" style="height:70px;width:70px;" />
-                                </td>
-
-                                <td style="width:25%;">
-                                    @Html.DisplayFor(modelItem => item.articleDate)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.author.authorname)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Category.categoryName)
-                                </td>
-                                <td style="width:20%;">
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.articleId }, new { @class = "btn btn-info" })
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.articleId }, new { @class = "btn btn-danger" })
-                                    <a href="/Home/SingleBlog?id=@item.articleId" class="btn btn-success" target="_blank">View</a>
-                                </td>
-                            </tr>
-                        }
-
-
-                    </table>
+    @using (Html.BeginForm("Searchacc", "Articles"))
+    {
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="row">
+                    <div class="col-3">
+                        <div class="form-group">
+                            <label>Sort Order:</label>
+                            <select name="sortOrder" class="select2" style="width: 100%;">
+                                <option value="latest" selected>Latest</option>
+                                <option value="oldest">Oldest</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
-
+                <div class="form-group">
+                    <div class="input-group input-group-lg">
+                        <input type="search" name="search" class="form-control form-control-lg" placeholder="Type your keywords here">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-lg btn-default">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Apply Changes</button>
+                </div>
             </div>
+        </div>
+    }
 
 
 
-      
+
+    <p>
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+    <div class="card">
+        <div class="card-body">
+
+
+            <table id="example1" class="table table-bordered table-hover">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.articleName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.articleImage)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.articleDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.author.authorname)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Category.categoryName)
+                    </th>
+                    <th>
+                        <label>Action</label>
+                    </th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="width:20%; overflow:hidden; ">
+                            @Html.DisplayFor(modelItem => item.articleName)
+                        </td>
+                        <td>
+                            <img alt="" class="thumbnail" src="~/Images/article/@item.articleImage" style="height:70px;width:70px;" />
+                        </td>
+
+                        <td style="width:25%;">
+                            @Html.DisplayFor(modelItem => item.articleDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.author.authorname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Category.categoryName)
+                        </td>
+                        <td style="width:20%;">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.articleId }, new { @class = "btn btn-info" })
+                            @Html.ActionLink("Delete", "Delete", new { id = item.articleId }, new { @class = "btn btn-danger" })
+                            <a href="/Home/SingleBlog?id=@item.articleId" class="btn btn-success" target="_blank">View</a>
+                        </td>
+                    </tr>
+                }
+
+
+            </table>
+        </div>
 
     </div>
+
+
+
+
+
+</div>
 
     @RenderPage("~/Views/Shared/footer.cshtml")
     <!-- ./wrapper -->
@@ -143,6 +180,12 @@
     <!-- AdminLTE for demo purposes -->
     <script src="~/Dashboard//dist/js/demo.js"></script>
     <!-- Page specific script -->
+    <script src="~/Dashboard/plugins/select2/js/select2.full.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/Dashboard/dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/Dashboard/dist/js/demo.js"></script>
+
     <script>
         $(function () {
             // Summernote
@@ -154,6 +197,10 @@
                 theme: "monokai"
             });
         })
+
+        $(function () {
+            $('.select2').select2()
+        });
     </script>
 </body>
 </html>

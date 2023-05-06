@@ -56,12 +56,12 @@ namespace hikaya_Ajloun.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,Name,Email,Comment1,status,articalid")] Comment comment)
+        public ActionResult Create([Bind(Include = "id,Name,Email,Comment1,status,articalid")] Comment comment , string articalid )
         {
 
             if (ModelState.IsValid)
             {
-
+                comment.articalid = Convert.ToInt32(articalid);
                 db.Comments.Add(comment);
                 db.SaveChanges();
                 return RedirectToAction("Index");

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using hikaya_Ajloun.Models;
+using Microsoft.AspNet.Identity;
 
 namespace hikaya_Ajloun.Controllers
 {
@@ -39,6 +40,9 @@ namespace hikaya_Ajloun.Controllers
         // GET: Profiles/Create
         public ActionResult Create()
         {
+            var aspid = User.Identity.GetUserId();
+            var id = db.AspNetUsers.FirstOrDefault(c => c.Id == aspid).Id;
+            ViewBag.Aspid = id;
             ViewBag.userid = new SelectList(db.AspNetUsers, "Id", "Email");
             return View();
         }
